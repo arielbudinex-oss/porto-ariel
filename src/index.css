@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #05060a;
+  --color-ink-2: #0a0c12;
+  --color-ink-3: #10131c;
+  --color-line: #1e2330;
+  --color-mist: #9aa4b8;
+  --color-frost: #e8ecf4;
+  --color-neon: #64e6ff;
+  --color-violet: #8b5cf6;
+  --color-magenta: #ff5c9d;
+  --color-amber: #ffb347;
+  --color-lime: #a3e635;
+
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", monospace;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/assets/fonts/spacegrotesk-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/assets/fonts/inter-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("/assets/fonts/jetbrains-latin.woff2") format("woff2");
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-frost);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-neon) 40%, transparent);
+  color: #fff;
+}
+
+/* ── scrollbar ─────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-ink); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-neon), var(--color-violet));
+  border-radius: 99px;
+  border: 2px solid var(--color-ink);
+}
+
+/* ── utility: glass ────────────────────────────────────────────────────── */
+.glass {
+  background: color-mix(in srgb, var(--color-ink-3) 72%, transparent);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid color-mix(in srgb, var(--color-line) 80%, transparent);
+}
+
+.glass-strong {
+  background: color-mix(in srgb, var(--color-ink-2) 88%, transparent);
+  backdrop-filter: blur(28px) saturate(1.6);
+  -webkit-backdrop-filter: blur(28px) saturate(1.6);
+  border: 1px solid color-mix(in srgb, var(--color-line) 90%, transparent);
+}
+
+/* ── text gradient ─────────────────────────────────────────────────────── */
+.text-grad {
+  background: linear-gradient(100deg, var(--color-neon) 0%, var(--color-violet) 45%, var(--color-magenta) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── grain overlay ─────────────────────────────────────────────────────── */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* ── hide scrollbar (horizontal scrollers) ─────────────────────────────── */
+.no-bar::-webkit-scrollbar { display: none; }
+.no-bar { scrollbar-width: none; -ms-overflow-style: none; }
+
+/* ── pro-mirror: neon ring pulse ───────────────────────────────────────── */
+@keyframes ringPulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-neon) 45%, transparent); }
+  50% { box-shadow: 0 0 0 12px color-mix(in srgb, var(--color-neon) 0%, transparent); }
+}
+.ring-pulse { animation: ringPulse 2.6s ease-out infinite; }
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.floaty { animation: floaty 6s ease-in-out infinite; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(110deg, transparent 30%, color-mix(in srgb, #fff 18%, transparent) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmer 2.8s linear infinite;
+}
+
+/* ── marquee ───────────────────────────────────────────────────────────── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-speed, 40s) linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+/* ── perspective helpers ───────────────────────────────────────────────── */
+.persp { perspective: 1200px; }
+.preserve-3d { transform-style: preserve-3d; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
