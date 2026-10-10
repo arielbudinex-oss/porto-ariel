@@ -29,15 +29,15 @@ export default function Hero() {
         glowRadius={180}
         gradientFrom="rgba(168, 85, 247, 0.30)"
         gradientTo="rgba(180, 151, 207, 0.20)"
-        glowColor="#120F17"
+        glowColor="#0A0A0A"
       />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-[#120f17]/60 to-[#120f17]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-[#0a0a0a]/60 to-[#0a0a0a]" />
 
       <div className="mx-auto grid max-w-[1324px] gap-14 px-6 pt-12 pb-24 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
         {/* ── kolom kiri ─────────────────────────────────────────────── */}
         <div className={mounted ? "rise" : "opacity-0"}>
           <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.05] py-1 pr-4 pl-1.5 text-[13px] text-white/70">
-            <span className="rounded-full bg-[#a855f7]/20 px-2.5 py-1 text-[11px] font-semibold text-[#c7a0ff]">
+            <span className="rounded-full bg-[#ffffff]/20 px-2.5 py-1 text-[11px] font-semibold text-[#d4d4d8]">
               {live.length} live
             </span>
             {projects.length} proyek nyata · semua terverifikasi
@@ -54,7 +54,7 @@ export default function Hero() {
             <span className="text-white/55">Aku membangun</span>
             <RotatingText
               texts={["marketplace", "gateway pesan", "wallpaper engine", "pembukuan pajak", "alat uji server"]}
-              mainClassName="inline-flex min-w-[9ch] justify-center overflow-hidden rounded-lg bg-[#a855f7]/15 px-2.5 py-0.5 text-[#c7a0ff]"
+              mainClassName="inline-flex min-w-[9ch] justify-center overflow-hidden rounded-lg bg-[#ffffff]/15 px-2.5 py-0.5 text-[#d4d4d8]"
               staggerFrom="last"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -89,7 +89,7 @@ export default function Hero() {
               <div key={s.label}>
                 <dt className="text-3xl font-bold tracking-tight text-white md:text-4xl">
                   <CountUp to={s.value} duration={1.6} separator="." />
-                  <span className="text-[#a855f7]">{s.suffix}</span>
+                  <span className="text-[#ffffff]">{s.suffix}</span>
                 </dt>
                 <dd className="mt-1.5 text-[11px] tracking-[0.08em] text-white/40 uppercase">{s.label}</dd>
               </div>
@@ -100,16 +100,16 @@ export default function Hero() {
         {/* ── kolom kanan: panel terminal ────────────────────────────── */}
         <div className={`relative ${mounted ? "rise" : "opacity-0"}`} style={{ animationDelay: "120ms" }}>
           <div className="surface overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,.5)]">
-            <div className="flex items-center gap-2 border-b border-[#2f293a] px-5 py-3.5">
+            <div className="flex items-center gap-2 border-b border-[#262626] px-5 py-3.5">
               <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
               <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
               <span className="h-3 w-3 rounded-full bg-[#28c840]" />
               <span className="ml-3 font-mono text-xs text-white/40">ariel@produksi ~ %</span>
             </div>
 
-            <div className="space-y-3.5 bg-[#0d0a12] p-6 font-mono text-[13px] leading-relaxed">
+            <div className="space-y-3.5 bg-[#0f0f0f] p-6 font-mono text-[13px] leading-relaxed">
               <p className="text-white/35">
-                <span className="text-[#a855f7]">➜</span> <span className="text-white/80">whoami</span>
+                <span className="text-[#ffffff]">➜</span> <span className="text-white/80">whoami</span>
               </p>
               <p className="pl-4 text-white/60">
                 {owner.name} — full-stack developer.
@@ -118,7 +118,7 @@ export default function Hero() {
               </p>
 
               <p className="text-white/35">
-                <span className="text-[#a855f7]">➜</span> <span className="text-white/80">ls proyek-live/</span>
+                <span className="text-[#ffffff]">➜</span> <span className="text-white/80">ls proyek-live/</span>
               </p>
               <ul className="space-y-1.5 pl-4">
                 {live.map((p, i) => (
@@ -128,7 +128,7 @@ export default function Hero() {
                       href={p.url}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="text-white/75 transition-colors hover:text-[#c7a0ff]"
+                      className="text-white/75 transition-colors hover:text-[#d4d4d8]"
                     >
                       {p.name}
                     </a>
@@ -138,8 +138,8 @@ export default function Hero() {
               </ul>
 
               <p className="text-white/35">
-                <span className="text-[#a855f7]">➜</span> <span className="text-white/80">npm run build</span>
-                <span className="caret ml-2 inline-block h-3.5 w-[7px] bg-[#a855f7] align-middle" />
+                <span className="text-[#ffffff]">➜</span> <span className="text-white/80">npm run build</span>
+                <span className="caret ml-2 inline-block h-3.5 w-[7px] bg-[#ffffff] align-middle" />
               </p>
               <div className="space-y-1 pl-4 text-[12px] text-white/50">
                 <p>✓ 265.000+ baris kode · 8 proyek</p>
@@ -148,12 +148,12 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between border-t border-[#2f293a] px-5 py-3">
+            <div className="flex items-center justify-between border-t border-[#262626] px-5 py-3">
               <ShinyText
                 text="Semua angka diukur dari source code"
                 speed={5}
                 color="#6b6478"
-                shineColor="#c7a0ff"
+                shineColor="#d4d4d8"
                 className="font-mono text-[11px]"
               />
               <span className="font-mono text-[11px] text-white/25">v1.0</span>
@@ -164,11 +164,11 @@ export default function Hero() {
 
       <a
         href="#proyek"
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/35 transition-colors hover:text-[#c7a0ff] md:flex"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/35 transition-colors hover:text-[#d4d4d8] md:flex"
       >
         <span className="font-mono text-[10px] tracking-[0.25em] uppercase">gulir</span>
         <span className="grid h-9 w-5 place-items-start rounded-full border border-white/15 p-1">
-          <span className="h-2 w-2 animate-bounce rounded-full bg-[#a855f7]" />
+          <span className="h-2 w-2 animate-bounce rounded-full bg-[#ffffff]" />
         </span>
       </a>
     </section>

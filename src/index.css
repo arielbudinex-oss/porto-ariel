@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   PALET & FONT — satu aksen ungu dipakai hemat, tombol primer putih solid,
-   sisanya hitam-putih-abu. Bukan gradient warna-warni.
+   PALET & FONT — monokrom: hitam, putih, abu. Tanpa aksen warna.
+   Tombol primer putih solid, teks abu untuk hirarki.
    ───────────────────────────────────────────────────────────────────────────── */
 @theme {
-  --color-ink: #120f17;        /* latar utama */
-  --color-ink-2: #1b1722;      /* permukaan kartu */
-  --color-ink-3: #241e2e;      /* permukaan naik */
-  --color-line: #2f293a;       /* garis batas */
-  --color-mist: #aaa;          /* teks redup */
-  --color-dim: #a1a1aa;        /* teks lebih redup */
+  --color-ink: #0a0a0a;        /* latar utama */
+  --color-ink-2: #141414;      /* permukaan kartu */
+  --color-ink-3: #1c1c1c;      /* permukaan naik */
+  --color-line: #262626;       /* garis batas */
+  --color-mist: #a3a3a3;       /* teks redup */
+  --color-dim: #737373;        /* teks lebih redup */
   --color-frost: #fff;
-  --color-accent: #a855f7;     /* aksen utama */
-  --color-accent-soft: #c7a0ff;
+  --color-accent: #ffffff;     /* aksen utama */
+  --color-accent-soft: #d4d4d8;
 
   /* alias — dipakai sebagian komponen agar tidak perlu diubah satu per satu */
-  --color-neon: #c7a0ff;
-  --color-violet: #a855f7;
-  --color-magenta: #c7a0ff;
-  --color-amber: #e2a442;
-  --color-lime: #a3e635;
+  --color-neon: #d4d4d8;
+  --color-violet: #a1a1aa;
+  --color-magenta: #d4d4d8;
+  --color-amber: #a3a3a3;
+  --color-lime: #d4d4d8;
 
   --font-sans: "Geist", "Segoe UI", system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", monospace;
@@ -62,7 +62,7 @@ body {
 }
 
 ::selection {
-  background: rgba(168, 85, 247, 0.42);
+  background: rgba(255, 255, 255, 0.25);
   color: #fff;
 }
 
@@ -70,11 +70,11 @@ body {
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--color-ink); }
 ::-webkit-scrollbar-thumb {
-  background: #37313f;
+  background: #333333;
   border-radius: 99px;
   border: 2px solid var(--color-ink);
 }
-::-webkit-scrollbar-thumb:hover { background: #4a4257; }
+::-webkit-scrollbar-thumb:hover { background: #444444; }
 
 /* ── permukaan — radius besar, border tipis, tanpa glow ── */
 .surface {
@@ -113,7 +113,7 @@ body {
 
 /* judul dengan gradient (dipakai hemat) */
 .text-grad {
-  background: linear-gradient(135deg, #fff 0%, #8660fa 20%, #a855f7 40%, #8400ff 60%, #a855f7 80%, #fff 100%);
+  background: linear-gradient(135deg, #737373 0%, #d4d4d8 25%, #ffffff 50%, #d4d4d8 75%, #737373 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

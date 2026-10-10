@@ -59,8 +59,8 @@ export const projects = [
     tag: "Marketplace Digital & Top-Up",
     url: "https://nexshop.cloud",
     github: "https://github.com/ArielOsaze/NEXSHOP_ALL",
-    accent: "#a855f7",
-    accent2: "#c7a0ff",
+    accent: "#d4d4d8",
+    accent2: "#a1a1aa",
     blurb:
       "Marketplace top-up game & produk digital dengan pembayaran iPaymu, program reseller berjenjang, verifikasi KYC terenkripsi, dan asisten AI yang membaca katalog harga live.",
     role: "Full-stack — arsitektur, backend, frontend, keamanan, deployment",
@@ -118,8 +118,8 @@ export const projects = [
       { src: "/assets/projects/nexshop/04-staff-mobile.png", caption: "Mobile staf — tata letak menyesuaikan" },
     ],
     compare: {
-      before: "/assets/projects/nexshop/01-admin.png",
-      after: "/assets/projects/nexshop/03-staff.png",
+      before: "/assets/projects/nexshop/05-before.png",
+      after: "/assets/projects/nexshop/01-admin.png",
       label: "Redesign panel admin",
     },
     proof: [
@@ -134,8 +134,8 @@ export const projects = [
     tag: "Gateway Pesan Multi-Akun",
     url: "https://saybot.nexshop.cloud",
     github: "https://github.com/ArielOsaze/Whatsapp-Gateaway",
-    accent: "#8b5cf6",
-    accent2: "#a855f7",
+    accent: "#a1a1aa",
+    accent2: "#d4d4d8",
     blurb:
       "Sistem manajemen pesan multi-akun untuk WhatsApp & Telegram: banyak sesi berjalan paralel, broadcast berantre dengan throttling, dashboard statistik real-time.",
     role: "Full-stack — gateway TypeScript, dashboard Next.js, deployment VPS + Vercel",
@@ -193,8 +193,8 @@ export const projects = [
     tag: "Live Wallpaper Engine Windows",
     url: "https://lumawall.xinet.id",
     github: "https://github.com/ArielOsaze/Lumawall",
-    accent: "#a855f7",
-    accent2: "#d8b4fe",
+    accent: "#d4d4d8",
+    accent2: "#d4d4d8",
     blurb:
       "Wallpaper video untuk setiap monitor Windows — didekode GPU, bukan CPU. Pause bekerja per-monitor, kembali dalam 4 milidetik. 58 rilis, katalog 5.000+ wallpaper, empat bahasa.",
     role: "Pembuat tunggal — aplikasi C#, situs, sistem pembayaran, distribusi",
@@ -260,8 +260,8 @@ export const projects = [
     tag: "Pembukuan & Pajak Desktop",
     url: "https://akuntuntas.xinet.id",
     github: "https://github.com/ArielOsaze/akuntuntas",
-    accent: "#9333ea",
-    accent2: "#a855f7",
+    accent: "#a1a1aa",
+    accent2: "#d4d4d8",
     blurb:
       "Aplikasi desktop Windows untuk pembukuan dan perpajakan UMKM Indonesia — 100% offline, data tersimpan lokal, dari pembukuan harian sampai SPT.",
     role: "Pembuat tunggal — aplikasi, mode belajar, lisensi, situs penjualan",
@@ -323,8 +323,8 @@ export const projects = [
     tag: "Marketplace Gaming (Demo Teknis)",
     url: null,
     github: "https://github.com/ArielOsaze",
-    accent: "#8b5cf6",
-    accent2: "#a855f7",
+    accent: "#a1a1aa",
+    accent2: "#d4d4d8",
     blurb:
       "Eksperimen marketplace game digital — fondasi yang kemudian tumbuh menjadi NexShop: auth JWT, keranjang, dan alur pesanan.",
     role: "Full-stack — Express + frontend vanilla",
@@ -363,8 +363,8 @@ export const projects = [
     tag: "REST API WhatsApp",
     url: null,
     github: "https://github.com/ArielOsaze",
-    accent: "#a855f7",
-    accent2: "#c7a0ff",
+    accent: "#d4d4d8",
+    accent2: "#a1a1aa",
     blurb:
       "API WhatsApp mandiri berbasis Baileys dengan penyimpanan sesi PostgreSQL — fondasi integrasi notifikasi pesanan NexShop.",
     role: "Backend — API & integrasi",
@@ -401,8 +401,8 @@ export const projects = [
     tag: "Alat Uji Ketahanan Berizin",
     url: null,
     github: "https://github.com/ArielOsaze",
-    accent: "#6d28d9",
-    accent2: "#a855f7",
+    accent: "#737373",
+    accent2: "#d4d4d8",
     blurb:
       "Penguji ketahanan HTTP yang aman dipakai: hanya untuk server yang kamu miliki, dengan pagar pengaman keras di dalam kodenya.",
     role: "Pembuat tunggal — alat + dokumentasi",
@@ -439,8 +439,8 @@ export const projects = [
     tag: "Situs Produk + Checkout",
     url: "https://lumawall.xinet.id",
     github: "https://github.com/ArielOsaze/Lumawall",
-    accent: "#a855f7",
-    accent2: "#e9d5ff",
+    accent: "#d4d4d8",
+    accent2: "#e5e5e5",
     blurb:
       "Situs produk LumaWall empat bahasa dengan sistem pembayaran sendiri: checkout iPaymu, halaman sukses, dan pembuat kartu promo.",
     role: "Pembuat tunggal — situs, serverless API, renderer promo",

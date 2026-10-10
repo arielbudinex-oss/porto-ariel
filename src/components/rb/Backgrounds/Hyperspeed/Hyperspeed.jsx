@@ -15,18 +15,18 @@ const THEMES = {
     background: 'transparent',
     road: '#08080a',
     lines: '#25252d',
-    tail: ['#d856bf', '#6750a2', '#c247ac'],
-    head: ['#03b3c3', '#0e5ea5', '#324555'],
-    poles: ['#03b3c3'],
+    tail: ['#a1a1aa', '#d4d4d8', '#737373'],
+    head: ['#ffffff', '#d4d4d8', '#737373'],
+    poles: ['#d4d4d8'],
     dust: '#ffffff'
   },
   light: {
     background: 'transparent',
     road: '#efeff2',
     lines: '#d0d0d7',
-    tail: ['#d856bf', '#6750a2', '#c247ac'],
-    head: ['#03b3c3', '#0e5ea5', '#324555'],
-    poles: ['#03b3c3'],
+    tail: ['#a1a1aa', '#d4d4d8', '#737373'],
+    head: ['#ffffff', '#d4d4d8', '#737373'],
+    poles: ['#d4d4d8'],
     dust: '#18181b'
   }
 };

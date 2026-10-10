@@ -76,7 +76,7 @@ export function DottedGlobe({ className = "", size = 260 }) {
         ctx.beginPath();
         ctx.moveTo(A.x, A.y);
         ctx.quadraticCurveTo(mx, my, A.x + (B.x - A.x) * seg, A.y + (B.y - A.y) * seg);
-        ctx.strokeStyle = `rgba(199,160,255,${0.35 * (1 - arc.t)})`;
+        ctx.strokeStyle = `rgba(212,212,216,${0.35 * (1 - arc.t)})`;
         ctx.lineWidth = 1.1;
         ctx.stroke();
         // kepala busur
@@ -84,7 +84,7 @@ export function DottedGlobe({ className = "", size = 260 }) {
         const hy = A.y + (B.y - A.y) * seg;
         ctx.beginPath();
         ctx.arc(hx, hy, 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(199,160,255,${0.9 * (1 - arc.t)})`;
+        ctx.fillStyle = `rgba(212,212,216,${0.9 * (1 - arc.t)})`;
         ctx.fill();
       }
 
@@ -94,7 +94,7 @@ export function DottedGlobe({ className = "", size = 260 }) {
         const a = front ? 0.12 + p.z * 0.6 : 0.05;
         ctx.beginPath();
         ctx.arc(p.x, p.y, front ? 1.5 : 0.9, 0, Math.PI * 2);
-        ctx.fillStyle = front ? `rgba(199,160,255,${a})` : `rgba(139,147,167,${a})`;
+        ctx.fillStyle = front ? `rgba(212,212,216,${a})` : `rgba(139,147,167,${a})`;
         ctx.fill();
       }
       raf = requestAnimationFrame(draw);
@@ -109,7 +109,7 @@ export function DottedGlobe({ className = "", size = 260 }) {
 /* ── 14. LightDroplets ──────────────────────────────────────────────────────
    Mirip "Light Droplets" (Pro/Background): garis-garis cahaya jatuh seperti
    hujan. Canvas 2D, murah dan halus. */
-export function LightDroplets({ className = "", count = 60, color = "199,160,255" }) {
+export function LightDroplets({ className = "", count = 60, color = "212,212,216" }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -177,7 +177,7 @@ export function LightDroplets({ className = "", count = 60, color = "199,160,255
 /* ── 15. NeonReveal ─────────────────────────────────────────────────────────
    Mirip "Neon Reveal" (Pro/Background): tabung neon yang menyala lalu
    menyinari isi di bawahnya. CSS + keyframes, tanpa canvas. */
-export function NeonReveal({ children, className = "", color = "#c7a0ff" }) {
+export function NeonReveal({ children, className = "", color = "#d4d4d8" }) {
   return (
     <div className={`relative ${className}`} style={{ "--neon": color }}>
       <div
@@ -231,7 +231,7 @@ export function GradientBars({ className = "", bars = 26 }) {
           className="flex-1 rounded-t-full"
           style={{
             height: `${28 + Math.sin(i * 0.55) * 22 + (i % 3) * 9}%`,
-            background: `linear-gradient(180deg, rgba(199,160,255,0) 0%, rgba(199,160,255,.5) 45%, rgba(168,85,247,.75) 100%)`,
+            background: `linear-gradient(180deg, rgba(212,212,216,0) 0%, rgba(212,212,216,.5) 45%, rgba(168,85,247,.75) 100%)`,
             animation: `barWave ${3.4 + (i % 5) * 0.42}s ${i * 0.07}s ease-in-out infinite alternate`,
           }}
         />
@@ -290,8 +290,8 @@ export function TextCube({ faces = ["REACT", "NODE", "NEXT", "POSTGRE", "GSAP", 
             className="absolute inset-0 grid place-items-center rounded-xl border border-neon/25 font-display text-sm font-bold tracking-wider text-neon"
             style={{
               transform: t,
-              background: "color-mix(in srgb, #c7a0ff 7%, rgba(10,12,18,.9))",
-              boxShadow: "inset 0 0 30px color-mix(in srgb, #c7a0ff 14%, transparent)",
+              background: "color-mix(in srgb, #d4d4d8 7%, rgba(10,12,18,.9))",
+              boxShadow: "inset 0 0 30px color-mix(in srgb, #d4d4d8 14%, transparent)",
               backfaceVisibility: "visible",
             }}
           >
@@ -327,7 +327,7 @@ export function TumbleWall({ items = [], className = "", height = 260 }) {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     el.appendChild(canvas);
 
-    const pal = ["#c7a0ff", "#a855f7", "#c7a0ff", "#a3e635", "#ffb347"];
+    const pal = ["#d4d4d8", "#a1a1aa", "#d4d4d8", "#a3e635", "#ffb347"];
     bodies.current = items.map((label, i) => ({
       label,
       x: 30 + Math.random() * (W - 60),
@@ -522,7 +522,7 @@ export function MosaicWaves({ className = "", cols = 18, rows = 7 }) {
             key={i}
             className="rounded-[3px]"
             style={{
-              background: "linear-gradient(140deg, rgba(199,160,255,.32), rgba(168,85,247,.22))",
+              background: "linear-gradient(140deg, rgba(212,212,216,.32), rgba(168,85,247,.22))",
               animation: `mosaicShift ${2.8 + (c % 5) * 0.3}s ${(c * 0.11 + r * 0.16).toFixed(2)}s ease-in-out infinite`,
             }}
           />
@@ -545,9 +545,9 @@ export function AuroraTide({ className = "" }) {
   return (
     <div className={`pointer-events-none overflow-hidden ${className}`} aria-hidden="true">
       {[
-        { c: "rgba(199,160,255,.32)", d: 22, y: "-18%" },
+        { c: "rgba(212,212,216,.32)", d: 22, y: "-18%" },
         { c: "rgba(168,85,247,.30)", d: 27, y: "-6%" },
-        { c: "rgba(199,160,255,.26)", d: 33, y: "6%" },
+        { c: "rgba(212,212,216,.26)", d: 33, y: "6%" },
       ].map((l, i) => (
         <span
           key={i}

@@ -131,7 +131,7 @@ export function StarfieldWarp({
       }));
     };
 
-    const palette = ["#c7a0ff", "#a855f7", "#c7a0ff", "#ffffff", "#a3e635"];
+    const palette = ["#d4d4d8", "#a1a1aa", "#d4d4d8", "#ffffff", "#a3e635"];
 
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
@@ -229,7 +229,7 @@ export function HalftoneCursor({ className = "", size = 22, radius = 170 }) {
           ctx.arc(x, y, r, 0, Math.PI * 2);
           ctx.fillStyle =
             infl > 0.12
-              ? `rgba(199,160,255,${Math.min(1, a + 0.25)})`
+              ? `rgba(212,212,216,${Math.min(1, a + 0.25)})`
               : `rgba(120,132,155,${a * 0.75})`;
           ctx.fill();
         }
@@ -266,7 +266,7 @@ export function HalftoneCursor({ className = "", size = 22, radius = 170 }) {
 /* ── 5. GlowBorder ──────────────────────────────────────────────────────────
    Mirip "Frame Border / Glow Border" (Pro/3D): bingkai yang menyala di tepi
    kartu, mengikuti posisi kursor (spotlight border). */
-export function GlowBorder({ children, className = "", color = "#c7a0ff", radius = "20px" }) {
+export function GlowBorder({ children, className = "", color = "#d4d4d8", radius = "20px" }) {
   const ref = useRef(null);
 
   const onMove = useCallback((e) => {
@@ -446,7 +446,7 @@ export function BlinkingGrid({ className = "", cols = 34, rows = 14 }) {
           key={i}
           className="aspect-square"
           style={{
-            background: r > 0.86 ? "rgba(199,160,255,.18)" : r > 0.68 ? "rgba(168,85,247,.12)" : "rgba(30,35,48,.22)",
+            background: r > 0.86 ? "rgba(212,212,216,.18)" : r > 0.68 ? "rgba(168,85,247,.12)" : "rgba(30,35,48,.22)",
             animation: `blink ${3 + r * 6}s ${r * 4}s ease-in-out infinite`,
           }}
         />
@@ -475,36 +475,41 @@ export function ComparisonSlider({ before, after, label, className = "" }) {
       ref={ref}
       className={`group relative select-none overflow-hidden rounded-2xl border border-line ${className}`}
       onPointerMove={(e) => e.buttons === 1 && onMove(e.clientX)}
-      onPointerDown={(e) => onMove(e.clientX)}
+      onPointerDown={(e) => {
+        e.currentTarget.setPointerCapture?.(e.pointerId);
+        onMove(e.clientX);
+      }}
     >
+      {/* dasar: versi SESUDAH — selalu terlihat penuh */}
       <img src={after} alt={`${label} — sesudah`} className="block w-full" draggable={false} />
-      <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
-        <img
-          src={before}
-          alt={`${label} — sebelum`}
-          className="block h-full w-auto max-w-none"
-          style={{ width: ref.current?.offsetWidth ?? "100%" }}
-          draggable={false}
-        />
-      </div>
+
+      {/* lapisan atas: versi SEBELUM — dipotong sesuai posisi geser */}
+      <img
+        src={before}
+        alt={`${label} — sebelum`}
+        className="absolute inset-0 block h-full w-full object-cover object-top"
+        style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+        draggable={false}
+      />
+
       <div
-        className="absolute inset-y-0 z-10 w-0.5 bg-neon shadow-[0_0_18px_#c7a0ff]"
+        className="absolute inset-y-0 z-10 w-0.5 bg-white shadow-[0_0_18px_rgba(255,255,255,.6)]"
         style={{ left: `${pos}%` }}
       >
-        <div className="absolute top-1/2 left-1/2 grid h-9 w-9 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-neon/60 bg-ink/90 text-neon backdrop-blur">
+        <div className="absolute top-1/2 left-1/2 grid h-9 w-9 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full border border-white/60 bg-black/90 text-white backdrop-blur">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" />
           </svg>
         </div>
       </div>
-      <div className="absolute bottom-3 left-3 rounded-full bg-ink/80 px-3 py-1 text-xs text-mist backdrop-blur">
+      <div className="absolute bottom-3 left-3 rounded-full bg-black/80 px-3 py-1 text-xs text-white/70 backdrop-blur">
         Sebelum
       </div>
-      <div className="absolute right-3 bottom-3 rounded-full bg-neon/15 px-3 py-1 text-xs text-neon backdrop-blur">
+      <div className="absolute right-3 bottom-3 rounded-full bg-white/15 px-3 py-1 text-xs text-white backdrop-blur">
         Sesudah
       </div>
       {label && (
-        <div className="absolute top-3 left-3 rounded-full bg-ink/80 px-3 py-1 text-xs font-medium text-frost backdrop-blur">
+        <div className="absolute top-3 left-3 rounded-full bg-black/80 px-3 py-1 text-xs font-medium text-white backdrop-blur">
           {label}
         </div>
       )}
@@ -556,7 +561,7 @@ export function Preloader({ onDone }) {
 /* ── 12. SpotlightCard ──────────────────────────────────────────────────────
    Versi Pro dari kartu spotlight: sorotan kursor + bingkai gradien + tilt
    3D halus. Ditulis ulang agar lebih dalam dari versi gratis. */
-export function SpotlightCard({ children, className = "", tilt = 6, glow = "#c7a0ff" }) {
+export function SpotlightCard({ children, className = "", tilt = 6, glow = "#d4d4d8" }) {
   const ref = useRef(null);
 
   const onMove = (e) => {

@@ -43,7 +43,7 @@ export default function Nav() {
       <nav
         className={`mx-auto flex max-w-[1324px] items-center justify-between rounded-[14px] px-2 py-2 pl-5 transition-all duration-500 ${
           scrolled
-            ? "border border-white/[0.07] bg-[#120f17]/45 shadow-[0_8px_32px_rgba(0,0,0,.28),inset_0_.5px_0_rgba(255,255,255,.08)] backdrop-blur-2xl backdrop-saturate-150"
+            ? "border border-white/[0.07] bg-[#0a0a0a]/45 shadow-[0_8px_32px_rgba(0,0,0,.28),inset_0_.5px_0_rgba(255,255,255,.08)] backdrop-blur-2xl backdrop-saturate-150"
             : "border border-transparent"
         }`}
       >
@@ -66,14 +66,14 @@ export default function Nav() {
               }`}
             >
               {l.label}
-              {active === l.href && <span className="absolute inset-x-3.5 bottom-1 h-px bg-[#a855f7]" />}
+              {active === l.href && <span className="absolute inset-x-3.5 bottom-1 h-px bg-[#ffffff]" />}
             </a>
           ))}
           <a
             href={owner.github}
             target="_blank"
             rel="noreferrer noopener"
-            className="ml-2 inline-flex items-center gap-2 rounded-full bg-[#a855f7] px-4 py-2 text-[14px] font-medium text-white transition-opacity hover:opacity-90"
+            className="ml-2 inline-flex items-center gap-2 rounded-full bg-[#ffffff] px-4 py-2 text-[14px] font-medium text-white transition-opacity hover:opacity-90"
           >
             <Github size={15} /> GitHub
           </a>
@@ -105,7 +105,7 @@ export default function Nav() {
             target="_blank"
             rel="noreferrer noopener"
             onClick={() => setOpen(false)}
-            className="mt-1 flex items-center gap-2 rounded-xl bg-[#a855f7]/15 px-4 py-3 text-[14px] text-[#c7a0ff]"
+            className="mt-1 flex items-center gap-2 rounded-xl bg-[#ffffff]/15 px-4 py-3 text-[14px] text-[#d4d4d8]"
           >
             <Github size={15} /> github.com/ArielOsaze
           </a>
