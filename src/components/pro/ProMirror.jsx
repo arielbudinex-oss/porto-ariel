@@ -131,7 +131,7 @@ export function StarfieldWarp({
       }));
     };
 
-    const palette = ["#64e6ff", "#8b5cf6", "#ff5c9d", "#ffffff", "#a3e635"];
+    const palette = ["#c7a0ff", "#a855f7", "#c7a0ff", "#ffffff", "#a3e635"];
 
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
@@ -229,7 +229,7 @@ export function HalftoneCursor({ className = "", size = 22, radius = 170 }) {
           ctx.arc(x, y, r, 0, Math.PI * 2);
           ctx.fillStyle =
             infl > 0.12
-              ? `rgba(100,230,255,${Math.min(1, a + 0.25)})`
+              ? `rgba(199,160,255,${Math.min(1, a + 0.25)})`
               : `rgba(120,132,155,${a * 0.75})`;
           ctx.fill();
         }
@@ -266,7 +266,7 @@ export function HalftoneCursor({ className = "", size = 22, radius = 170 }) {
 /* ── 5. GlowBorder ──────────────────────────────────────────────────────────
    Mirip "Frame Border / Glow Border" (Pro/3D): bingkai yang menyala di tepi
    kartu, mengikuti posisi kursor (spotlight border). */
-export function GlowBorder({ children, className = "", color = "#64e6ff", radius = "20px" }) {
+export function GlowBorder({ children, className = "", color = "#c7a0ff", radius = "20px" }) {
   const ref = useRef(null);
 
   const onMove = useCallback((e) => {
@@ -446,7 +446,7 @@ export function BlinkingGrid({ className = "", cols = 34, rows = 14 }) {
           key={i}
           className="aspect-square"
           style={{
-            background: r > 0.86 ? "rgba(100,230,255,.18)" : r > 0.68 ? "rgba(139,92,246,.12)" : "rgba(30,35,48,.22)",
+            background: r > 0.86 ? "rgba(199,160,255,.18)" : r > 0.68 ? "rgba(168,85,247,.12)" : "rgba(30,35,48,.22)",
             animation: `blink ${3 + r * 6}s ${r * 4}s ease-in-out infinite`,
           }}
         />
@@ -488,7 +488,7 @@ export function ComparisonSlider({ before, after, label, className = "" }) {
         />
       </div>
       <div
-        className="absolute inset-y-0 z-10 w-0.5 bg-neon shadow-[0_0_18px_#64e6ff]"
+        className="absolute inset-y-0 z-10 w-0.5 bg-neon shadow-[0_0_18px_#c7a0ff]"
         style={{ left: `${pos}%` }}
       >
         <div className="absolute top-1/2 left-1/2 grid h-9 w-9 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-neon/60 bg-ink/90 text-neon backdrop-blur">
@@ -556,7 +556,7 @@ export function Preloader({ onDone }) {
 /* ── 12. SpotlightCard ──────────────────────────────────────────────────────
    Versi Pro dari kartu spotlight: sorotan kursor + bingkai gradien + tilt
    3D halus. Ditulis ulang agar lebih dalam dari versi gratis. */
-export function SpotlightCard({ children, className = "", tilt = 6, glow = "#64e6ff" }) {
+export function SpotlightCard({ children, className = "", tilt = 6, glow = "#c7a0ff" }) {
   const ref = useRef(null);
 
   const onMove = (e) => {
