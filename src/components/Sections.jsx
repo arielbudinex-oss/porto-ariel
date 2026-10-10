@@ -1,6 +1,7 @@
 import { journey, owner } from "../data/projects";
 import { ElasticSticker } from "./pro/ProMirror";
 import { GithubLogo, EnvelopeSimple, MapPin, Sparkle, LinkedinLogo } from "@phosphor-icons/react";
+import { InteractiveCard } from "./Interactive";
 
 export function Journey() {
   return (
@@ -22,9 +23,10 @@ export function Journey() {
         {/* perjalanan: grid rapi dengan penanda tahap */}
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {journey.map((j, i) => (
-            <div
+            <InteractiveCard
               key={j.step}
-              className="surface flex flex-col p-6 transition-colors duration-300 hover:border-[#5b7cfa]/30"
+              className="surface flex flex-col p-6"
+              accent="#5b7cfa"
             >
               <div className="flex items-center justify-between">
                 <span className="text-[12px] font-medium text-[#9db2ff]">{j.step}</span>
@@ -32,7 +34,7 @@ export function Journey() {
               </div>
               <h3 className="mt-3 text-lg font-semibold text-white">{j.title}</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-white/45">{j.desc}</p>
-            </div>
+            </InteractiveCard>
           ))}
         </div>
       </div>
@@ -56,9 +58,11 @@ export function Contact() {
           </p>
 
           <div className="mt-9 space-y-3">
-            <a
+            <InteractiveCard
+              as="a"
               href={`mailto:${owner.email}`}
-              className="group surface flex items-center gap-4 p-4 transition-colors hover:border-[#5b7cfa]/40"
+              className="surface flex items-center gap-4 p-4"
+              accent="#5b7cfa"
             >
               <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#5b7cfa]/12 text-[#9db2ff]">
                 <EnvelopeSimple size={16} />
@@ -67,14 +71,16 @@ export function Contact() {
                 <span className="block text-[11px] text-white/40">
                   Email
                 </span>
-                <span className="text-[15px] text-white/80 group-hover:text-[#9db2ff]">{owner.email}</span>
+                <span className="text-[15px] text-white/80">{owner.email}</span>
               </span>
-            </a>
-            <a
+            </InteractiveCard>
+            <InteractiveCard
+              as="a"
               href={owner.github}
               target="_blank"
               rel="noreferrer noopener"
-              className="group surface flex items-center gap-4 p-4 transition-colors hover:border-[#5b7cfa]/40"
+              className="surface flex items-center gap-4 p-4"
+              accent="#5b7cfa"
             >
               <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-white/[0.06] text-white/70">
                 <GithubLogo size={16} />
@@ -83,28 +89,30 @@ export function Contact() {
                 <span className="block text-[11px] text-white/40">
                   GitHub
                 </span>
-                <span className="text-[15px] text-white/80 group-hover:text-[#9db2ff]">
+                <span className="text-[15px] text-white/80">
                   github.com/ArielOsaze
                 </span>
               </span>
-            </a>
-            <a
+            </InteractiveCard>
+            <InteractiveCard
+              as="a"
               href={owner.linkedin}
               target="_blank"
               rel="noreferrer noopener"
-              className="group surface flex items-center gap-4 p-4 transition-colors hover:border-[#5b7cfa]/40"
+              className="surface flex items-center gap-4 p-4"
+              accent="#5b7cfa"
             >
               <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#5b7cfa]/12 text-[#9db2ff]">
                 <LinkedinLogo size={16} />
               </span>
               <span>
                 <span className="block text-[11px] text-white/40">LinkedIn</span>
-                <span className="text-[15px] text-white/80 group-hover:text-[#9db2ff]">
+                <span className="text-[15px] text-white/80">
                   linkedin.com/in/ariel-osaze-koinda-budi
                 </span>
               </span>
-            </a>
-            <div className="surface flex items-center gap-4 p-4">
+            </InteractiveCard>
+            <InteractiveCard className="surface flex items-center gap-4 p-4" accent="#9db2ff">
               <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-white/[0.06] text-white/70">
                 <MapPin size={16} />
               </span>
@@ -112,7 +120,7 @@ export function Contact() {
                 <span className="block text-[11px] text-white/40">Lokasi</span>
                 <span className="text-[15px] text-white/80">{owner.location} · WIB (UTC+7)</span>
               </span>
-            </div>
+            </InteractiveCard>
           </div>
         </div>
 

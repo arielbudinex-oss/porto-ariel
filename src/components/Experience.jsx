@@ -1,6 +1,7 @@
 import { experience, owner, topSkills } from "../data/projects";
 import BlurText from "./rb/TextAnimations/BlurText/BlurText";
 import { Briefcase, GraduationCap, MapPin, Sparkle } from "@phosphor-icons/react";
+import { InteractiveCard, InteractiveBadge } from "./Interactive";
 
 export default function Experience() {
   return (
@@ -35,10 +36,9 @@ export default function Experience() {
             <div className="space-y-4">
               {experience.map((e) => (
                 <div key={`${e.role}-${e.org}`}>
-                  <div
-                    className={`surface p-5 transition-colors duration-300 hover:border-white/25 ${
-                      e.highlight ? "border-white/20" : ""
-                    }`}
+                  <InteractiveCard
+                    className={`surface p-5 ${e.highlight ? "border-white/20" : ""}`}
+                    accent="#5b7cfa"
                   >
                     <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                       <h4 className="text-[16px] font-semibold text-white">{e.role}</h4>
@@ -53,15 +53,16 @@ export default function Experience() {
                     <p className="mt-3 text-[13px] leading-relaxed text-white/50">{e.desc}</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {e.tags.map((t) => (
-                        <span
+                        <InteractiveBadge
                           key={t}
                           className="rounded-lg border border-[#2b3037] bg-[#0e1013] px-2.5 py-1 text-[11px] text-white/45"
+                          accent="#5b7cfa"
                         >
                           {t}
-                        </span>
+                        </InteractiveBadge>
                       ))}
                     </div>
-                  </div>
+                  </InteractiveCard>
                 </div>
               ))}
             </div>
@@ -73,7 +74,7 @@ export default function Experience() {
               <h3 className="mb-6 flex items-center gap-2.5 text-lg font-semibold text-white">
                 <GraduationCap size={18} className="text-[#9db2ff]" /> Pendidikan
               </h3>
-              <div className="surface p-5">
+              <InteractiveCard className="surface p-5" accent="#9db2ff">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <h4 className="text-[16px] font-semibold text-white">{owner.education.school}</h4>
                   <span className="text-[11px] text-white/40">{owner.education.period}</span>
@@ -83,29 +84,30 @@ export default function Experience() {
                   IPK {owner.education.gpa}
                 </p>
                 <p className="mt-3 text-[13px] leading-relaxed text-white/50">{owner.education.note}</p>
-              </div>
+              </InteractiveCard>
             </div>
 
             <div>
               <h3 className="mb-6 flex items-center gap-2.5 text-lg font-semibold text-white">
                 <Sparkle size={17} className="text-[#9db2ff]" /> Keahlian utama
               </h3>
-              <div className="surface p-5">
+              <InteractiveCard className="surface p-5" accent="#5b7cfa">
                 <div className="flex flex-wrap gap-2">
                   {topSkills.map((s) => (
-                    <span
+                    <InteractiveBadge
                       key={s}
-                      className="rounded-lg border border-[#2b3037] bg-[#0e1013] px-3 py-1.5 text-[12px] text-white/60 transition-colors hover:border-white/25 hover:text-white"
+                      className="rounded-lg border border-[#2b3037] bg-[#0e1013] px-3 py-1.5 text-[12px] text-white/60"
+                      accent="#5b7cfa"
                     >
                       {s}
-                    </span>
+                    </InteractiveBadge>
                   ))}
                 </div>
-              </div>
+              </InteractiveCard>
             </div>
 
             {/* kartu Xinet */}
-            <div className="surface relative overflow-hidden p-6">
+            <InteractiveCard className="surface relative overflow-hidden p-6" accent="#9db2ff">
               <div className="absolute -top-14 -right-14 h-40 w-40 rounded-full bg-white/[0.04] blur-3xl" />
               <p className="text-[11px] text-white/40">
                 Perusahaan
@@ -128,7 +130,7 @@ export default function Experience() {
                   </div>
                 ))}
               </div>
-            </div>
+            </InteractiveCard>
           </div>
         </div>
       </div>

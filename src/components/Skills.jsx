@@ -2,6 +2,7 @@ import { skills, principles } from "../data/projects";
 import CountUp from "./rb/TextAnimations/CountUp/CountUp";
 import BlurText from "./rb/TextAnimations/BlurText/BlurText";
 import { TerminalWindow, Cpu, Database, Cloud, Lock, Plugs } from "@phosphor-icons/react";
+import { InteractiveCard, InteractiveBadge } from "./Interactive";
 import {
   SiReact, SiNodedotjs, SiTypescript, SiPython, SiSharp, SiPostgresql,
   SiSupabase, SiRedis, SiDocker, SiNginx, SiVercel, SiTailwindcss,
@@ -81,7 +82,7 @@ export default function Skills() {
           {entries.map(([group, items]) => {
             const Icon = ICONS[group] ?? TerminalWindow;
             return (
-              <div key={group} className="surface p-6 transition-colors duration-300 hover:border-[#5b7cfa]/30">
+              <InteractiveCard key={group} className="surface p-6" accent="#5b7cfa">
                 <div className="mb-4 flex items-center gap-3">
                   <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#5b7cfa]/12 text-[#9db2ff]">
                     <Icon size={17} />
@@ -90,20 +91,21 @@ export default function Skills() {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {items.map((s) => (
-                    <span
+                    <InteractiveBadge
                       key={s}
-                      className="rounded-lg border border-[#2b3037] bg-[#0e1013] px-2.5 py-1 font-mono text-[11px] text-white/55 transition-colors hover:border-[#5b7cfa]/40 hover:text-[#9db2ff]"
+                      className="rounded-lg border border-[#2b3037] bg-[#0e1013] px-2.5 py-1 font-mono text-[11px] text-white/55"
+                      accent="#5b7cfa"
                     >
                       {s}
-                    </span>
+                    </InteractiveBadge>
                   ))}
                 </div>
-              </div>
+              </InteractiveCard>
             );
           })}
 
           {/* kartu ringkasan angka */}
-          <div className="surface flex flex-col justify-center p-6">
+          <InteractiveCard className="surface flex flex-col justify-center p-6" accent="#9db2ff">
             <p className="text-[11px] text-white/35">Total</p>
             <p className="mt-2 text-4xl font-bold text-white">
               <CountUp to={total} duration={1.4} />
@@ -120,7 +122,7 @@ export default function Skills() {
                 <span>Deploy</span> <span className="text-white/70">Nginx · pm2 · Vercel · Docker</span>
               </p>
             </div>
-          </div>
+          </InteractiveCard>
         </div>
 
         {/* prinsip kerja */}
@@ -128,11 +130,11 @@ export default function Skills() {
           <h3 className="mb-6 text-2xl font-semibold text-white">Cara aku bekerja</h3>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {principles.map((pr, i) => (
-              <div key={pr.title} className="surface p-5 transition-colors duration-300 hover:border-[#5b7cfa]/30">
+              <InteractiveCard key={pr.title} className="surface p-5" accent="#5b7cfa">
                 <span className="font-mono text-[11px] text-[#9db2ff]">{String(i + 1).padStart(2, "0")}</span>
                 <h4 className="mt-2 text-[15px] font-semibold text-white">{pr.title}</h4>
                 <p className="mt-2 text-[13px] leading-relaxed text-white/45">{pr.desc}</p>
-              </div>
+              </InteractiveCard>
             ))}
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowDown, ArrowSquareOut, GithubLogo } from "@phosphor-icons/react";
 import Magnet from "./rb/Animations/Magnet/Magnet";
+import { InteractiveStat } from "./Interactive";
 import { owner, stats, projects } from "../data/projects";
 import { RotatingWord } from "./RotatingWord";
 import CountUp from "./rb/TextAnimations/CountUp/CountUp";
@@ -83,13 +84,13 @@ export default function Hero() {
           {/* statistik, menghitung naik saat terlihat */}
           <dl className="mt-14 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-7 sm:grid-cols-4">
             {stats.map((s) => (
-              <div key={s.label}>
+              <InteractiveStat key={s.label} accent="#5b7cfa">
                 <dt className="text-3xl font-bold tracking-tight text-white md:text-4xl">
                   <CountUp to={s.value} duration={1.6} separator="." />
                   <span className="text-[#5b7cfa]">{s.suffix}</span>
                 </dt>
                 <dd className="mt-1.5 text-[11px] tracking-[0.08em] text-white/40 uppercase">{s.label}</dd>
-              </div>
+              </InteractiveStat>
             ))}
           </dl>
         </div>

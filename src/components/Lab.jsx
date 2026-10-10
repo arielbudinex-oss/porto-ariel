@@ -23,6 +23,7 @@ import PixelBlast from "./rb/Backgrounds/PixelBlast/PixelBlast";
 import Radar from "./rb/Backgrounds/Radar/Radar";
 import RippleGrid from "./rb/Backgrounds/RippleGrid/RippleGrid";
 import { Broadcast, Sparkle, Cube, Stack } from "@phosphor-icons/react";
+import { InteractiveCard } from "./Interactive";
 
 // Aksen palet, emerald tua + krem hangat
 const ACCENT = "#5b7cfa";
@@ -248,9 +249,12 @@ export default function Lab() {
           {CARDS.map((c, i) => {
             const Comp = c.C;
             return (
-              <article
+              <InteractiveCard
+                as="article"
                 key={c.title}
-                className={`surface group relative overflow-hidden transition-colors duration-300 hover:border-[#5b7cfa]/50 ${c.span ?? ""}`}
+                className={`surface group relative overflow-hidden ${c.span ?? ""}`}
+                accent="#5b7cfa"
+                lift={6}
               >
                 <div className="flex items-start justify-between gap-3 p-5 pb-3">
                   <div>
@@ -269,7 +273,7 @@ export default function Lab() {
                 </div>
 
                 <p className="px-5 pb-5 text-[13px] leading-relaxed text-white/45">{c.desc}</p>
-              </article>
+              </InteractiveCard>
             );
           })}
         </div>
