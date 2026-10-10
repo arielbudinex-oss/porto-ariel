@@ -169,31 +169,100 @@ export function InteractiveHint({ children, text = "geser", icon = "⇄", positi
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// EasterEgg — panel rahasia. Dipicu dengan mengetik "ariel" di keyboard
-// (atau klik logo AO 5x). Ada petunjuk halus di footer.
+// SecretTerminal — easter egg "gong": mode terminal rahasia yang bisa diajak
+// ngobrol. Pengunjung bisa mengetik perintah dan terminal menjawab dengan gaya
+// developer. Ada perintah rahasia tersembunyi di dalamnya.
+// Dipicu dengan mengetik "ariel" atau klik logo 5x.
 // ─────────────────────────────────────────────────────────────────────────────
+const COMMANDS = {
+  help: [
+    "Perintah yang tersedia:",
+    "  whoami            siapa yang membangun halaman ini",
+    "  ls                lihat isi folder rahasia",
+    "  cat rahasia.txt   baca file rahasia",
+    "  npm run gong      jalankan sesuatu",
+    "  sudo make me a sandwich",
+    "  clear             bersihkan layar",
+    "  exit              keluar dari terminal",
+  ],
+  whoami: [
+    "Ariel Osaze Koinda Budi",
+    "Full-stack developer. Membangun produk dari nol sampai produksi:",
+    "backend, frontend, database, deployment, sampai halaman jualan.",
+    "7 proyek nyata. 265rb+ baris kode. 4 produk live.",
+  ],
+  ls: [
+    "drwxr-xr-x  proyek/         7 item",
+    "drwxr-xr-x  rahasia/        1 item",
+    "-rw-r--r--  rahasia.txt     kamu berani buka?",
+    "-rw-r--r--  easter-egg.md   kamu sedang membacanya",
+  ],
+  "cat rahasia.txt": [
+    "================================================",
+    "  Selamat. Kamu benar-benar membuka filenya.",
+    "================================================",
+    "",
+    "Kebanyakan orang menutup halaman setelah 30 detik.",
+    "Kamu malah mengetik perintah di terminal tersembunyi.",
+    "",
+    "Itu persis sikap yang kupakai membangun semua produk di sini:",
+    "penasaran, coba-coba, ukur, lalu buktikan.",
+    "",
+    "Kalau kamu juga tipe seperti itu, kirim email ke:",
+    "  arielbudi4@gmail.com",
+    "dengan judul 'EASTER EGG'.",
+    "Akan kubalas dengan cerita di balik layar. Gratis.",
+  ],
+  "npm run gong": [
+    "> porto-ariel@1.0.0 gong",
+    "> menjalankan ritual rahasia...",
+    "",
+    "  GONG!  GONG!  GONG!",
+    "",
+    "Build berhasil. Kamu resmi jadi bagian dari 0,1% pengunjung",
+    "yang menemukan terminal ini.",
+  ],
+  "sudo make me a sandwich": [
+    "Baik, ini sandwich virtual untukmu:",
+    "",
+    "     [sandwich]",
+    "  +-------------+",
+    "  |    roti     |",
+    "  |    keju     |",
+    "  |   selada    |",
+    "  |    roti     |",
+    "  +-------------+",
+    "",
+    "Karena kamu sopan dan sudah pakai sudo. Terima kasih sudah mampir.",
+  ],
+};
+
+const EASTER_TRIGGERS = ["ariel", "ariel osaze", "porto", "gong"];
+
 export function EasterEgg() {
   const [open, setOpen] = useState(false);
-  const [stage, setStage] = useState(0); // 0=flash, 1=boom, 2=pesan
-  const confettiRef = useRef(null);
-  const audioRef = useRef(null);
+  const [history, setHistory] = useState([]);
+  const [input, setInput] = useState("");
+  const [booted, setBooted] = useState(false);
+  const inputRef = useRef(null);
+  const scrollRef = useRef(null);
 
+  // pemicu
   useEffect(() => {
     let buffer = "";
     let clicks = 0;
     let clickTimer;
 
     const onKey = (e) => {
+      if (open) return;
       if (e.key === "Escape") {
         setOpen(false);
-        setStage(0);
         return;
       }
-      // jangan trigger saat mengetik di input
       if (["INPUT", "TEXTAREA"].includes(document.activeElement?.tagName)) return;
       if (e.key.length === 1) {
-        buffer = (buffer + e.key.toLowerCase()).slice(-8);
-        if (buffer.includes("ariel")) {
+        buffer = (buffer + e.key.toLowerCase()).slice(-14);
+        if (EASTER_TRIGGERS.some((t) => buffer.includes(t))) {
           buffer = "";
           setOpen(true);
         }
@@ -222,208 +291,158 @@ export function EasterEgg() {
       window.removeEventListener("hermes:logoclick", onLogoClick);
       clearTimeout(clickTimer);
     };
-  }, []);
+  }, [open]);
 
-  // ── saat easter egg terbuka: gong sound + konfeti + reveal bertahap ──────
+  // boot sequence saat terbuka
   useEffect(() => {
-    if (!open) return;
-    setStage(0);
-
-    // 1. Suara gong — dibuat pakai Web Audio (tanpa file)
-    try {
-      const AC = window.AudioContext || window.webkitAudioContext;
-      const ctx = new AC();
-      audioRef.current = ctx;
-      const now = ctx.currentTime;
-
-      // gong = nada dasar rendah + harmonik + decay panjang
-      [72, 145, 219, 291, 367, 441].forEach((f, i) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = "sine";
-        osc.frequency.value = f;
-        const amp = 0.34 / (i + 1.4);
-        gain.gain.setValueAtTime(0.0001, now);
-        gain.gain.exponentialRampToValueAtTime(amp, now + 0.012);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 3.4 - i * 0.35);
-        osc.connect(gain).connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 3.6);
-      });
-      // dentuman awal
-      const thump = ctx.createOscillator();
-      const thumpGain = ctx.createGain();
-      thump.type = "triangle";
-      thump.frequency.setValueAtTime(120, now);
-      thump.frequency.exponentialRampToValueAtTime(38, now + 0.6);
-      thumpGain.gain.setValueAtTime(0.42, now);
-      thumpGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.9);
-      thump.connect(thumpGain).connect(ctx.destination);
-      thump.start(now);
-      thump.stop(now + 1);
-    } catch {
-      /* browser tanpa audio: lewati */
+    if (!open) {
+      setBooted(false);
+      setHistory([]);
+      return;
     }
 
-    // 2. Konfeti canvas — 260 partikel meledak dari tengah
-    const canvas = confettiRef.current;
-    let raf;
-    if (canvas) {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      const ctx2 = canvas.getContext("2d");
-      ctx2.scale(dpr, dpr);
-      const W = window.innerWidth;
-      const H = window.innerHeight;
-      const COLORS = ["#5b7cfa", "#9db2ff", "#ffffff", "#e9e6df", "#3a55c9", "#7fb0a4", "#c94f4f"];
+    setHistory([]);
+    setBooted(false);
 
-      const parts = Array.from({ length: 260 }, () => {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = 6 + Math.random() * 16;
-        return {
-          x: W / 2,
-          y: H / 2 - 60,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 5,
-          w: 6 + Math.random() * 8,
-          h: 8 + Math.random() * 12,
-          rot: Math.random() * Math.PI,
-          vr: (Math.random() - 0.5) * 0.32,
-          color: COLORS[(Math.random() * COLORS.length) | 0],
-          life: 1,
-        };
-      });
+    const bootLines = [
+      { t: 0, text: "terminal-ariel v1.0 — kanal rahasia" },
+      { t: 420, text: "memuat data pengunjung..." },
+      { t: 900, text: "status: PENASARAN TERDETEKSI" },
+      { t: 1350, text: "" },
+      { t: 1500, text: "Selamat. Kamu menemukan terminal yang tidak ada di peta." },
+      { t: 1900, text: "Ketik 'help' untuk lihat perintah yang tersedia." },
+    ];
 
-      const t0 = performance.now();
-      const draw = (t) => {
-        const el = (t - t0) / 1000;
-        ctx2.clearRect(0, 0, W, H);
-        parts.forEach((p) => {
-          p.vy += 0.32;          // gravitasi
-          p.vx *= 0.992;         // gesekan udara
-          p.x += p.vx;
-          p.y += p.vy;
-          p.rot += p.vr;
-          p.life = Math.max(0, 1 - el / 4.6);
-          ctx2.save();
-          ctx2.globalAlpha = p.life;
-          ctx2.translate(p.x, p.y);
-          ctx2.rotate(p.rot);
-          ctx2.fillStyle = p.color;
-          ctx2.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
-          ctx2.restore();
-        });
-        if (el < 4.8) raf = requestAnimationFrame(draw);
-        else ctx2.clearRect(0, 0, W, H);
-      };
-      raf = requestAnimationFrame(draw);
-    }
+    const timers = bootLines.map((b) =>
+      setTimeout(() => {
+        setHistory((h) => [...h, { type: "out", text: b.text }]);
+        if (b.text.includes("help")) setBooted(true);
+      }, b.t)
+    );
 
-    // 3. Reveal bertahap: flash -> boom -> pesan
-    const s1 = setTimeout(() => setStage(1), 160);
-    const s2 = setTimeout(() => setStage(2), 900);
+    const focusT = setTimeout(() => inputRef.current?.focus(), 2100);
 
     return () => {
-      clearTimeout(s1);
-      clearTimeout(s2);
-      cancelAnimationFrame(raf);
-      try {
-        audioRef.current?.close();
-      } catch {
-        /* noop */
-      }
+      timers.forEach(clearTimeout);
+      clearTimeout(focusT);
     };
   }, [open]);
+
+  // auto scroll
+  useEffect(() => {
+    if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+  }, [history]);
+
+  const runCommand = (raw) => {
+    const cmd = raw.trim().toLowerCase();
+    if (!cmd) return;
+
+    setHistory((h) => [...h, { type: "in", text: raw }]);
+
+    if (cmd === "clear") {
+      setTimeout(() => setHistory([]), 80);
+      return;
+    }
+    if (cmd === "exit" || cmd === "quit") {
+      setTimeout(() => setOpen(false), 250);
+      setHistory((h) => [...h, { type: "out", text: "Menutup terminal... sampai jumpa." }]);
+      return;
+    }
+
+    const out = COMMANDS[cmd];
+    setTimeout(() => {
+      if (out) {
+        setHistory((h) => [...h, ...out.map((line) => ({ type: "out", text: line }))]);
+      } else {
+        setHistory((h) => [
+          ...h,
+          { type: "out", text: `perintah tidak dikenal: ${cmd}` },
+          { type: "out", text: "ketik 'help' untuk daftar perintah." },
+        ]);
+      }
+    }, 160);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    runCommand(input);
+    setInput("");
+  };
 
   if (!open) return null;
 
   return (
     <div
-      className="fixed inset-0 z-[200] overflow-hidden"
-      style={{ background: stage >= 1 ? "rgba(8,9,12,.93)" : "rgba(8,9,12,.55)", backdropFilter: "blur(6px)", transition: "background .7s ease" }}
-      onClick={() => {
-        setOpen(false);
-        setStage(0);
-      }}
+      className="fixed inset-0 z-[200] grid place-items-center p-4 sm:p-6"
+      style={{ background: "rgba(6,7,10,.9)", backdropFilter: "blur(14px)" }}
+      onClick={() => setOpen(false)}
     >
-      {/* kilatan cahaya putih saat pertama terbuka */}
       <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-white"
-        style={{
-          opacity: stage === 0 ? 0.85 : 0,
-          transition: "opacity .55s ease-out",
-        }}
-      />
+        className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-[#2b3037] bg-[#0b0d10] shadow-[0_30px_120px_rgba(0,0,0,.7)]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* header terminal */}
+        <div className="flex items-center gap-2 border-b border-[#2b3037] bg-[#0e1013] px-4 py-3">
+          <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+          <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+          <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+          <span className="ml-3 font-mono text-[12px] text-white/40">rahasia@arielbudi.web.id ~ %</span>
+          <button
+            onClick={() => setOpen(false)}
+            className="ml-auto rounded-md px-2 py-1 font-mono text-[11px] text-white/40 transition-colors hover:bg-white/5 hover:text-white"
+          >
+            esc
+          </button>
+        </div>
 
-      {/* cincin gelombang kejut */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#9db2ff]"
-        style={{
-          width: stage >= 1 ? "160vmax" : "8vmax",
-          height: stage >= 1 ? "160vmax" : "8vmax",
-          opacity: stage === 0 ? 0.9 : 0,
-          transition: "all 1.1s cubic-bezier(.2,.8,.2,1)",
-        }}
-      />
-
-      {/* konfeti */}
-      <canvas ref={confettiRef} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden />
-
-      {/* isi pesan */}
-      <div className="relative grid h-full place-items-center p-6">
+        {/* isi terminal */}
         <div
-          className="relative w-full max-w-xl text-center transition-all duration-700"
-          style={{
-            opacity: stage >= 2 ? 1 : 0,
-            transform: stage >= 2 ? "translateY(0) scale(1)" : "translateY(28px) scale(.94)",
-          }}
-          onClick={(e) => e.stopPropagation()}
+          ref={scrollRef}
+          className="no-bar h-[52vh] max-h-[460px] overflow-y-auto bg-[#0b0d10] p-5 font-mono text-[13px] leading-relaxed"
+          onClick={() => inputRef.current?.focus()}
         >
-          <p className="text-[13px] font-medium tracking-[0.24em] text-[#9db2ff] uppercase">kamu menemukannya</p>
+          {history.map((line, i) => (
+            <div key={i} className="whitespace-pre-wrap">
+              {line.type === "in" ? (
+                <p className="text-white/80">
+                  <span className="text-[#5b7cfa]">➜</span> <span className="text-[#9db2ff]">~</span> {line.text}
+                </p>
+              ) : (
+                <p className={line.text.startsWith("  ") || line.text.includes("===") ? "text-[#9db2ff]" : "text-white/55"}>
+                  {line.text}
+                </p>
+              )}
+            </div>
+          ))}
 
-          <h3 className="mt-4 text-[clamp(2.4rem,7vw,4.6rem)] leading-[1.02] font-black tracking-[-0.03em] text-white">
-            GONG<span className="text-[#5b7cfa]">!</span>
-          </h3>
-          <p className="mt-2 text-[15px] text-white/60">
-            Ini bukan halaman biasa, dan kamu bukan pengunjung biasa.
+          {booted && (
+            <form onSubmit={onSubmit} className="mt-1 flex items-center gap-2">
+              <span className="shrink-0 text-[#5b7cfa]">➜</span>
+              <span className="shrink-0 text-[#9db2ff]">~</span>
+              <input
+                ref={inputRef}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                className="w-full flex-1 bg-transparent font-mono text-[13px] text-white/85 outline-none placeholder:text-white/25"
+                placeholder="ketik perintah di sini..."
+                autoComplete="off"
+                spellCheck={false}
+                aria-label="Terminal rahasia"
+              />
+            </form>
+          )}
+          {!booted && <span className="caret inline-block h-3.5 w-[7px] bg-[#9db2ff] align-middle" />}
+        </div>
+
+        {/* footer */}
+        <div className="flex items-center justify-between border-t border-[#2b3037] bg-[#0e1013] px-4 py-2.5">
+          <p className="font-mono text-[11px] text-white/30">
+            kamu menemukan terminal rahasia — coba <span className="text-[#9db2ff]">help</span>
           </p>
-
-          <div className="mx-auto mt-8 max-w-md space-y-4 rounded-2xl border border-white/10 bg-white/[0.04] p-6 text-left backdrop-blur">
-            <p className="text-[14px] leading-relaxed text-white/70">
-              Kamu salah satu dari sedikit orang yang penasaran sampai sejauh ini. Itu sikap yang
-              sama yang kupakai membangun semua produk di halaman ini: <span className="text-white">coba, ukur, lalu buktikan.</span>
-            </p>
-            <p className="text-[13px] leading-relaxed text-white/50">
-              Kalau kamu juga tipe yang suka mengulik, kirim pesan ke{" "}
-              <span className="text-[#9db2ff]">arielbudi4@gmail.com</span> dengan judul{" "}
-              <span className="font-semibold text-white">&ldquo;EASTER EGG&rdquo;</span>.
-              Akan kubalas dengan cerita di balik layar — gratis, cuma untuk yang menemukan ini.
-            </p>
-          </div>
-
-          <div className="mt-8 flex items-center justify-center gap-3">
-            <a
-              href="mailto:arielbudi4@gmail.com?subject=EASTER%20EGG"
-              className="rounded-full bg-white px-6 py-3 text-[14px] font-semibold text-[#14171b] transition-transform hover:scale-105"
-            >
-              Kirim pesan
-            </a>
-            <button
-              onClick={() => {
-                setOpen(false);
-                setStage(0);
-              }}
-              className="rounded-full border border-white/15 px-5 py-3 text-[14px] text-white/70 transition-colors hover:border-white/30 hover:text-white"
-            >
-              Tutup
-            </button>
-          </div>
-          <p className="mt-4 text-[12px] text-white/25">tekan Esc untuk menutup</p>
+          <p className="font-mono text-[11px] text-white/25">easter egg</p>
         </div>
       </div>
     </div>
   );
 }
+

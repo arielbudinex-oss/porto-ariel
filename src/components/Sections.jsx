@@ -191,7 +191,7 @@ export function Footer() {
       </div>
       <div className="mx-auto mt-6 max-w-[1324px] px-6">
         <p className="text-center text-[11px] text-white/20">
-          psst, coba ketik <span className="text-[#9db2ff]/60">ariel</span> di keyboard
+          psst, coba ketik <span className="text-[#9db2ff]/60">ariel</span> di keyboard untuk membuka terminal rahasia
         </p>
       </div>
     </footer>
