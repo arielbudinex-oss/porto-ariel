@@ -9,7 +9,7 @@ export default function Experience() {
 
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-14 max-w-2xl">
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#ddc38f] uppercase">
+          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#a8d4b8] uppercase">
             02 — Pengalaman
           </p>
           <BlurText
@@ -29,7 +29,7 @@ export default function Experience() {
           {/* ── kolom kiri: linimasa pengalaman ───────────────────────── */}
           <div>
             <h3 className="mb-6 flex items-center gap-2.5 text-lg font-semibold text-white">
-              <Briefcase size={17} className="text-[#ddc38f]" /> Pengalaman kerja
+              <Briefcase size={17} className="text-[#a8d4b8]" /> Pengalaman kerja
             </h3>
 
             <div className="relative space-y-4">
@@ -51,7 +51,7 @@ export default function Experience() {
                       <h4 className="text-[16px] font-semibold text-white">{e.role}</h4>
                       <span className="font-mono text-[11px] text-white/40">{e.period}</span>
                     </div>
-                    <p className="mt-0.5 text-[14px] text-[#ddc38f]">{e.org}</p>
+                    <p className="mt-0.5 text-[14px] text-[#a8d4b8]">{e.org}</p>
                     {e.location && (
                       <p className="mt-1 flex items-center gap-1.5 font-mono text-[11px] text-white/35">
                         <MapPin size={11} /> {e.location}
@@ -78,14 +78,14 @@ export default function Experience() {
           <div className="space-y-6">
             <div>
               <h3 className="mb-6 flex items-center gap-2.5 text-lg font-semibold text-white">
-                <GraduationCap size={18} className="text-[#ddc38f]" /> Pendidikan
+                <GraduationCap size={18} className="text-[#a8d4b8]" /> Pendidikan
               </h3>
               <div className="surface p-5">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <h4 className="text-[16px] font-semibold text-white">{owner.education.school}</h4>
                   <span className="font-mono text-[11px] text-white/40">{owner.education.period}</span>
                 </div>
-                <p className="mt-0.5 text-[14px] text-[#ddc38f]">{owner.education.degree}</p>
+                <p className="mt-0.5 text-[14px] text-[#a8d4b8]">{owner.education.degree}</p>
                 <p className="mt-2 inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.06] px-3 py-1 font-mono text-[12px] text-white">
                   IPK {owner.education.gpa}
                 </p>
@@ -95,7 +95,7 @@ export default function Experience() {
 
             <div>
               <h3 className="mb-6 flex items-center gap-2.5 text-lg font-semibold text-white">
-                <Sparkles size={17} className="text-[#ddc38f]" /> Keahlian utama
+                <Sparkles size={17} className="text-[#a8d4b8]" /> Keahlian utama
               </h3>
               <div className="surface p-5">
                 <div className="flex flex-wrap gap-2">
@@ -118,7 +118,7 @@ export default function Experience() {
                 Perusahaan
               </p>
               <h4 className="mt-1.5 text-xl font-bold text-white">Xinet.id</h4>
-              <p className="mt-1 font-mono text-[12px] text-[#ddc38f]">Build what&apos;s next.</p>
+              <p className="mt-1 font-mono text-[12px] text-[#a8d4b8]">Build what&apos;s next.</p>
               <p className="mt-4 text-[13px] leading-relaxed text-white/50">
                 Ekosistem produk digital: commerce, komunikasi, alat bisnis, otomasi, dan AI. NexShop,
                 SayBot, dan AkunTuntas dibangun di dalamnya.

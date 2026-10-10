@@ -53,7 +53,7 @@ export default function Skills() {
 
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-2xl">
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#ddc38f] uppercase">03 — Keahlian</p>
+          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#a8d4b8] uppercase">03 — Keahlian</p>
           <BlurText
             text="Tumpukan teknologi yang benar-benar kupakai di produksi."
             delay={26}
@@ -81,9 +81,9 @@ export default function Skills() {
           {entries.map(([group, items]) => {
             const Icon = ICONS[group] ?? Terminal;
             return (
-              <div key={group} className="surface p-6 transition-colors duration-300 hover:border-[#c8a45c]/30">
+              <div key={group} className="surface p-6 transition-colors duration-300 hover:border-[#2e7d5b]/30">
                 <div className="mb-4 flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#c8a45c]/12 text-[#ddc38f]">
+                  <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#2e7d5b]/12 text-[#a8d4b8]">
                     <Icon size={17} />
                   </span>
                   <h3 className="text-[17px] font-semibold text-white">{group}</h3>
@@ -92,7 +92,7 @@ export default function Skills() {
                   {items.map((s) => (
                     <span
                       key={s}
-                      className="rounded-lg border border-[#2a2a2c] bg-[#0a0a0b] px-2.5 py-1 font-mono text-[11px] text-white/55 transition-colors hover:border-[#c8a45c]/40 hover:text-[#ddc38f]"
+                      className="rounded-lg border border-[#2a2a2c] bg-[#0a0a0b] px-2.5 py-1 font-mono text-[11px] text-white/55 transition-colors hover:border-[#2e7d5b]/40 hover:text-[#a8d4b8]"
                     >
                       {s}
                     </span>
@@ -128,8 +128,8 @@ export default function Skills() {
           <h3 className="mb-6 text-2xl font-semibold text-white">Cara aku bekerja</h3>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {principles.map((pr, i) => (
-              <div key={pr.title} className="surface p-5 transition-colors duration-300 hover:border-[#c8a45c]/30">
-                <span className="font-mono text-[11px] text-[#ddc38f]">{String(i + 1).padStart(2, "0")}</span>
+              <div key={pr.title} className="surface p-5 transition-colors duration-300 hover:border-[#2e7d5b]/30">
+                <span className="font-mono text-[11px] text-[#a8d4b8]">{String(i + 1).padStart(2, "0")}</span>
                 <h4 className="mt-2 text-[15px] font-semibold text-white">{pr.title}</h4>
                 <p className="mt-2 text-[13px] leading-relaxed text-white/45">{pr.desc}</p>
               </div>

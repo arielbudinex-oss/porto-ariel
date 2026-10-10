@@ -43,7 +43,7 @@ export function RotatingWord({ words = [], interval = 2600, className = "" }) {
         style={{
           // gradien emas metalik: terang → gelap → kilau
           backgroundImage:
-            "linear-gradient(180deg, #f7e7bd 0%, #e6cd8f 22%, #c8a45c 48%, #a8843f 62%, #d9bd7d 82%, #f0dcae 100%)",
+            "linear-gradient(180deg, #f7e7bd 0%, #e6cd8f 22%, #2e7d5b 48%, #d6c8ab 62%, #d9bd7d 82%, #e8dcc4 100%)",
           WebkitBackgroundClip: "text",
           backgroundClip: "text",
           color: "transparent",

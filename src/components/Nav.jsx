@@ -66,14 +66,14 @@ export default function Nav() {
               }`}
             >
               {l.label}
-              {active === l.href && <span className="absolute inset-x-3.5 bottom-1 h-px bg-[#c8a45c]" />}
+              {active === l.href && <span className="absolute inset-x-3.5 bottom-1 h-px bg-[#2e7d5b]" />}
             </a>
           ))}
           <a
             href={owner.github}
             target="_blank"
             rel="noreferrer noopener"
-            className="ml-2 inline-flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-semibold text-[#1a1206] shadow-[0_2px_14px_rgba(200,164,92,.28)] transition-transform hover:scale-[1.03]" style={{ backgroundImage: "linear-gradient(160deg,#f0dcae 0%,#c8a45c 45%,#a8843f 100%)" }}
+            className="ml-2 inline-flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-semibold text-[#1a1206] shadow-[0_2px_14px_rgba(46,125,91,.28)] transition-transform hover:scale-[1.03]" style={{ backgroundImage: "linear-gradient(160deg,#e8dcc4 0%,#2e7d5b 45%,#d6c8ab 100%)" }}
           >
             <Github size={15} /> GitHub
           </a>
@@ -105,7 +105,7 @@ export default function Nav() {
             target="_blank"
             rel="noreferrer noopener"
             onClick={() => setOpen(false)}
-            className="mt-1 flex items-center gap-2 rounded-xl bg-[#c8a45c]/15 px-4 py-3 text-[14px] text-[#ddc38f]"
+            className="mt-1 flex items-center gap-2 rounded-xl bg-[#2e7d5b]/15 px-4 py-3 text-[14px] text-[#a8d4b8]"
           >
             <Github size={15} /> github.com/ArielOsaze
           </a>
