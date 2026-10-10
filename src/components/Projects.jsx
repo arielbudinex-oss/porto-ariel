@@ -87,7 +87,7 @@ export default function Projects() {
         <header className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-neon">
-              01 — Portofolio
+              Portofolio
             </p>
             <ScrollReveal
               text="Semua yang kubangun, dengan angkanya."

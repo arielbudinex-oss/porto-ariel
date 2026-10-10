@@ -53,7 +53,7 @@ export default function Skills() {
 
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-2xl">
-          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">03 — Keahlian</p>
+          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">Keahlian</p>
           <BlurText
             text="Tumpukan teknologi yang benar-benar kupakai di produksi."
             delay={26}
@@ -109,7 +109,7 @@ export default function Skills() {
               <CountUp to={total} duration={1.4} />
             </p>
             <p className="mt-1 text-[13px] text-white/45">teknologi di 6 bidang</p>
-            <div className="mt-5 space-y-2 border-t border-[#2b3037] pt-4 text-[12px] text-white/45">
+            <div className="mt-5 space-y-2 pt-1 text-[12px] text-white/45">
               <p className="flex justify-between">
                 <span>Bahasa</span> <span className="text-white/70">JS · TS · Python · C#</span>
               </p>

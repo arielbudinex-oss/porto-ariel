@@ -167,7 +167,7 @@ export default function Lab() {
     <section id="lab" className="relative overflow-hidden py-28">
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-3xl">
-          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">04 — Lab Efek</p>
+          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">Lab Efek</p>
           <h2 className="text-4xl font-bold tracking-[-0.02em] md:text-5xl">
             <GradientText colors={["#fff", "#9aa3ad", "#9db2ff", "#fff"]} animationSpeed={8} className="text-4xl font-bold md:text-5xl">
               Efek yang kupakai

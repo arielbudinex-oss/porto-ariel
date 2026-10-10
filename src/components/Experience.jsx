@@ -10,7 +10,7 @@ export default function Experience() {
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-14 max-w-2xl">
           <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">
-            02 — Pengalaman
+            Pengalaman
           </p>
           <BlurText
             text="Dari operasional sampai membangun produk."
@@ -33,7 +33,6 @@ export default function Experience() {
             </h3>
 
             <div className="relative space-y-4">
-              <div className="absolute top-2 bottom-2 left-[7px] w-px bg-[#2b3037]" />
 
               {experience.map((e) => (
                 <div key={`${e.role}-${e.org}`} className="relative flex gap-5">
@@ -123,7 +122,7 @@ export default function Experience() {
                 Ekosistem produk digital: commerce, komunikasi, alat bisnis, otomasi, dan AI. NexShop,
                 SayBot, dan AkunTuntas dibangun di dalamnya.
               </p>
-              <div className="mt-5 grid grid-cols-3 gap-3 border-t border-[#2b3037] pt-4">
+              <div className="mt-5 grid grid-cols-3 gap-3 pt-1">
                 {[
                   { n: "NexShop", d: "Commerce" },
                   { n: "SayBot", d: "Pesan" },

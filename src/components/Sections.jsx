@@ -8,7 +8,7 @@ export function Journey() {
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-14 max-w-2xl">
           <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">
-            05 — Perjalanan
+            Perjalanan
           </p>
           <h2 className="text-4xl font-bold tracking-[-0.02em] text-white md:text-5xl">
             Dari eksperimen jadi <span className="text-grad">produk produksi</span>
@@ -21,7 +21,6 @@ export function Journey() {
 
         <div className="relative">
           {/* garis linimasa */}
-          <div className="absolute top-0 bottom-0 left-[19px] w-px bg-[#2b3037] md:left-1/2" />
 
           <div className="space-y-10">
             {journey.map((j, i) => {
@@ -59,7 +58,7 @@ export function Contact() {
 
       <div className="mx-auto grid max-w-[1324px] gap-12 px-6 lg:grid-cols-[1fr_.9fr] lg:items-center">
         <div>
-          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">06 — Kontak</p>
+          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">Kontak</p>
           <h2 className="text-4xl font-bold tracking-[-0.02em] text-white md:text-5xl">
             Ada produk yang perlu <span className="text-grad">dibangun benar?</span>
           </h2>
@@ -152,7 +151,7 @@ export function Contact() {
             <div className="p-7 pt-0">
               <p className="text-[13px] leading-relaxed text-white/45">{owner.bio[1]}</p>
 
-              <div className="mt-7 grid grid-cols-2 gap-3 border-t border-[#2b3037] pt-6">
+              <div className="mt-7 grid grid-cols-2 gap-3 pt-2">
                 <div>
                   <p className="text-2xl font-bold text-white">7</p>
                   <p className="text-[11px] text-white/40">proyek nyata</p>
@@ -184,7 +183,7 @@ export function Contact() {
 
 export function Footer() {
   return (
-    <footer className="border-t border-[#2b3037] py-10">
+    <footer className="py-10">
       <div className="mx-auto flex max-w-[1324px] flex-col items-center justify-between gap-4 px-6 text-center md:flex-row md:text-left">
         <p className="font-mono text-[11px] text-white/35">
           © {new Date().getFullYear()} {owner.name} — React, Tailwind, GSAP, dan komponen animasi
