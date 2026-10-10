@@ -135,12 +135,12 @@ export default function Lab() {
             <p className="font-mono text-[10px] tracking-[0.2em] text-[#ddc38f] uppercase">Menyala</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Glitch Text</h3>
             <div className="mt-4 grid place-items-center py-2">
-              <GlitchText speed={1.3} enableShadows enableOnHover={false} className="text-2xl font-bold">
+              <GlitchText speed={1.3} enableShadows enableOnHover={false} className="text-3xl font-bold">
                 PORTOFOLIO
               </GlitchText>
             </div>
             <p className="mt-3 text-center text-[13px] text-white/45">
-              Huruf bergetar dengan bayangan merah-biru.
+              Huruf bergetar dengan bayangan emas dan merah bata.
             </p>
           </div>
         </div>
