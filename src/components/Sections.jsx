@@ -19,27 +19,21 @@ export function Journey() {
           </p>
         </header>
 
-        <div className="relative">
-          <div className="space-y-10">
-            {journey.map((j, i) => {
-              const left = i % 2 === 0;
-              return (
-                <div key={j.step} className="relative md:grid md:grid-cols-2 md:gap-14">
-                  <div
-                    className={`surface p-5 transition-colors duration-300 hover:border-[#5b7cfa]/30 ${
-                      left ? "md:col-start-1 md:mr-2 md:text-right" : "md:col-start-2 md:ml-2"
-                    }`}
-                  >
-                    <span className="text-[12px] font-medium text-[#9db2ff]">
-                      {j.step}
-                    </span>
-                    <h3 className="mt-1.5 text-lg font-semibold text-white">{j.title}</h3>
-                    <p className="mt-2 text-[13px] leading-relaxed text-white/45">{j.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+        {/* perjalanan: grid rapi dengan penanda tahap */}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {journey.map((j, i) => (
+            <div
+              key={j.step}
+              className="surface flex flex-col p-6 transition-colors duration-300 hover:border-[#5b7cfa]/30"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-[12px] font-medium text-[#9db2ff]">{j.step}</span>
+                <span className="text-[11px] text-white/25">Tahap {i + 1}</span>
+              </div>
+              <h3 className="mt-3 text-lg font-semibold text-white">{j.title}</h3>
+              <p className="mt-2 text-[13px] leading-relaxed text-white/45">{j.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
