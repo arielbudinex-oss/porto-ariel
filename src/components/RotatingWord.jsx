@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// RotatingWord — teks berganti kata dengan animasi bersih.
+// RotatingWord, teks berganti kata dengan animasi bersih.
 // Seluruh frasa bergerak sebagai satu blok (naik + pudar + blur halus),
 // tanpa overflow-hidden yang memotong huruf berekor (g, y, p).
 // Warna: gradien emas metalik supaya terasa premium, bukan blok warna kusam.
@@ -33,7 +33,7 @@ export function RotatingWord({ words = [], interval = 2600, className = "" }) {
       className={`relative inline-grid overflow-visible align-baseline ${className}`}
       style={{ lineHeight: 1.18 }}
     >
-      {/* penanda lebar — kata terpanjang, tak terlihat, supaya tata letak tidak bergeser */}
+      {/* penanda lebar, kata terpanjang, tak terlihat, supaya tata letak tidak bergeser */}
       <span className="invisible col-start-1 row-start-1 whitespace-nowrap" aria-hidden="true">
         {longest}
       </span>
@@ -41,7 +41,7 @@ export function RotatingWord({ words = [], interval = 2600, className = "" }) {
       <span
         className="col-start-1 row-start-1 justify-self-start font-semibold whitespace-nowrap"
         style={{
-          // gradien sapphire — senada chrome situs
+          // gradien sapphire, senada chrome situs
           backgroundImage:
             "linear-gradient(180deg, #c9d6ff 0%, #9db2ff 24%, #5b7cfa 52%, #3a55c9 68%, #7b93f5 85%, #b9c8ff 100%)",
           WebkitBackgroundClip: "text",

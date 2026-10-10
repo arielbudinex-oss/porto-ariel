@@ -20,7 +20,7 @@ import Galaxy from "./rb/Backgrounds/Galaxy/Galaxy";
 import DotGrid from "./rb/Backgrounds/DotGrid/DotGrid";
 import { Broadcast, Sparkle, Cube, Stack } from "@phosphor-icons/react";
 
-// Aksen palet — emerald tua + krem hangat
+// Aksen palet, emerald tua + krem hangat
 const ACCENT = "#5b7cfa";
 const ACCENT_SOFT = "#9db2ff";
 const IVORY = "#e9e6df";
@@ -29,7 +29,7 @@ const CARDS = [
   {
     kicker: "Latar",
     title: "Aurora",
-    desc: "Cahaya bergelombang yang mengalir pelan — dipakai sebagai latar hero saat halaman dibuka.",
+    desc: "Cahaya bergelombang yang mengalir pelan, dipakai sebagai latar hero saat halaman dibuka.",
     C: Aurora,
     span: "lg:col-span-2",
     props: { colorStops: [ACCENT, "#3a55c9", ACCENT_SOFT], amplitude: 1.0, blend: 0.5 },
@@ -52,7 +52,7 @@ const CARDS = [
   {
     kicker: "Latar",
     title: "Topography",
-    desc: "Garis kontur yang bergerak seperti peta topografi — aksen kedalaman tanpa ramai.",
+    desc: "Garis kontur yang bergerak seperti peta topografi, aksen kedalaman tanpa ramai.",
     C: Topography,
     props: {
       lowColor: "#3a55c9",
@@ -79,7 +79,7 @@ const CARDS = [
   {
     kicker: "Latar",
     title: "Balatro",
-    desc: "Pola fraktal berputar dengan kontras tinggi — dipakai sebagai tekstur bagian penutup.",
+    desc: "Pola fraktal berputar dengan kontras tinggi, dipakai sebagai tekstur bagian penutup.",
     C: Balatro,
     props: { color1: ACCENT, color2: "#0e1013", color3: ACCENT_SOFT, speed: 0.6, spinAmount: 0.6, contrast: 3.2 },
   },
@@ -94,7 +94,7 @@ const CARDS = [
   {
     kicker: "Latar",
     title: "Light Rays",
-    desc: "Berkas cahaya dari atas yang mengikuti kursor — memberi kesan sorot panggung.",
+    desc: "Berkas cahaya dari atas yang mengikuti kursor, memberi kesan sorot panggung.",
     C: LightRays,
     props: {
       raysOrigin: "top-center",
@@ -109,7 +109,7 @@ const CARDS = [
   {
     kicker: "Latar",
     title: "Threads",
-    desc: "Benang halus yang mengalir seperti lipatan kain — gerakannya menenangkan.",
+    desc: "Benang halus yang mengalir seperti lipatan kain, gerakannya menenangkan.",
     C: Threads,
     props: { color: [0.55, 0.64, 0.95], amplitude: 1.4, distance: 0.4, lineCount: 70, thickness: 0.7, speed: 0.5 },
   },
@@ -133,14 +133,14 @@ const CARDS = [
   {
     kicker: "Latar",
     title: "Silk",
-    desc: "Permukaan sutra yang bergelombang lembut — dipakai di bagian ajakan menghubungi.",
+    desc: "Permukaan sutra yang bergelombang lembut, dipakai di bagian ajakan menghubungi.",
     C: Silk,
     props: { speed: 3, scale: 1.1, color: "#ffffff", noiseIntensity: 1.2 },
   },
   {
     kicker: "Latar",
     title: "Galaxy",
-    desc: "Bintang kecil yang berputar perlahan — latar bagian keahlian.",
+    desc: "Bintang kecil yang berputar perlahan, latar bagian keahlian.",
     C: Galaxy,
     props: { hueShift: 42, density: 1.1, speed: 0.8 },
   },
@@ -175,7 +175,7 @@ export default function Lab() {
             <span className="text-white">di halaman ini.</span>
           </h2>
           <p className="mt-5 text-[15px] leading-relaxed text-white/50">
-            Bukan galeri tempelan — semua efek di bawah benar-benar berjalan di halaman ini: canvas, WebGL, dan CSS.
+            Bukan galeri tempelan, semua efek di bawah benar-benar berjalan di halaman ini: canvas, WebGL, dan CSS.
             Tiap efek kutulis sebagai komponen lepas, jadi bisa dipindah ke proyek lain tanpa membawa ketergantungan berat.
           </p>
         </header>
@@ -218,7 +218,7 @@ export default function Lab() {
               <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">Interaktif</p>
               <h3 className="mt-1 text-[17px] font-semibold text-white">Spotlight Card</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-white/45">
-                Sorotan lembut mengikuti kursor di permukaan kartu — kupakai untuk kartu proyek supaya terasa hidup tanpa ramai.
+                Sorotan lembut mengikuti kursor di permukaan kartu, kupakai untuk kartu proyek supaya terasa hidup tanpa ramai.
               </p>
             </div>
           </SpotlightCard>
@@ -262,7 +262,7 @@ export default function Lab() {
               />
             </div>
             <p className="mt-3 text-center text-[13px] leading-relaxed text-white/45">
-              Kilau cahaya yang menyapu teks secara berkala — kupakai untuk penegasan nama, tanpa getaran yang mengganggu.
+              Kilau cahaya yang menyapu teks secara berkala, kupakai untuk penegasan nama, tanpa getaran yang mengganggu.
             </p>
           </div>
         </div>
@@ -273,7 +273,7 @@ export default function Lab() {
             <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">Hitungan</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Angka yang naik</h3>
             <p className="mt-2 text-[13px] leading-relaxed text-white/45">
-              Angka bergerak naik saat masuk layar — dipakai di ringkasan supaya capaian terasa, bukan sekadar terbaca.
+              Angka bergerak naik saat masuk layar, dipakai di ringkasan supaya capaian terasa, bukan sekadar terbaca.
             </p>
             <div className="mt-6 grid grid-cols-2 gap-5">
               {[
@@ -297,13 +297,13 @@ export default function Lab() {
             <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">Miring</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Kartu yang mengikuti kursor</h3>
             <p className="mt-2 text-[13px] leading-relaxed text-white/45">
-              Kartu miring mengikuti arah kursor, seperti memegang foto — kupakai untuk pratinjau karya.
+              Kartu miring mengikuti arah kursor, seperti memegang foto, kupakai untuk pratinjau karya.
             </p>
             <div className="mt-5 grid place-items-center">
               <TiltedCard
                 imageSrc="/assets/projects/lumawall/01-dashboard.png"
                 altText="LumaWall dashboard"
-                captionText="LumaWall — 58 rilis"
+                captionText="LumaWall. 58 rilis"
                 containerHeight="240px"
                 containerWidth="380px"
                 imageHeight="240px"

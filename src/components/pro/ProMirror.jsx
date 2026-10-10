@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// EFEK KHUSUS — komponen animasi yang ditulis sendiri dari nol.
+// EFEK KHUSUS, komponen animasi yang ditulis sendiri dari nol.
 // Semuanya memakai Canvas/WebGL/CSS murni tanpa pustaka animasi berat.
 // ─────────────────────────────────────────────────────────────────────────────
 import { useEffect, useRef, useCallback, useMemo, useState } from "react";
@@ -480,13 +480,13 @@ export function ComparisonSlider({ before, after, label, className = "" }) {
         onMove(e.clientX);
       }}
     >
-      {/* dasar: versi SESUDAH — selalu terlihat penuh */}
-      <img src={after} alt={`${label} — sesudah`} className="block w-full" draggable={false} />
+      {/* dasar: versi SESUDAH, selalu terlihat penuh */}
+      <img src={after} alt={`${label}, sesudah`} className="block w-full" draggable={false} />
 
-      {/* lapisan atas: versi SEBELUM — dipotong sesuai posisi geser */}
+      {/* lapisan atas: versi SEBELUM, dipotong sesuai posisi geser */}
       <img
         src={before}
-        alt={`${label} — sebelum`}
+        alt={`${label}, sebelum`}
         className="absolute inset-0 block h-full w-full object-cover object-top"
         style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
         draggable={false}
@@ -525,7 +525,7 @@ export function ComparisonSlider({ before, after, label, className = "" }) {
 }
 
 /* ── 11. Preloader ──────────────────────────────────────────────────────────
-   Mirip "Preloader" (Pro/UI): layar pembuka dengan progres yang jujur —
+   Mirip "Preloader" (Pro/UI): layar pembuka dengan progres yang jujur ,
    menghitung aset yang benar-benar dimuat. */
 export function Preloader({ onDone }) {
   const [pct, setPct] = useState(0);

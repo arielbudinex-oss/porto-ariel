@@ -62,12 +62,12 @@ export default function Skills() {
             className="text-4xl font-bold tracking-[-0.02em] text-white md:text-5xl"
           />
           <p className="mt-5 text-[15px] leading-relaxed text-white/50">
-            Dihimpun dari package.json, source code, dan konfigurasi deploy semua proyek — bukan daftar
+            Dihimpun dari package.json, source code, dan konfigurasi deploy semua proyek, bukan daftar
             hafalan. <span className="text-white/85">{total} teknologi</span> di enam bidang.
           </p>
         </header>
 
-        {/* grid logo statis — tanpa strip berjalan */}
+        {/* grid logo statis, tanpa strip berjalan */}
         <div className="mb-12 grid grid-cols-3 gap-x-4 gap-y-6 py-8 sm:grid-cols-5 lg:grid-cols-7">
           {LOGOS.map((item) => (
             <span key={item.label} className="flex items-center gap-2.5" title={item.label}>

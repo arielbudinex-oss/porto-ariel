@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// EFEK KHUSUS 2 — kumpulan kedua animasi yang ditulis dari nol.
+// EFEK KHUSUS 2, kumpulan kedua animasi yang ditulis dari nol.
 // Canvas/WebGL/CSS murni, tanpa ketergantungan pustaka animasi.
 // ─────────────────────────────────────────────────────────────────────────────
 import { useEffect, useRef, useState } from "react";

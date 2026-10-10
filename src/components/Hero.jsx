@@ -75,7 +75,7 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* statistik — menghitung naik saat terlihat */}
+          {/* statistik, menghitung naik saat terlihat */}
           <dl className="mt-14 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-7 sm:grid-cols-4">
             {stats.map((s) => (
               <div key={s.label}>
@@ -104,7 +104,7 @@ export default function Hero() {
                 <span className="text-[#5b7cfa]">➜</span> <span className="text-white/80">whoami</span>
               </p>
               <p className="pl-4 text-white/60">
-                {owner.name} — full-stack developer.
+                {owner.name}, full-stack developer.
                 <br />
                 Backend, frontend, database, deploy, sampai halaman jualan.
               </p>

@@ -35,10 +35,10 @@ function matchesFilter(p, f) {
 }
 
 /**
- * ShotImage — gambar screenshot dengan rasio yang benar.
+ * ShotImage, gambar screenshot dengan rasio yang benar.
  * Semua preview memakai bingkai 16:9. Screenshot desktop (landscape) mengisi
  * penuh bingkai (object-cover, jangkar atas). Screenshot mobile (portrait)
- * TIDAK boleh di-crop — ditampilkan utuh (object-contain) di tengah bingkai
+ * TIDAK boleh di-crop, ditampilkan utuh (object-contain) di tengah bingkai
  * dengan latar netral, sehingga tidak ada bagian antarmuka yang terpotong.
  */
 function ShotImage({ src, alt, thumb = false }) {
@@ -332,7 +332,7 @@ function ProjectCard({ project: p, open, onToggle }) {
                   <div className="grid h-44 place-items-center rounded-2xl border border-dashed border-line bg-ink-2/40">
                     <div className="text-center">
                       <p className="text-[12px] text-mist">
-                        {p.id === "waapi" ? "Layanan internal — tanpa antarmuka publik" : "Alat CLI / pustaka"}
+                        {p.id === "waapi" ? "Layanan internal, tanpa antarmuka publik" : "Alat CLI / pustaka"}
                       </p>
                       <p className="mt-1 text-[11px] text-mist/60">
                         Detail lengkap ada di daftar fitur & bukti

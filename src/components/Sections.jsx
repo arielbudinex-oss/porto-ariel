@@ -14,7 +14,7 @@ export function Journey() {
             Dari eksperimen jadi <span className="text-grad">produk produksi</span>
           </h2>
           <p className="mt-5 text-[15px] leading-relaxed text-white/50">
-            Tiap proyek mengajarkan sesuatu yang langsung dipakai proyek berikutnya — bukan dikerjakan
+            Tiap proyek mengajarkan sesuatu yang langsung dipakai proyek berikutnya, bukan dikerjakan
             sendiri-sendiri.
           </p>
         </header>
@@ -58,7 +58,7 @@ export function Contact() {
           </h2>
           <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-white/50">
             Aku terbuka untuk proyek full-stack: marketplace, gateway pesan, aplikasi desktop, atau
-            alat internal. Cara kerjaku sederhana — ukur dulu, bangun, buktikan dengan angka.
+            alat internal. Cara kerjaku sederhana, ukur dulu, bangun, buktikan dengan angka.
           </p>
 
           <div className="mt-9 space-y-3">
@@ -122,14 +122,14 @@ export function Contact() {
           </div>
         </div>
 
-        {/* kartu ajakan — bisa diseret */}
+        {/* kartu ajakan, bisa diseret */}
         <ElasticSticker className="mx-auto w-full max-w-md">
           <div className="surface relative overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,.5)]">
             {/* foto portrait */}
             <div className="relative aspect-[4/5] w-full overflow-hidden">
               <img
                 src="/assets/profile/ariel-portrait.webp"
-                alt={`${owner.name} — ${owner.role}`}
+                alt={`${owner.name}, ${owner.role}`}
                 className="h-full w-full object-cover object-top"
                 loading="lazy"
               />
@@ -165,7 +165,7 @@ export function Contact() {
               </div>
 
               <p className="mt-6 text-center text-[11px] text-white/25">
-                — geser kartunya, memang bisa digeser —
+               , geser kartunya, memang bisa digeser ,
               </p>
             </div>
           </div>
@@ -180,7 +180,7 @@ export function Footer() {
     <footer className="py-10">
       <div className="mx-auto flex max-w-[1324px] flex-col items-center justify-between gap-4 px-6 text-center md:flex-row md:text-left">
         <p className="font-mono text-[11px] text-white/35">
-          © {new Date().getFullYear()} {owner.name} — React, Tailwind, GSAP, dan komponen animasi
+          © {new Date().getFullYear()} {owner.name}. React, Tailwind, GSAP, dan komponen animasi
           buatan sendiri.
         </p>
         <p className="font-mono text-[11px] text-white/35">
