@@ -34,6 +34,43 @@ function matchesFilter(p, f) {
   return true;
 }
 
+/**
+ * ShotImage — gambar screenshot dengan rasio yang benar.
+ * Semua preview memakai bingkai 16:9. Screenshot desktop (landscape) mengisi
+ * penuh bingkai (object-cover, jangkar atas). Screenshot mobile (portrait)
+ * TIDAK boleh di-crop — ditampilkan utuh (object-contain) di tengah bingkai
+ * dengan latar netral, sehingga tidak ada bagian antarmuka yang terpotong.
+ */
+function ShotImage({ src, alt, thumb = false }) {
+  const [portrait, setPortrait] = useState(false);
+
+  return (
+    <span className={`relative block w-full overflow-hidden bg-ink-3 ${thumb ? "" : "aspect-video"}`}>
+      {/* lapisan latar: mengisi bingkai tanpa memotong konten utama */}
+      {portrait && !thumb && (
+        <img
+          src={src}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full scale-110 object-cover opacity-25 blur-2xl"
+          loading="lazy"
+        />
+      )}
+      <img
+        src={src}
+        alt={alt}
+        onLoad={(e) => setPortrait(e.currentTarget.naturalHeight > e.currentTarget.naturalWidth)}
+        className={
+          thumb
+            ? "h-14 w-24 object-cover object-top"
+            : `relative mx-auto block h-full ${portrait ? "w-auto object-contain" : "w-full object-cover object-top"}`
+        }
+        loading="lazy"
+      />
+    </span>
+  );
+}
+
 export default function Projects() {
   const [filter, setFilter] = useState("all");
   const [openId, setOpenId] = useState(projects[0].id);
@@ -280,12 +317,7 @@ function ProjectCard({ project: p, open, onToggle }) {
                 {hasShots ? (
                   <div className="space-y-3">
                     <PixelDissolve trigger={shot} className="rounded-2xl border border-line">
-                      <img
-                        src={p.screenshots[shot].src}
-                        alt={p.screenshots[shot].caption}
-                        className="block aspect-[16/10] w-full object-cover object-top"
-                        loading="lazy"
-                      />
+                      <ShotImage src={p.screenshots[shot].src} alt={p.screenshots[shot].caption} />
                     </PixelDissolve>
                     <p className="px-1 text-[12px] text-mist">{p.screenshots[shot].caption}</p>
                     {p.screenshots.length > 1 && (
@@ -298,7 +330,7 @@ function ProjectCard({ project: p, open, onToggle }) {
                               i === shot ? "border-neon/60 opacity-100" : "border-line opacity-50 hover:opacity-80"
                             }`}
                           >
-                            <img src={s.src} alt="" className="h-14 w-24 object-cover object-top" loading="lazy" />
+                            <ShotImage src={s.src} alt="" thumb />
                           </button>
                         ))}
                       </div>
