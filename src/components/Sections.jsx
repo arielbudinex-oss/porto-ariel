@@ -20,19 +20,13 @@ export function Journey() {
         </header>
 
         <div className="relative">
-          {/* garis linimasa */}
-
           <div className="space-y-10">
             {journey.map((j, i) => {
               const left = i % 2 === 0;
               return (
                 <div key={j.step} className="relative md:grid md:grid-cols-2 md:gap-14">
-                  <span className="absolute top-6 left-[13px] z-10 grid h-3.5 w-3.5 place-items-center rounded-full border-2 border-[#0e1013] bg-[#5b7cfa] md:left-1/2 md:-translate-x-1/2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#0e1013]" />
-                  </span>
-
                   <div
-                    className={`surface ml-12 p-5 transition-colors duration-300 hover:border-[#5b7cfa]/30 md:ml-0 ${
+                    className={`surface p-5 transition-colors duration-300 hover:border-[#5b7cfa]/30 ${
                       left ? "md:col-start-1 md:mr-2 md:text-right" : "md:col-start-2 md:ml-2"
                     }`}
                   >

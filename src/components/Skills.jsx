@@ -68,7 +68,7 @@ export default function Skills() {
         </header>
 
         {/* grid logo statis — tanpa strip berjalan */}
-        <div className="mb-12 grid grid-cols-3 gap-x-4 gap-y-6 border-y border-[#2b3037] py-8 sm:grid-cols-5 lg:grid-cols-7">
+        <div className="mb-12 grid grid-cols-3 gap-x-4 gap-y-6 py-8 sm:grid-cols-5 lg:grid-cols-7">
           {LOGOS.map((item) => (
             <span key={item.label} className="flex items-center gap-2.5" title={item.label}>
               <item.Icon size={20} color={item.color} />

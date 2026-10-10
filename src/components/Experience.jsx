@@ -32,17 +32,11 @@ export default function Experience() {
               <Briefcase size={17} className="text-[#9db2ff]" /> Pengalaman kerja
             </h3>
 
-            <div className="relative space-y-4">
-
+            <div className="space-y-4">
               {experience.map((e) => (
-                <div key={`${e.role}-${e.org}`} className="relative flex gap-5">
-                  <span
-                    className={`relative z-10 mt-6 h-3.5 w-3.5 shrink-0 rounded-full border-2 border-[#0e1013] ${
-                      e.highlight ? "bg-white" : "bg-[#6e6e70]"
-                    }`}
-                  />
+                <div key={`${e.role}-${e.org}`}>
                   <div
-                    className={`surface flex-1 p-5 transition-colors duration-300 hover:border-white/25 ${
+                    className={`surface p-5 transition-colors duration-300 hover:border-white/25 ${
                       e.highlight ? "border-white/20" : ""
                     }`}
                   >
