@@ -54,7 +54,7 @@ export default function Hero() {
             <span className="text-white/55">Aku membangun</span>
             <RotatingText
               texts={["marketplace", "gateway pesan", "wallpaper engine", "pembukuan pajak", "alat uji server"]}
-              mainClassName="inline-flex overflow-hidden rounded-lg bg-[#a855f7]/15 px-2.5 py-0.5 text-[#c7a0ff]"
+              mainClassName="inline-flex min-w-[9ch] justify-center overflow-hidden rounded-lg bg-[#a855f7]/15 px-2.5 py-0.5 text-[#c7a0ff]"
               staggerFrom="last"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -66,7 +66,7 @@ export default function Hero() {
             />
           </p>
 
-          <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white/55">{owner.bio[0]}</p>
+          <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white/65">{owner.bio[0]}</p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a href="#proyek" className="btn-primary inline-flex items-center gap-2 px-7 py-3.5 text-[15px]">
