@@ -1,13 +1,13 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import {
   ArrowUpRight,
-  ChevronDown,
-  Github,
+  CaretDown,
+  GithubLogo,
   Globe,
-  Layers,
+  Stack,
   ShieldCheck,
-  Activity,
-} from "lucide-react";
+  Pulse,
+} from "@phosphor-icons/react";
 import { projects } from "../data/projects";
 import ScrollReveal from "./rb/TextAnimations/ScrollReveal/ScrollReveal";
 import CountUp from "./rb/TextAnimations/CountUp/CountUp";
@@ -86,7 +86,7 @@ export default function Projects() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <header className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="mb-3 font-mono text-xs tracking-[0.3em] text-neon uppercase">
+            <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-neon">
               01 — Portofolio
             </p>
             <ScrollReveal
@@ -146,14 +146,6 @@ function ProjectCard({ project: p, open, onToggle }) {
           borderColor: open ? `color-mix(in srgb, ${p.accent} 35%, #2b3037)` : undefined,
         }}
       >
-        {/* garis aksen atas */}
-        <div
-          className="h-px w-full transition-opacity duration-500"
-          style={{
-            background: `linear-gradient(90deg, transparent, ${p.accent}, ${p.accent2}, transparent)`,
-            opacity: open ? 1 : 0.25,
-          }}
-        />
 
         {/* ── header kartu ─────────────────────────────────────────── */}
         <button
@@ -174,11 +166,11 @@ function ProjectCard({ project: p, open, onToggle }) {
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <h3 className="font-display text-xl font-semibold text-frost md:text-2xl">{p.name}</h3>
-              <span className="rounded-full border border-line bg-ink-2/70 px-2.5 py-0.5 font-mono text-[10px] text-mist">
+              <span className="rounded-full border border-line bg-ink-2/70 px-2.5 py-0.5 text-[11px] text-mist">
                 {p.tag}
               </span>
               {p.url && (
-                <span className="flex items-center gap-1 rounded-full border border-lime/25 bg-lime/10 px-2.5 py-0.5 font-mono text-[10px] text-lime">
+                <span className="flex items-center gap-1 rounded-full border border-lime/25 bg-lime/10 px-2.5 py-0.5 text-[11px] text-lime">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lime" /> LIVE
                 </span>
               )}
@@ -188,13 +180,13 @@ function ProjectCard({ project: p, open, onToggle }) {
 
           <span className="hidden shrink-0 flex-col items-end gap-1 md:flex">
             {p.metrics.slice(0, 2).map((m) => (
-              <span key={m.label} className="font-mono text-[11px] text-mist">
+              <span key={m.label} className="text-[11px] text-mist">
                 <span className="text-frost">{m.value}</span> {m.label}
               </span>
             ))}
           </span>
 
-          <ChevronDown
+          <CaretDown
             size={20}
             className={`shrink-0 text-mist transition-transform duration-500 ${open ? "rotate-180 text-neon" : ""}`}
           />
@@ -211,21 +203,21 @@ function ProjectCard({ project: p, open, onToggle }) {
               {/* kiri: cerita + fitur */}
               <div className="space-y-7">
                 <div>
-                  <h4 className="mb-3 font-mono text-[11px] tracking-[0.25em] text-neon uppercase">
+                  <h4 className="mb-3 text-[12px] font-medium text-neon ">
                     Konteks
                   </h4>
                   <p className="text-sm leading-relaxed text-mist">{p.story}</p>
                 </div>
 
                 <div>
-                  <h4 className="mb-4 font-mono text-[11px] tracking-[0.25em] text-neon uppercase">
+                  <h4 className="mb-4 text-[12px] font-medium text-neon ">
                     Yang dibangun
                   </h4>
                   <ul className="space-y-4">
                     {p.features.map((f, i) => (
                       <li key={f.title} className="group/f flex gap-4">
                         <span
-                          className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg border font-mono text-[11px] transition-transform group-hover/f:scale-110"
+                          className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg border text-[11px] transition-transform group-hover/f:scale-110"
                           style={{
                             borderColor: `color-mix(in srgb, ${p.accent} 25%, transparent)`,
                             color: p.accent,
@@ -245,13 +237,13 @@ function ProjectCard({ project: p, open, onToggle }) {
 
                 {/* bukti */}
                 <div>
-                  <h4 className="mb-3 flex items-center gap-2 font-mono text-[11px] tracking-[0.25em] text-neon uppercase">
+                  <h4 className="mb-3 flex items-center gap-2 text-[12px] font-medium text-neon ">
                     <ShieldCheck size={13} /> Bukti
                   </h4>
                   <ul className="space-y-2">
                     {p.proof.map((b) => (
                       <li key={b} className="flex items-start gap-2.5 text-[13px] text-mist">
-                        <Activity size={13} className="mt-0.5 shrink-0 text-lime" />
+                        <Pulse size={13} className="mt-0.5 shrink-0 text-lime" />
                         {b}
                       </li>
                     ))}
@@ -260,8 +252,8 @@ function ProjectCard({ project: p, open, onToggle }) {
 
                 {/* stack */}
                 <div>
-                  <h4 className="mb-3 flex items-center gap-2 font-mono text-[11px] tracking-[0.25em] text-neon uppercase">
-                    <Layers size={13} /> Teknologi
+                  <h4 className="mb-3 flex items-center gap-2 text-[12px] font-medium text-neon ">
+                    <Stack size={13} /> Teknologi
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {p.stack.map((s) => (
@@ -294,7 +286,7 @@ function ProjectCard({ project: p, open, onToggle }) {
                     rel="noreferrer noopener"
                     className="flex items-center gap-2 rounded-full border border-line bg-ink-2/60 px-5 py-2.5 text-sm text-frost transition-colors hover:border-neon/40 hover:text-neon"
                   >
-                    <Github size={14} /> Repositori
+                    <GithubLogo size={14} /> Repositori
                   </a>
                 </div>
               </div>
@@ -339,7 +331,7 @@ function ProjectCard({ project: p, open, onToggle }) {
                 ) : (
                   <div className="grid h-44 place-items-center rounded-2xl border border-dashed border-line bg-ink-2/40">
                     <div className="text-center">
-                      <p className="font-mono text-[11px] text-mist">
+                      <p className="text-[12px] text-mist">
                         {p.id === "waapi" ? "Layanan internal — tanpa antarmuka publik" : "Alat CLI / pustaka"}
                       </p>
                       <p className="mt-1 text-[11px] text-mist/60">
@@ -352,9 +344,7 @@ function ProjectCard({ project: p, open, onToggle }) {
                 {/* slider sebelum/sesudah */}
                 {p.compare && (
                   <div className="space-y-2">
-                    <p className="flex items-center gap-2 px-1 font-mono text-[11px] text-mist">
-                      <span className="h-px w-4 bg-neon" /> Geser untuk membandingkan
-                    </p>
+                    <p className="px-1 text-[12px] text-mist">Geser untuk membandingkan</p>
                     <ComparisonSlider
                       before={p.compare.before}
                       after={p.compare.after}

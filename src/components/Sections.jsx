@@ -1,13 +1,13 @@
 import { journey, owner } from "../data/projects";
 import { ElasticSticker } from "./pro/ProMirror";
-import { Github, Mail, MapPin, Sparkles } from "lucide-react";
+import { GithubLogo, EnvelopeSimple, MapPin, Sparkle, LinkedinLogo } from "@phosphor-icons/react";
 
 export function Journey() {
   return (
     <section id="cara-kerja" className="relative py-28">
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-14 max-w-2xl">
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#9db2ff] uppercase">
+          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">
             05 — Perjalanan
           </p>
           <h2 className="text-4xl font-bold tracking-[-0.02em] text-white md:text-5xl">
@@ -21,7 +21,7 @@ export function Journey() {
 
         <div className="relative">
           {/* garis linimasa */}
-          <div className="absolute top-0 bottom-0 left-[19px] w-px bg-gradient-to-b from-[#5b7cfa] via-[#2b3037] to-transparent md:left-1/2" />
+          <div className="absolute top-0 bottom-0 left-[19px] w-px bg-[#2b3037] md:left-1/2" />
 
           <div className="space-y-10">
             {journey.map((j, i) => {
@@ -37,7 +37,7 @@ export function Journey() {
                       left ? "md:col-start-1 md:mr-2 md:text-right" : "md:col-start-2 md:ml-2"
                     }`}
                   >
-                    <span className="font-mono text-[11px] tracking-widest text-[#9db2ff] uppercase">
+                    <span className="text-[12px] font-medium text-[#9db2ff]">
                       {j.step}
                     </span>
                     <h3 className="mt-1.5 text-lg font-semibold text-white">{j.title}</h3>
@@ -56,11 +56,10 @@ export function Journey() {
 export function Contact() {
   return (
     <section id="kontak" className="relative overflow-hidden py-28">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#2b3037] to-transparent" />
 
       <div className="mx-auto grid max-w-[1324px] gap-12 px-6 lg:grid-cols-[1fr_.9fr] lg:items-center">
         <div>
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#9db2ff] uppercase">06 — Kontak</p>
+          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">06 — Kontak</p>
           <h2 className="text-4xl font-bold tracking-[-0.02em] text-white md:text-5xl">
             Ada produk yang perlu <span className="text-grad">dibangun benar?</span>
           </h2>
@@ -75,10 +74,10 @@ export function Contact() {
               className="group surface flex items-center gap-4 p-4 transition-colors hover:border-[#5b7cfa]/40"
             >
               <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#5b7cfa]/12 text-[#9db2ff]">
-                <Mail size={16} />
+                <EnvelopeSimple size={16} />
               </span>
               <span>
-                <span className="block font-mono text-[10px] tracking-widest text-white/40 uppercase">
+                <span className="block text-[11px] text-white/40">
                   Email
                 </span>
                 <span className="text-[15px] text-white/80 group-hover:text-[#9db2ff]">{owner.email}</span>
@@ -91,14 +90,30 @@ export function Contact() {
               className="group surface flex items-center gap-4 p-4 transition-colors hover:border-[#5b7cfa]/40"
             >
               <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-white/[0.06] text-white/70">
-                <Github size={16} />
+                <GithubLogo size={16} />
               </span>
               <span>
-                <span className="block font-mono text-[10px] tracking-widest text-white/40 uppercase">
+                <span className="block text-[11px] text-white/40">
                   GitHub
                 </span>
                 <span className="text-[15px] text-white/80 group-hover:text-[#9db2ff]">
                   github.com/ArielOsaze
+                </span>
+              </span>
+            </a>
+            <a
+              href={owner.linkedin}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="group surface flex items-center gap-4 p-4 transition-colors hover:border-[#5b7cfa]/40"
+            >
+              <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#5b7cfa]/12 text-[#9db2ff]">
+                <LinkedinLogo size={16} />
+              </span>
+              <span>
+                <span className="block text-[11px] text-white/40">LinkedIn</span>
+                <span className="text-[15px] text-white/80 group-hover:text-[#9db2ff]">
+                  linkedin.com/in/ariel-osaze-koinda-budi
                 </span>
               </span>
             </a>
@@ -107,9 +122,7 @@ export function Contact() {
                 <MapPin size={16} />
               </span>
               <span>
-                <span className="block font-mono text-[10px] tracking-widest text-white/40 uppercase">
-                  Lokasi
-                </span>
+                <span className="block text-[11px] text-white/40">Lokasi</span>
                 <span className="text-[15px] text-white/80">{owner.location} · WIB (UTC+7)</span>
               </span>
             </div>
@@ -121,14 +134,14 @@ export function Contact() {
           <div className="surface relative overflow-hidden p-8 shadow-[0_24px_80px_rgba(0,0,0,.5)]">
             <div className="absolute -top-16 -right-16 h-44 w-44 rounded-full bg-[#5b7cfa]/10 blur-3xl" />
 
-            <Sparkles className="text-[#9db2ff]" size={22} />
+            <Sparkle className="text-[#9db2ff]" size={22} />
             <h3 className="mt-4 text-2xl leading-snug font-bold text-white">{owner.name}</h3>
             <p className="mt-1 font-mono text-xs text-[#9db2ff]">{owner.role}</p>
             <p className="mt-5 text-[13px] leading-relaxed text-white/45">{owner.bio[1]}</p>
 
             <div className="mt-7 grid grid-cols-2 gap-3 border-t border-[#2b3037] pt-6">
               <div>
-                <p className="text-2xl font-bold text-white">8</p>
+                <p className="text-2xl font-bold text-white">7</p>
                 <p className="text-[11px] text-white/40">proyek nyata</p>
               </div>
               <div>

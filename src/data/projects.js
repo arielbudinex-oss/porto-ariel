@@ -10,6 +10,7 @@ export const owner = {
   location: "Indonesia",
   email: "arielbudi4@gmail.com",
   github: "https://github.com/ArielOsaze",
+  linkedin: "https://www.linkedin.com/in/ariel-osaze-koinda-budi-991b5a284",
   xinet: "Xinet.id — Build what's next",
   tagline:
     "Membangun produk digital yang benar-benar dipakai — dari marketplace pembayaran, gateway pesan multi-akun, sampai aplikasi desktop pembukuan pajak.",
@@ -92,7 +93,7 @@ export const topSkills = [
 ];
 
 export const stats = [
-  { label: "Proyek nyata", value: 8, suffix: "" },
+  { label: "Proyek nyata", value: 7, suffix: "" },
   { label: "Baris kode ditulis", value: 265, suffix: "rb+" },
   { label: "Produk live", value: 4, suffix: "" },
   { label: "Skrip uji otomatis", value: 265, suffix: "+" },
@@ -392,51 +393,12 @@ export const projects = [
     ],
   },
   {
-    id: "nexplay",
-    name: "NexPlay",
-    tag: "Marketplace Gaming (Demo Teknis)",
-    url: null,
-    github: "https://github.com/ArielOsaze",
-    accent: "#ffb020",
-    accent2: "#ff5c77",
-    blurb:
-      "Eksperimen marketplace game digital — fondasi yang kemudian tumbuh menjadi NexShop: auth JWT, keranjang, dan alur pesanan.",
-    role: "Full-stack — Express + frontend vanilla",
-    status: "Proyek pendahulu NexShop",
-    story:
-      "NexPlay adalah tempat banyak pola NexShop diuji pertama kali: backend Express dengan route auth & order terpisah, middleware JWT, dan frontend vanilla yang bicara ke API. Pelajarannya — validasi input, penanganan error yang tidak mematikan proses, dan struktur folder yang disiplin — langsung dipakai di proyek produksi berikutnya.",
-    metrics: [
-      { value: "2", label: "modul route" },
-      { value: "JWT", label: "autentikasi" },
-      { value: "0→1", label: "fondasi NexShop" },
-      { value: "REST", label: "arsitektur API" },
-    ],
-    features: [
-      {
-        title: "Autentikasi JWT",
-        desc: "Login/registrasi dengan token, middleware verifikasi, dan endpoint profil terproteksi.",
-      },
-      {
-        title: "Alur pesanan",
-        desc: "Route pesanan terpisah dari auth — pemisahan yang menjadi standar semua proyek setelahnya.",
-      },
-      {
-        title: "Frontend vanilla",
-        desc: "HTML/CSS/JS tanpa framework — disiplin DOM dan state manual sebelum pindah ke React.",
-      },
-    ],
-    stack: ["Node.js", "Express", "JWT", "Vanilla JS", "REST"],
-    screenshots: [
-      { src: "/assets/projects/nexplay/01-hero.png", caption: "Hero NexPlay — marketplace gaming digital" },
-    ],
-    proof: ["Pola route/middleware yang diuji di sini dipakai ulang di NexShop & SayBot"],
-  },
-  {
     id: "waapi",
     name: "WhatsApp WA API",
     tag: "REST API WhatsApp",
     url: null,
     github: "https://github.com/ArielOsaze",
+  linkedin: "https://www.linkedin.com/in/ariel-osaze-koinda-budi-991b5a284",
     accent: "#25d366",
     accent2: "#5ee98a",
     blurb:
@@ -475,6 +437,7 @@ export const projects = [
     tag: "Alat Uji Ketahanan Berizin",
     url: null,
     github: "https://github.com/ArielOsaze",
+  linkedin: "https://www.linkedin.com/in/ariel-osaze-koinda-budi-991b5a284",
     accent: "#3776ab",
     accent2: "#ffd43b",
     blurb:
@@ -555,8 +518,8 @@ export const projects = [
 export const journey = [
   {
     step: "Fondasi",
-    title: "NexPlay & pola dasar",
-    desc: "Auth JWT, route terpisah, disiplin struktur — pola yang dipakai semua proyek setelahnya.",
+    title: "Pola dasar & disiplin struktur",
+    desc: "Auth JWT, route terpisah, validasi input — pola yang dipakai semua proyek setelahnya.",
   },
   {
     step: "Skala",

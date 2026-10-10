@@ -182,15 +182,6 @@ export function NeonReveal({ children, className = "", color = "#d4d4d8" }) {
     <div className={`relative ${className}`} style={{ "--neon": color }}>
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-6 -top-px h-px"
-        style={{
-          background: `linear-gradient(90deg, transparent, var(--neon), transparent)`,
-          boxShadow: `0 0 14px 2px var(--neon)`,
-          animation: "neonFlicker 5.2s ease-in-out infinite",
-        }}
-      />
-      <div
-        aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-40"
         style={{
           background: `radial-gradient(60% 100% at 50% 0%, color-mix(in srgb, var(--neon) 16%, transparent), transparent 70%)`,
@@ -482,7 +473,7 @@ export function DepthCarousel({ slides = [], className = "", auto = 3600 }) {
                 filter: abs > 0 ? `blur(${abs * 1.4}px)` : "none",
               }}
             >
-              <p className="font-mono text-[10px] tracking-[0.22em] text-neon uppercase">{s.kicker}</p>
+              <p className="text-[11px] font-medium text-neon ">{s.kicker}</p>
               <p className="mt-2 font-display text-lg font-semibold text-frost">{s.title}</p>
               <p className="mt-1.5 text-[13px] text-mist">{s.desc}</p>
             </div>

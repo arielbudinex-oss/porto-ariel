@@ -1,7 +1,7 @@
 import { skills, principles } from "../data/projects";
 import CountUp from "./rb/TextAnimations/CountUp/CountUp";
 import BlurText from "./rb/TextAnimations/BlurText/BlurText";
-import { Terminal, Cpu, Database, Cloud, Lock, Plug } from "lucide-react";
+import { TerminalWindow, Cpu, Database, Cloud, Lock, Plugs } from "@phosphor-icons/react";
 import {
   SiReact, SiNodedotjs, SiTypescript, SiPython, SiSharp, SiPostgresql,
   SiSupabase, SiRedis, SiDocker, SiNginx, SiVercel, SiTailwindcss,
@@ -10,12 +10,12 @@ import {
 } from "react-icons/si";
 
 const ICONS = {
-  "Backend & API": Terminal,
+  "Backend & API": TerminalWindow,
   Frontend: Cpu,
   Database: Database,
   Infrastruktur: Cloud,
   Keamanan: Lock,
-  "Integrasi & AI": Plug,
+  "Integrasi & AI": Plugs,
 };
 
 // logo untuk baris berjalan
@@ -53,7 +53,7 @@ export default function Skills() {
 
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-2xl">
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#9db2ff] uppercase">03 — Keahlian</p>
+          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">03 — Keahlian</p>
           <BlurText
             text="Tumpukan teknologi yang benar-benar kupakai di produksi."
             delay={26}
@@ -79,7 +79,7 @@ export default function Skills() {
 
         <div className="grid gap-4 lg:grid-cols-3">
           {entries.map(([group, items]) => {
-            const Icon = ICONS[group] ?? Terminal;
+            const Icon = ICONS[group] ?? TerminalWindow;
             return (
               <div key={group} className="surface p-6 transition-colors duration-300 hover:border-[#5b7cfa]/30">
                 <div className="mb-4 flex items-center gap-3">
@@ -104,7 +104,7 @@ export default function Skills() {
 
           {/* kartu ringkasan angka */}
           <div className="surface flex flex-col justify-center p-6">
-            <p className="font-mono text-[10px] tracking-[0.22em] text-white/35 uppercase">Total</p>
+            <p className="text-[11px] text-white/35">Total</p>
             <p className="mt-2 text-4xl font-bold text-white">
               <CountUp to={total} duration={1.4} />
             </p>

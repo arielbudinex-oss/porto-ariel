@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowDown, ExternalLink, Github } from "lucide-react";
+import { ArrowDown, ArrowSquareOut, GithubLogo } from "@phosphor-icons/react";
 import { owner, stats, projects } from "../data/projects";
 import { RotatingWord } from "./RotatingWord";
 import CountUp from "./rb/TextAnimations/CountUp/CountUp";
@@ -71,7 +71,7 @@ export default function Hero() {
               rel="noreferrer noopener"
               className="btn-ghost inline-flex items-center gap-2 px-6 py-3.5 text-[15px] font-medium"
             >
-              <Github size={16} /> github.com/ArielOsaze
+              <GithubLogo size={16} /> github.com/ArielOsaze
             </a>
           </div>
 
@@ -124,7 +124,7 @@ export default function Hero() {
                     >
                       {p.name}
                     </a>
-                    <ExternalLink size={11} className="text-white/25" />
+                    <ArrowSquareOut size={13} className="text-white/30" />
                   </li>
                 ))}
               </ul>
@@ -134,7 +134,7 @@ export default function Hero() {
                 <span className="caret ml-2 inline-block h-3.5 w-[7px] bg-[#5b7cfa] align-middle" />
               </p>
               <div className="space-y-1 pl-4 text-[12px] text-white/50">
-                <p>✓ 265.000+ baris kode · 8 proyek</p>
+                <p>✓ 265.000+ baris kode · 7 proyek</p>
                 <p>✓ 265+ skrip uji otomatis</p>
                 <p>✓ 4 domain produksi</p>
               </div>
@@ -158,7 +158,7 @@ export default function Hero() {
         href="#proyek"
         className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/35 transition-colors hover:text-[#9db2ff] md:flex"
       >
-        <span className="font-mono text-[10px] tracking-[0.25em] uppercase">gulir</span>
+        <span className="text-[11px] tracking-[0.06em] text-white/35 uppercase">gulir</span>
         <span className="grid h-9 w-5 place-items-start rounded-full border border-white/15 p-1">
           <span className="h-2 w-2 animate-bounce rounded-full bg-[#5b7cfa]" />
         </span>

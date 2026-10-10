@@ -18,7 +18,7 @@ import Silk from "./rb/Backgrounds/Silk/Silk";
 import Topography from "./rb/Backgrounds/Topography/Topography";
 import Galaxy from "./rb/Backgrounds/Galaxy/Galaxy";
 import DotGrid from "./rb/Backgrounds/DotGrid/DotGrid";
-import { Radio, Sparkles, Move3d, Layers3 } from "lucide-react";
+import { Broadcast, Sparkle, Cube, Stack } from "@phosphor-icons/react";
 
 // Aksen palet — emerald tua + krem hangat
 const ACCENT = "#5b7cfa";
@@ -167,7 +167,7 @@ export default function Lab() {
     <section id="lab" className="relative overflow-hidden py-28">
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-3xl">
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#9db2ff] uppercase">04 — Lab Efek</p>
+          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">04 — Lab Efek</p>
           <h2 className="text-4xl font-bold tracking-[-0.02em] md:text-5xl">
             <GradientText colors={["#fff", "#9aa3ad", "#9db2ff", "#fff"]} animationSpeed={8} className="text-4xl font-bold md:text-5xl">
               Efek yang kupakai
@@ -191,11 +191,11 @@ export default function Lab() {
               >
                 <div className="flex items-start justify-between gap-3 p-5 pb-3">
                   <div>
-                    <p className="font-mono text-[10px] tracking-[0.2em] text-[#9db2ff] uppercase">{c.kicker}</p>
+                    <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">{c.kicker}</p>
                     <h3 className="mt-1 text-[17px] font-semibold text-white">{c.title}</h3>
                   </div>
                   <span className="rounded-lg border border-[#2b3037] bg-[#0e1013] p-1.5 text-white/40">
-                    {i % 4 === 0 ? <Radio size={13} /> : i % 4 === 1 ? <Move3d size={13} /> : i % 4 === 2 ? <Layers3 size={13} /> : <Sparkles size={13} />}
+                    {i % 4 === 0 ? <Broadcast size={13} /> : i % 4 === 1 ? <Cube size={13} /> : i % 4 === 2 ? <Stack size={13} /> : <Sparkle size={13} />}
                   </span>
                 </div>
 
@@ -215,7 +215,7 @@ export default function Lab() {
         <div className="mt-14 grid gap-4 lg:grid-cols-3">
           <SpotlightCard className="surface rounded-[14px]" spotlightColor="rgba(91,124,250,0.28)" intensity={0.4}>
             <div className="p-6">
-              <p className="font-mono text-[10px] tracking-[0.2em] text-[#9db2ff] uppercase">Interaktif</p>
+              <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">Interaktif</p>
               <h3 className="mt-1 text-[17px] font-semibold text-white">Spotlight Card</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-white/45">
                 Sorotan lembut mengikuti kursor di permukaan kartu — kupakai untuk kartu proyek supaya terasa hidup tanpa ramai.
@@ -224,7 +224,7 @@ export default function Lab() {
           </SpotlightCard>
 
           <div className="surface p-6">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#9db2ff] uppercase">Teks</p>
+            <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">Teks</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Decrypted Text</h3>
             <p className="mt-3 font-mono text-[13px] text-white/70">
               <DecryptedText
@@ -247,7 +247,7 @@ export default function Lab() {
           </div>
 
           <div className="surface p-6">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#9db2ff] uppercase">Teks</p>
+            <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">Teks</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Shiny Text</h3>
             <div className="mt-5 grid place-items-center py-3">
               <ShinyText
@@ -270,14 +270,14 @@ export default function Lab() {
         {/* baris angka & kartu miring */}
         <div className="mt-14 grid gap-4 lg:grid-cols-[1fr_1.2fr]">
           <div className="surface flex flex-col justify-center p-7">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#9db2ff] uppercase">Hitungan</p>
+            <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">Hitungan</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Angka yang naik</h3>
             <p className="mt-2 text-[13px] leading-relaxed text-white/45">
               Angka bergerak naik saat masuk layar — dipakai di ringkasan supaya capaian terasa, bukan sekadar terbaca.
             </p>
             <div className="mt-6 grid grid-cols-2 gap-5">
               {[
-                { v: 8, l: "proyek" },
+                { v: 7, l: "proyek" },
                 { v: 265, s: "rb+", l: "baris kode" },
                 { v: 4, l: "produk live" },
                 { v: 265, s: "+", l: "skrip uji" },
@@ -294,7 +294,7 @@ export default function Lab() {
           </div>
 
           <div className="surface p-7">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#9db2ff] uppercase">Miring</p>
+            <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">Miring</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Kartu yang mengikuti kursor</h3>
             <p className="mt-2 text-[13px] leading-relaxed text-white/45">
               Kartu miring mengikuti arah kursor, seperti memegang foto — kupakai untuk pratinjau karya.

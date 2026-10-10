@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Github } from "lucide-react";
+import { List, X, GithubLogo } from "@phosphor-icons/react";
 import { owner } from "../data/projects";
 import ShinyText from "./rb/TextAnimations/ShinyText/ShinyText";
 
@@ -75,7 +75,7 @@ export default function Nav() {
             rel="noreferrer noopener"
             className="ml-2 inline-flex items-center gap-2 rounded-full bg-[#5b7cfa] px-4 py-2 text-[14px] font-semibold text-white shadow-[0_2px_14px_rgba(91,124,250,.28)] transition-transform hover:scale-[1.03]"
           >
-            <Github size={15} /> GitHub
+            <GithubLogo size={15} /> GitHub
           </a>
         </div>
 
@@ -84,7 +84,7 @@ export default function Nav() {
           className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/[0.05] text-white md:hidden"
           aria-label="Menu"
         >
-          {open ? <X size={18} /> : <Menu size={18} />}
+          {open ? <X size={18} /> : <List size={18} />}
         </button>
       </nav>
 
@@ -107,7 +107,7 @@ export default function Nav() {
             onClick={() => setOpen(false)}
             className="mt-1 flex items-center gap-2 rounded-xl bg-[#5b7cfa]/15 px-4 py-3 text-[14px] text-[#9db2ff]"
           >
-            <Github size={15} /> github.com/ArielOsaze
+            <GithubLogo size={15} /> github.com/ArielOsaze
           </a>
         </div>
       )}
