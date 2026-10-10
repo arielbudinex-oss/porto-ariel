@@ -493,17 +493,17 @@ export function ComparisonSlider({ before, after, label, className = "" }) {
       />
 
       <div
-        className="absolute inset-y-0 z-10 w-0.5 bg-[#e2a442] shadow-[0_0_18px_rgba(226,164,66,.7)]"
+        className="absolute inset-y-0 z-10 w-0.5 bg-[#c8a45c] shadow-[0_0_18px_rgba(200,164,92,.7)]"
         style={{ left: `${pos}%` }}
       >
-        <div className="absolute top-1/2 left-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full border-2 border-[#e2a442] bg-black/95 text-[#e2a442] shadow-[0_0_20px_rgba(226,164,66,.5)] backdrop-blur">
+        <div className="absolute top-1/2 left-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full border-2 border-[#c8a45c] bg-black/95 text-[#c8a45c] shadow-[0_0_20px_rgba(200,164,92,.5)] backdrop-blur">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
             <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" />
           </svg>
         </div>
         {/* label mengikuti handle */}
         <div
-          className="absolute top-1/2 mt-9 -translate-x-1/2 rounded-full bg-black/90 px-2.5 py-1 font-mono text-[10px] whitespace-nowrap text-[#e2a442] backdrop-blur"
+          className="absolute top-1/2 mt-9 -translate-x-1/2 rounded-full bg-black/90 px-2.5 py-1 font-mono text-[10px] whitespace-nowrap text-[#c8a45c] backdrop-blur"
           style={{ left: "50%" }}
         >
           geser ⇄
@@ -512,7 +512,7 @@ export function ComparisonSlider({ before, after, label, className = "" }) {
       <div className="absolute bottom-3 left-3 rounded-full border border-white/20 bg-black/85 px-3.5 py-1.5 text-xs font-semibold text-white backdrop-blur">
         ← DESAIN LAMA
       </div>
-      <div className="absolute right-3 bottom-3 rounded-full border border-[#e2a442]/40 bg-[#e2a442]/20 px-3.5 py-1.5 text-xs font-semibold text-[#f3c778] backdrop-blur">
+      <div className="absolute right-3 bottom-3 rounded-full border border-[#c8a45c]/40 bg-[#c8a45c]/20 px-3.5 py-1.5 text-xs font-semibold text-[#ddc38f] backdrop-blur">
         DESAIN BARU →
       </div>
       {label && (

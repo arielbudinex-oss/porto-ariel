@@ -43,7 +43,7 @@ export default function Nav() {
       <nav
         className={`mx-auto flex max-w-[1324px] items-center justify-between rounded-[14px] px-2 py-2 pl-5 transition-all duration-500 ${
           scrolled
-            ? "border border-white/[0.07] bg-[#0c0a09]/45 shadow-[0_8px_32px_rgba(0,0,0,.28),inset_0_.5px_0_rgba(255,255,255,.08)] backdrop-blur-2xl backdrop-saturate-150"
+            ? "border border-white/[0.07] bg-[#0a0a0b]/45 shadow-[0_8px_32px_rgba(0,0,0,.28),inset_0_.5px_0_rgba(255,255,255,.08)] backdrop-blur-2xl backdrop-saturate-150"
             : "border border-transparent"
         }`}
       >
@@ -66,14 +66,14 @@ export default function Nav() {
               }`}
             >
               {l.label}
-              {active === l.href && <span className="absolute inset-x-3.5 bottom-1 h-px bg-[#e2a442]" />}
+              {active === l.href && <span className="absolute inset-x-3.5 bottom-1 h-px bg-[#c8a45c]" />}
             </a>
           ))}
           <a
             href={owner.github}
             target="_blank"
             rel="noreferrer noopener"
-            className="ml-2 inline-flex items-center gap-2 rounded-full bg-[#e2a442] px-4 py-2 text-[14px] font-medium text-[#1a1206] transition-opacity hover:opacity-90"
+            className="ml-2 inline-flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-semibold text-[#1a1206] shadow-[0_2px_14px_rgba(200,164,92,.28)] transition-transform hover:scale-[1.03]" style={{ backgroundImage: "linear-gradient(160deg,#f0dcae 0%,#c8a45c 45%,#a8843f 100%)" }}
           >
             <Github size={15} /> GitHub
           </a>
@@ -105,7 +105,7 @@ export default function Nav() {
             target="_blank"
             rel="noreferrer noopener"
             onClick={() => setOpen(false)}
-            className="mt-1 flex items-center gap-2 rounded-xl bg-[#e2a442]/15 px-4 py-3 text-[14px] text-[#f3c778]"
+            className="mt-1 flex items-center gap-2 rounded-xl bg-[#c8a45c]/15 px-4 py-3 text-[14px] text-[#ddc38f]"
           >
             <Github size={15} /> github.com/ArielOsaze
           </a>

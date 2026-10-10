@@ -23,20 +23,20 @@ import DotGrid from "./rb/Backgrounds/DotGrid/DotGrid";
 import { Radio, Sparkles, Move3d, Layers3 } from "lucide-react";
 
 const CARDS = [
-  { kicker: "Latar", title: "Aurora", desc: "Cahaya utara bergelombang dengan warna yang mengalir pelan.", C: Aurora, span: "lg:col-span-2", props: { colorStops: ["#e2a442", "#b4551f", "#f3c778"], amplitude: 1.0, blend: 0.5 } },
-  { kicker: "Partikel", title: "Particles", desc: "Partikel 3D yang bergerak lembut dan bereaksi pada kursor.", C: Particles, props: { particleCount: 180, particleSpread: 12, speed: 0.08, particleColors: ["#f3c778", "#e2a442", "#fff5e6"], moveParticlesOnHover: true, particleBaseSize: 90, alphaParticles: true } },
-  { kicker: "Teks", title: "Letter Glitch", desc: "Grid huruf yang berkedip acak seperti sinyal rusak.", C: LetterGlitch, props: { glitchColors: ["#5c2e0d", "#e2a442", "#f3c778"], glitchSpeed: 60, smooth: true, outerVignette: true } },
-  { kicker: "Latar", title: "Orb", desc: "Bola energi yang berdenyut dan bereaksi pada kursor.", C: Orb, props: { hue: 36, hoverIntensity: 0.4, rotateOnHover: true, backgroundColor: "#0c0a09" } },
+  { kicker: "Latar", title: "Aurora", desc: "Cahaya utara bergelombang dengan warna yang mengalir pelan.", C: Aurora, span: "lg:col-span-2", props: { colorStops: ["#c8a45c", "#8f7338", "#ddc38f"], amplitude: 1.0, blend: 0.5 } },
+  { kicker: "Partikel", title: "Particles", desc: "Partikel 3D yang bergerak lembut dan bereaksi pada kursor.", C: Particles, props: { particleCount: 180, particleSpread: 12, speed: 0.08, particleColors: ["#ddc38f", "#c8a45c", "#fdf9f0"], moveParticlesOnHover: true, particleBaseSize: 90, alphaParticles: true } },
+  { kicker: "Teks", title: "Letter Glitch", desc: "Grid huruf yang berkedip acak seperti sinyal rusak.", C: LetterGlitch, props: { glitchColors: ["#5c2e0d", "#c8a45c", "#ddc38f"], glitchSpeed: 60, smooth: true, outerVignette: true } },
+  { kicker: "Latar", title: "Orb", desc: "Bola energi yang berdenyut dan bereaksi pada kursor.", C: Orb, props: { hue: 42, hoverIntensity: 0.4, rotateOnHover: true, backgroundColor: "#0a0a0b" } },
   { kicker: "Latar", title: "Hyperspeed", desc: "Terowongan cahaya melaju seperti lompatan antar bintang.", C: Hyperspeed, span: "lg:col-span-2" },
-  { kicker: "Latar", title: "Balatro", desc: "Pola fraktal berputar dengan kontras tinggi.", C: Balatro, props: { color1: "#e2a442", color2: "#0c0a09", color3: "#f3c778", speed: 0.6, spinAmount: 0.6, contrast: 3.2 } },
-  { kicker: "Latar", title: "Dark Veil", desc: "Tirai gelap bergelombang yang bergerak perlahan.", C: DarkVeil, props: { hueShift: 36, speed: 0.5 } },
-  { kicker: "Latar", title: "Light Rays", desc: "Berkas cahaya dari atas yang mengikuti kursor.", C: LightRays, props: { raysOrigin: "top-center", raysColor: "#f3c778", raysSpeed: 0.8, lightSpread: 1.1, rayLength: 1.6, followMouse: true, pulsating: false } },
-  { kicker: "Latar", title: "Threads", desc: "Benang-benang halus yang mengalir seperti kain.", C: Threads, props: { color: [0.89, 0.64, 0.26], amplitude: 1.4, distance: 0.4, lineCount: 70, thickness: 0.7, speed: 0.5 } },
-  { kicker: "Latar", title: "Beams", desc: "Balok cahaya bersilangan dengan noise halus.", C: Beams, props: { beamWidth: 2.2, beamHeight: 16, beamNumber: 10, lightColor: "#d4d4d8", beamColor: "#ffffff", backgroundColor: "#0c0a09", speed: 2, noiseIntensity: 1.6, scale: 0.22 } },
+  { kicker: "Latar", title: "Balatro", desc: "Pola fraktal berputar dengan kontras tinggi.", C: Balatro, props: { color1: "#c8a45c", color2: "#0a0a0b", color3: "#ddc38f", speed: 0.6, spinAmount: 0.6, contrast: 3.2 } },
+  { kicker: "Latar", title: "Dark Veil", desc: "Tirai gelap bergelombang yang bergerak perlahan.", C: DarkVeil, props: { hueShift: 42, speed: 0.5 } },
+  { kicker: "Latar", title: "Light Rays", desc: "Berkas cahaya dari atas yang mengikuti kursor.", C: LightRays, props: { raysOrigin: "top-center", raysColor: "#ddc38f", raysSpeed: 0.8, lightSpread: 1.1, rayLength: 1.6, followMouse: true, pulsating: false } },
+  { kicker: "Latar", title: "Threads", desc: "Benang-benang halus yang mengalir seperti kain.", C: Threads, props: { color: [0.78, 0.64, 0.36], amplitude: 1.4, distance: 0.4, lineCount: 70, thickness: 0.7, speed: 0.5 } },
+  { kicker: "Latar", title: "Beams", desc: "Balok cahaya bersilangan dengan noise halus.", C: Beams, props: { beamWidth: 2.2, beamHeight: 16, beamNumber: 10, lightColor: "#d4d4d8", beamColor: "#ffffff", backgroundColor: "#0a0a0b", speed: 2, noiseIntensity: 1.6, scale: 0.22 } },
   { kicker: "Latar", title: "Silk", desc: "Kain sutra yang bergelombang lembut.", C: Silk, props: { speed: 3, scale: 1.1, color: "#ffffff", noiseIntensity: 1.2 } },
-  { kicker: "Latar", title: "Iridescence", desc: "Warna pelangi tipis yang berpendar seperti minyak.", C: Iridescence, props: { color: [0.89, 0.64, 0.26], speed: 0.9, amplitude: 0.12 } },
-  { kicker: "Latar", title: "Galaxy", desc: "Galaksi berputar dengan bintang-bintang kecil.", C: Galaxy, props: { hueShift: 36, density: 1.1, speed: 0.8 } },
-  { kicker: "Interaktif", title: "Dot Grid", desc: "Titik-titik yang memantul mengikuti gerak kursor.", C: DotGrid, props: { dotSize: 3, gap: 22, baseColor: "#2a2521", activeColor: "#ffffff", proximity: 110, shockRadius: 220, resistance: 750, returnDuration: 1.4 } },
+  { kicker: "Latar", title: "Iridescence", desc: "Warna pelangi tipis yang berpendar seperti minyak.", C: Iridescence, props: { color: [0.78, 0.64, 0.36], speed: 0.9, amplitude: 0.12 } },
+  { kicker: "Latar", title: "Galaxy", desc: "Galaksi berputar dengan bintang-bintang kecil.", C: Galaxy, props: { hueShift: 42, density: 1.1, speed: 0.8 } },
+  { kicker: "Interaktif", title: "Dot Grid", desc: "Titik-titik yang memantul mengikuti gerak kursor.", C: DotGrid, props: { dotSize: 3, gap: 22, baseColor: "#2a2a2c", activeColor: "#ffffff", proximity: 110, shockRadius: 220, resistance: 750, returnDuration: 1.4 } },
 ];
 
 export default function Lab() {
@@ -44,7 +44,7 @@ export default function Lab() {
     <section id="lab" className="relative overflow-hidden py-28">
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-3xl">
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#f3c778] uppercase">04 — Lab Efek</p>
+          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#ddc38f] uppercase">04 — Lab Efek</p>
           <h2 className="text-4xl font-bold tracking-[-0.02em] md:text-5xl">
             <GradientText
               colors={["#fff", "#a1a1aa", "#d4d4d8", "#fff"]}
@@ -68,19 +68,19 @@ export default function Lab() {
             return (
               <article
                 key={c.title}
-                className={`surface group relative overflow-hidden transition-colors duration-300 hover:border-[#e2a442]/30 ${c.span ?? ""}`}
+                className={`surface group relative overflow-hidden transition-colors duration-300 hover:border-[#c8a45c]/30 ${c.span ?? ""}`}
               >
                 <div className="flex items-start justify-between gap-3 p-5 pb-3">
                   <div>
-                    <p className="font-mono text-[10px] tracking-[0.2em] text-[#f3c778] uppercase">{c.kicker}</p>
+                    <p className="font-mono text-[10px] tracking-[0.2em] text-[#ddc38f] uppercase">{c.kicker}</p>
                     <h3 className="mt-1 text-[17px] font-semibold text-white">{c.title}</h3>
                   </div>
-                  <span className="rounded-lg border border-[#2a2521] bg-[#0c0a09] p-1.5 text-white/40">
+                  <span className="rounded-lg border border-[#2a2a2c] bg-[#0a0a0b] p-1.5 text-white/40">
                     {i % 4 === 0 ? <Radio size={13} /> : i % 4 === 1 ? <Move3d size={13} /> : i % 4 === 2 ? <Layers3 size={13} /> : <Sparkles size={13} />}
                   </span>
                 </div>
 
-                <div className="relative mx-5 mb-3 h-52 overflow-hidden rounded-[10px] border border-[#2a2521] bg-[#0f0f0f]">
+                <div className="relative mx-5 mb-3 h-52 overflow-hidden rounded-[10px] border border-[#2a2a2c] bg-[#0f0f0f]">
                   <div className="absolute inset-0">
                     <Comp {...(c.props ?? {})} />
                   </div>
@@ -100,7 +100,7 @@ export default function Lab() {
             intensity={0.4}
           >
             <div className="p-6">
-              <p className="font-mono text-[10px] tracking-[0.2em] text-[#f3c778] uppercase">Interaktif</p>
+              <p className="font-mono text-[10px] tracking-[0.2em] text-[#ddc38f] uppercase">Interaktif</p>
               <h3 className="mt-1 text-[17px] font-semibold text-white">Spotlight Card</h3>
               <p className="mt-2 text-[13px] text-white/45">
                 Sorotan lembut mengikuti kursor di permukaan kartu.
@@ -109,7 +109,7 @@ export default function Lab() {
           </SpotlightCard>
 
           <div className="surface p-6">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#f3c778] uppercase">Teks</p>
+            <p className="font-mono text-[10px] tracking-[0.2em] text-[#ddc38f] uppercase">Teks</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Decrypted Text</h3>
             <p className="mt-3 font-mono text-[13px] text-white/70">
               <DecryptedText
@@ -123,16 +123,16 @@ export default function Lab() {
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <StarBorder as="span" color="#ffffff" speed="4s" thickness={1}>
-                <span className="px-3 py-1.5 font-mono text-[11px] text-[#f3c778]">Star Border</span>
+                <span className="px-3 py-1.5 font-mono text-[11px] text-[#ddc38f]">Star Border</span>
               </StarBorder>
-              <span className="rounded-lg border border-[#2a2521] bg-[#0c0a09] px-3 py-1.5 font-mono text-[11px] text-white/45">
+              <span className="rounded-lg border border-[#2a2a2c] bg-[#0a0a0b] px-3 py-1.5 font-mono text-[11px] text-white/45">
                 215 komponen animasi
               </span>
             </div>
           </div>
 
           <div className="surface p-6">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#f3c778] uppercase">Menyala</p>
+            <p className="font-mono text-[10px] tracking-[0.2em] text-[#ddc38f] uppercase">Menyala</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Glitch Text</h3>
             <div className="mt-4 grid place-items-center py-2">
               <GlitchText speed={1.3} enableShadows enableOnHover={false} className="text-2xl font-bold">
@@ -148,7 +148,7 @@ export default function Lab() {
         {/* baris angka & kartu miring */}
         <div className="mt-14 grid gap-4 lg:grid-cols-[1fr_1.2fr]">
           <div className="surface flex flex-col justify-center p-7">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#f3c778] uppercase">Hitungan</p>
+            <p className="font-mono text-[10px] tracking-[0.2em] text-[#ddc38f] uppercase">Hitungan</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Angka yang naik</h3>
             <div className="mt-6 grid grid-cols-2 gap-5">
               {[
@@ -160,7 +160,7 @@ export default function Lab() {
                 <div key={x.l}>
                   <p className="text-3xl font-bold text-white">
                     <CountUp to={x.v} duration={1.5} separator="." />
-                    <span className="text-[#e2a442]">{x.s ?? ""}</span>
+                    <span className="text-[#c8a45c]">{x.s ?? ""}</span>
                   </p>
                   <p className="mt-1 text-[11px] tracking-[0.06em] text-white/40 uppercase">{x.l}</p>
                 </div>
@@ -169,7 +169,7 @@ export default function Lab() {
           </div>
 
           <div className="surface p-7">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#f3c778] uppercase">Miring</p>
+            <p className="font-mono text-[10px] tracking-[0.2em] text-[#ddc38f] uppercase">Miring</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Kartu yang mengikuti kursor</h3>
             <div className="mt-5 grid place-items-center">
               <TiltedCard

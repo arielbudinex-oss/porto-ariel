@@ -1,27 +1,29 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   PALET & FONT — aksen hangat: amber & merah (warna asli produk LumaWall).
-   Bukan cyan/teal (khas AI), bukan ungu. Latar gelap netral hangat.
+   PALET & FONT — premium: hitam pekat + emas champagne.
+   Emas dipakai HEMAT (aksen kecil), teks utama putih bersih.
+   Bukan ungu, bukan cyan, bukan oranye pekat.
    ───────────────────────────────────────────────────────────────────────────── */
 @theme {
-  --color-ink: #0c0a09;        /* latar utama */
-  --color-ink-2: #161311;      /* permukaan kartu */
-  --color-ink-3: #1f1b18;      /* permukaan naik */
-  --color-line: #2a2521;       /* garis batas */
-  --color-mist: #b8ada4;       /* teks redup */
-  --color-dim: #7d736b;        /* teks lebih redup */
-  --color-frost: #faf7f4;
-  --color-accent: #e2a442;     /* aksen utama — amber */
-  --color-accent-soft: #f3c778;
-  --color-crimson: #e83137;    /* merah LumaWall */
+  --color-ink: #0a0a0b;        /* hitam pekat */
+  --color-ink-2: #131314;      /* permukaan kartu */
+  --color-ink-3: #1c1c1e;      /* permukaan naik */
+  --color-line: #2a2a2c;       /* garis batas */
+  --color-mist: #a6a6a8;       /* teks redup */
+  --color-dim: #6e6e70;        /* teks lebih redup */
+  --color-frost: #fafafa;
+  --color-accent: #c8a45c;     /* emas champagne — aksen utama */
+  --color-accent-soft: #ddc38f;
+  --color-accent-deep: #8f7338;
+  --color-crimson: #c94f4f;    /* merah lembut */
 
   /* alias — dipakai sebagian komponen agar tidak perlu diubah satu per satu */
-  --color-neon: #f3c778;
-  --color-violet: #e83137;
-  --color-magenta: #e2a442;
-  --color-amber: #e2a442;
-  --color-lime: #a3b565;
+  --color-neon: #ddc38f;
+  --color-violet: #8f7338;
+  --color-magenta: #c8a45c;
+  --color-amber: #c8a45c;
+  --color-lime: #7f9c6e;
 
   --font-sans: "Geist", "Segoe UI", system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", monospace;
@@ -114,7 +116,7 @@ body {
 
 /* judul dengan gradient (dipakai hemat) */
 .text-grad {
-  background: linear-gradient(135deg, #f3c778 0%, #e2a442 25%, #fff5e6 50%, #e2a442 75%, #f3c778 100%);
+  background: linear-gradient(135deg, #ddc38f 0%, #c8a45c 25%, #fdf9f0 50%, #c8a45c 75%, #ddc38f 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
