@@ -26,10 +26,10 @@ const CARDS = [
   { kicker: "Latar", title: "Aurora", desc: "Cahaya utara bergelombang dengan warna yang mengalir pelan.", C: Aurora, span: "lg:col-span-2", props: { colorStops: ["#c8a45c", "#8f7338", "#ddc38f"], amplitude: 1.0, blend: 0.5 } },
   { kicker: "Partikel", title: "Particles", desc: "Partikel 3D yang bergerak lembut dan bereaksi pada kursor.", C: Particles, props: { particleCount: 180, particleSpread: 12, speed: 0.08, particleColors: ["#ddc38f", "#c8a45c", "#fdf9f0"], moveParticlesOnHover: true, particleBaseSize: 90, alphaParticles: true } },
   { kicker: "Teks", title: "Letter Glitch", desc: "Grid huruf yang berkedip acak seperti sinyal rusak.", C: LetterGlitch, props: { glitchColors: ["#5c2e0d", "#c8a45c", "#ddc38f"], glitchSpeed: 60, smooth: true, outerVignette: true } },
-  { kicker: "Latar", title: "Orb", desc: "Bola energi yang berdenyut dan bereaksi pada kursor.", C: Orb, props: { hue: 42, hoverIntensity: 0.4, rotateOnHover: true, backgroundColor: "#0a0a0b" } },
+  { kicker: "Latar", title: "Orb", desc: "Bola energi yang berdenyut dan bereaksi pada kursor.", C: Orb, props: { hue: 0, hoverIntensity: 0.4, rotateOnHover: true, backgroundColor: "#0a0a0b" } },
   { kicker: "Latar", title: "Hyperspeed", desc: "Terowongan cahaya melaju seperti lompatan antar bintang.", C: Hyperspeed, span: "lg:col-span-2" },
   { kicker: "Latar", title: "Balatro", desc: "Pola fraktal berputar dengan kontras tinggi.", C: Balatro, props: { color1: "#c8a45c", color2: "#0a0a0b", color3: "#ddc38f", speed: 0.6, spinAmount: 0.6, contrast: 3.2 } },
-  { kicker: "Latar", title: "Dark Veil", desc: "Tirai gelap bergelombang yang bergerak perlahan.", C: DarkVeil, props: { hueShift: 42, speed: 0.5 } },
+  { kicker: "Latar", title: "Dark Veil", desc: "Tirai gelap bergelombang yang bergerak perlahan.", C: DarkVeil, props: { hueShift: 0, speed: 0.5 }, filter: "sepia(1) hue-rotate(-12deg) saturate(2.2) brightness(1.05)" },
   { kicker: "Latar", title: "Light Rays", desc: "Berkas cahaya dari atas yang mengikuti kursor.", C: LightRays, props: { raysOrigin: "top-center", raysColor: "#ddc38f", raysSpeed: 0.8, lightSpread: 1.1, rayLength: 1.6, followMouse: true, pulsating: false } },
   { kicker: "Latar", title: "Threads", desc: "Benang-benang halus yang mengalir seperti kain.", C: Threads, props: { color: [0.78, 0.64, 0.36], amplitude: 1.4, distance: 0.4, lineCount: 70, thickness: 0.7, speed: 0.5 } },
   { kicker: "Latar", title: "Beams", desc: "Balok cahaya bersilangan dengan noise halus.", C: Beams, props: { beamWidth: 2.2, beamHeight: 16, beamNumber: 10, lightColor: "#d4d4d8", beamColor: "#ffffff", backgroundColor: "#0a0a0b", speed: 2, noiseIntensity: 1.6, scale: 0.22 } },
@@ -81,7 +81,7 @@ export default function Lab() {
                 </div>
 
                 <div className="relative mx-5 mb-3 h-52 overflow-hidden rounded-[10px] border border-[#2a2a2c] bg-[#0f0f0f]">
-                  <div className="absolute inset-0">
+                  <div className="absolute inset-0" style={c.filter ? { filter: c.filter } : undefined}>
                     <Comp {...(c.props ?? {})} />
                   </div>
                 </div>
@@ -96,7 +96,7 @@ export default function Lab() {
         <div className="mt-14 grid gap-4 lg:grid-cols-3">
           <SpotlightCard
             className="surface rounded-[14px]"
-            spotlightColor="rgba(168,85,247,0.22)"
+            spotlightColor="rgba(200,164,92,0.22)"
             intensity={0.4}
           >
             <div className="p-6">
