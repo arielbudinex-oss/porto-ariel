@@ -50,7 +50,7 @@ const waitForFonts = async font => {
 };
 
 const ParticleText = ({
-  text = 'React Bits',
+  text = 'Portofolio',
   particleSize = 2,
   density = 4,
   color = '#ffffff',

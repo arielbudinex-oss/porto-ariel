@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Github } from "lucide-react";
 import { owner } from "../data/projects";
 import ShinyText from "./rb/TextAnimations/ShinyText/ShinyText";
 
@@ -39,19 +39,20 @@ export default function Nav() {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass-strong py-2.5" : "py-4"
-      }`}
-    >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8">
-        <a href="#atas" className="group flex items-center gap-3">
-          <span className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-xl border border-line bg-ink-2 font-display text-sm font-bold text-neon">
+    <header className="fixed top-5 right-0 left-0 z-50 px-6">
+      <nav
+        className={`mx-auto flex max-w-[1324px] items-center justify-between rounded-[14px] px-2 py-2 pl-5 transition-all duration-500 ${
+          scrolled
+            ? "border border-white/[0.07] bg-[#120f17]/45 shadow-[0_8px_32px_rgba(0,0,0,.28),inset_0_.5px_0_rgba(255,255,255,.08)] backdrop-blur-2xl backdrop-saturate-150"
+            : "border border-transparent"
+        }`}
+      >
+        <a href="#atas" className="flex items-center gap-3">
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-white/10 font-mono text-[13px] font-bold text-white">
             AO
-            <span className="absolute inset-0 shimmer" />
           </span>
-          <span className="hidden font-display text-sm font-semibold tracking-wide sm:block">
-            <ShinyText text="Ariel Osaze" speed={4} color="#8b93a7" shineColor="#e8ecf4" />
+          <span className="hidden text-[15px] font-medium sm:block">
+            <ShinyText text={owner.name} speed={6} color="#a1a1aa" shineColor="#fff" />
           </span>
         </a>
 
@@ -60,29 +61,27 @@ export default function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className={`relative rounded-full px-4 py-2 text-sm transition-colors ${
-                active === l.href ? "text-neon" : "text-mist hover:text-frost"
+              className={`relative rounded-lg px-3.5 py-2 text-[14px] transition-colors ${
+                active === l.href ? "text-white" : "text-white/50 hover:text-white/85"
               }`}
             >
               {l.label}
-              {active === l.href && (
-                <span className="absolute inset-x-3 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-neon to-transparent" />
-              )}
+              {active === l.href && <span className="absolute inset-x-3.5 bottom-1 h-px bg-[#a855f7]" />}
             </a>
           ))}
           <a
             href={owner.github}
             target="_blank"
             rel="noreferrer noopener"
-            className="ml-2 rounded-full border border-neon/30 bg-neon/10 px-4 py-2 text-sm text-neon transition-colors hover:bg-neon/20"
+            className="ml-2 inline-flex items-center gap-2 rounded-full bg-[#a855f7] px-4 py-2 text-[14px] font-medium text-white transition-opacity hover:opacity-90"
           >
-            GitHub
+            <Github size={15} /> GitHub
           </a>
         </div>
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-ink-2/70 text-frost md:hidden"
+          className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/[0.05] text-white md:hidden"
           aria-label="Menu"
         >
           {open ? <X size={18} /> : <Menu size={18} />}
@@ -90,13 +89,13 @@ export default function Nav() {
       </nav>
 
       {open && (
-        <div className="glass-strong mx-4 mt-2 rounded-2xl p-3 md:hidden">
+        <div className="surface-ghost mx-auto mt-2 max-w-[1324px] rounded-[14px] p-3 md:hidden">
           {LINKS.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block rounded-xl px-4 py-3 text-sm text-mist transition-colors hover:bg-ink-3 hover:text-frost"
+              className="block rounded-xl px-4 py-3 text-[14px] text-white/60 transition-colors hover:bg-white/5 hover:text-white"
             >
               {l.label}
             </a>
@@ -106,9 +105,9 @@ export default function Nav() {
             target="_blank"
             rel="noreferrer noopener"
             onClick={() => setOpen(false)}
-            className="mt-1 block rounded-xl bg-neon/10 px-4 py-3 text-sm text-neon"
+            className="mt-1 flex items-center gap-2 rounded-xl bg-[#a855f7]/15 px-4 py-3 text-[14px] text-[#c7a0ff]"
           >
-            GitHub — ArielOsaze
+            <Github size={15} /> github.com/ArielOsaze
           </a>
         </div>
       )}

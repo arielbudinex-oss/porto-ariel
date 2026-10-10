@@ -1,8 +1,14 @@
 import { skills, principles } from "../data/projects";
 import CountUp from "./rb/TextAnimations/CountUp/CountUp";
 import BlurText from "./rb/TextAnimations/BlurText/BlurText";
-import { HalftoneCursor, BlinkingGrid, OrbitRing } from "./pro/ProMirror";
+import { LogoLoop } from "./rb/Animations/LogoLoop/LogoLoop";
 import { Terminal, Cpu, Database, Cloud, Lock, Plug } from "lucide-react";
+import {
+  SiReact, SiNodedotjs, SiTypescript, SiPython, SiSharp, SiPostgresql,
+  SiSupabase, SiRedis, SiDocker, SiNginx, SiVercel, SiTailwindcss,
+  SiNextdotjs, SiThreedotjs, SiGreensock, SiGit, SiLinux, SiCloudflare,
+  SiExpress, SiJavascript, SiHtml5,
+} from "react-icons/si";
 
 const ICONS = {
   "Backend & API": Terminal,
@@ -13,93 +19,130 @@ const ICONS = {
   "Integrasi & AI": Plug,
 };
 
+// logo untuk baris berjalan
+const LOGOS = [
+  { Icon: SiReact, label: "React", color: "#61dafb" },
+  { Icon: SiNodedotjs, label: "Node.js", color: "#5fa04e" },
+  { Icon: SiTypescript, label: "TypeScript", color: "#3178c6" },
+  { Icon: SiPython, label: "Python", color: "#ffd43b" },
+  { Icon: SiSharp, label: "C#", color: "#a179dc" },
+  { Icon: SiPostgresql, label: "PostgreSQL", color: "#699eca" },
+  { Icon: SiSupabase, label: "Supabase", color: "#3ecf8e" },
+  { Icon: SiRedis, label: "Redis", color: "#ff4438" },
+  { Icon: SiDocker, label: "Docker", color: "#2496ed" },
+  { Icon: SiNginx, label: "Nginx", color: "#009639" },
+  { Icon: SiVercel, label: "Vercel", color: "#ffffff" },
+  { Icon: SiTailwindcss, label: "Tailwind", color: "#38bdf8" },
+  { Icon: SiNextdotjs, label: "Next.js", color: "#ffffff" },
+  { Icon: SiThreedotjs, label: "Three.js", color: "#ffffff" },
+  { Icon: SiGreensock, label: "GSAP", color: "#88ce02" },
+  { Icon: SiGit, label: "Git", color: "#f05032" },
+  { Icon: SiLinux, label: "Linux", color: "#f6c33f" },
+  { Icon: SiCloudflare, label: "Cloudflare", color: "#f38020" },
+  { Icon: SiExpress, label: "Express", color: "#ffffff" },
+  { Icon: SiJavascript, label: "JavaScript", color: "#f7df1e" },
+  { Icon: SiHtml5, label: "HTML5", color: "#e34f26" },
+];
+
 export default function Skills() {
   const entries = Object.entries(skills);
   const total = entries.reduce((n, [, v]) => n + v.length, 0);
 
   return (
     <section id="keahlian" className="relative overflow-hidden py-28">
-      {/* latar: tiruan Pro "Blinking Squares" + halftone */}
-      <BlinkingGrid className="absolute inset-0 -z-20 h-full w-full opacity-25" cols={44} rows={18} />
-      <HalftoneCursor className="absolute inset-0 -z-10 h-full w-full opacity-40" size={26} radius={190} />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink via-ink/80 to-ink" />
+      <div className="dot-grid pointer-events-none absolute inset-0 -z-10 opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
 
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <header className="mb-14 max-w-2xl">
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-neon uppercase">
-            02 — Keahlian
-          </p>
+      <div className="mx-auto max-w-[1324px] px-6">
+        <header className="mb-12 max-w-2xl">
+          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#c7a0ff] uppercase">02 — Keahlian</p>
           <BlurText
             text="Tumpukan teknologi yang benar-benar kupakai di produksi."
-            delay={28}
+            delay={26}
             animateBy="words"
             direction="top"
-            className="font-display text-4xl font-bold tracking-tight md:text-5xl"
+            className="text-4xl font-bold tracking-[-0.02em] text-white md:text-5xl"
           />
-          <p className="mt-5 text-sm text-mist">
+          <p className="mt-5 text-[15px] leading-relaxed text-white/50">
             Dihimpun dari package.json, source code, dan konfigurasi deploy semua proyek — bukan daftar
-            hafalan. <span className="text-frost">{total} teknologi</span> di enam bidang.
+            hafalan. <span className="text-white/85">{total} teknologi</span> di enam bidang.
           </p>
         </header>
 
-        <div className="grid gap-5 lg:grid-cols-3">
-          {entries.map(([group, items], gi) => {
+        {/* baris logo berjalan */}
+        <div className="mb-12 overflow-hidden border-y border-[#2f293a] py-5">
+          <LogoLoop
+            logos={LOGOS}
+            speed={70}
+            logoHeight={30}
+            gap={48}
+            pauseOnHover
+            fadeOut
+            fadeOutColor="#120f17"
+            scaleOnHover
+            renderItem={(item) => (
+              <span className="flex items-center gap-2.5" title={item.label}>
+                <item.Icon size={22} color={item.color} />
+                <span className="text-[13px] whitespace-nowrap text-white/40">{item.label}</span>
+              </span>
+            )}
+          />
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-3">
+          {entries.map(([group, items]) => {
             const Icon = ICONS[group] ?? Terminal;
             return (
-              <div
-                key={group}
-                className="group glass relative overflow-hidden rounded-3xl p-6 transition-transform duration-500 hover:-translate-y-1"
-                style={{ animationDelay: `${gi * 60}ms` }}
-              >
+              <div key={group} className="surface p-6 transition-colors duration-300 hover:border-[#a855f7]/30">
                 <div className="mb-4 flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-xl border border-neon/25 bg-neon/8 text-neon transition-transform duration-500 group-hover:rotate-6">
+                  <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#a855f7]/12 text-[#c7a0ff]">
                     <Icon size={17} />
                   </span>
-                  <h3 className="font-display text-lg font-semibold text-frost">{group}</h3>
+                  <h3 className="text-[17px] font-semibold text-white">{group}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {items.map((s) => (
                     <span
                       key={s}
-                      className="rounded-lg border border-line bg-ink-2/60 px-2.5 py-1 font-mono text-[11px] text-mist transition-all hover:border-neon/40 hover:text-neon"
+                      className="rounded-lg border border-[#2f293a] bg-[#120f17] px-2.5 py-1 font-mono text-[11px] text-white/55 transition-colors hover:border-[#a855f7]/40 hover:text-[#c7a0ff]"
                     >
                       {s}
                     </span>
                   ))}
                 </div>
-                <span className="absolute -right-8 -bottom-8 h-24 w-24 rounded-full bg-neon/5 blur-2xl transition-opacity group-hover:opacity-100" />
               </div>
             );
           })}
 
-          {/* kartu orbit — tiruan Pro "Orbit Reel" */}
-          <div className="glass relative grid place-items-center overflow-hidden rounded-3xl p-6">
-            <OrbitRing
-              className="h-56"
-              radius={92}
-              duration={30}
-              items={["⚛", "▲", "🐍", "C#", "PG", "◈"]}
-            />
-            <p className="mt-3 text-center font-mono text-[11px] text-mist">
-              React · Next · Python · C# · Postgres · Redis
+          {/* kartu ringkasan angka */}
+          <div className="surface flex flex-col justify-center p-6">
+            <p className="font-mono text-[10px] tracking-[0.22em] text-white/35 uppercase">Total</p>
+            <p className="mt-2 text-4xl font-bold text-white">
+              <CountUp to={total} duration={1.4} />
             </p>
+            <p className="mt-1 text-[13px] text-white/45">teknologi di 6 bidang</p>
+            <div className="mt-5 space-y-2 border-t border-[#2f293a] pt-4 text-[12px] text-white/45">
+              <p className="flex justify-between">
+                <span>Bahasa</span> <span className="text-white/70">JS · TS · Python · C#</span>
+              </p>
+              <p className="flex justify-between">
+                <span>Basis data</span> <span className="text-white/70">Postgres · SQLite · Redis</span>
+              </p>
+              <p className="flex justify-between">
+                <span>Deploy</span> <span className="text-white/70">Nginx · pm2 · Vercel · Docker</span>
+              </p>
+            </div>
           </div>
         </div>
 
         {/* prinsip kerja */}
         <div className="mt-16">
-          <h3 className="mb-6 font-display text-2xl font-semibold text-frost">Cara aku bekerja</h3>
+          <h3 className="mb-6 text-2xl font-semibold text-white">Cara aku bekerja</h3>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {principles.map((pr, i) => (
-              <div
-                key={pr.title}
-                className="glass rounded-2xl p-5 transition-transform duration-500 hover:-translate-y-1"
-              >
-                <span className="font-mono text-[11px] text-neon">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h4 className="mt-2 font-display text-base font-semibold text-frost">{pr.title}</h4>
-                <p className="mt-2 text-[13px] leading-relaxed text-mist">{pr.desc}</p>
+              <div key={pr.title} className="surface p-5 transition-colors duration-300 hover:border-[#a855f7]/30">
+                <span className="font-mono text-[11px] text-[#c7a0ff]">{String(i + 1).padStart(2, "0")}</span>
+                <h4 className="mt-2 text-[15px] font-semibold text-white">{pr.title}</h4>
+                <p className="mt-2 text-[13px] leading-relaxed text-white/45">{pr.desc}</p>
               </div>
             ))}
           </div>

@@ -5,7 +5,7 @@
 
 export const owner = {
   name: "Ariel Osaze Koinda Budi",
-  short: "Ariel Osaze",
+  short: "Ariel Osaze Koinda Budi",
   role: "Full-Stack Developer & Product Builder",
   location: "Indonesia",
   email: "arielbudi4@gmail.com",
@@ -14,7 +14,7 @@ export const owner = {
     "Membangun produk digital yang benar-benar dipakai — dari marketplace pembayaran, gateway pesan multi-akun, sampai aplikasi desktop pembukuan pajak.",
   bio: [
     "Aku membangun produk dari nol sampai produksi: backend, frontend, database, deployment, sampai halaman jualannya. Semua proyek di bawah ini berjalan nyata — punya pengguna, transaksi, dan server yang harus tetap hidup.",
-    "Cara kerjaku: ukur, bukan menebak. Setiap perbaikan punya bukti — skrip regtest, screenshot piksel, atau angka pengukuran. Kalau sebuah klaim tidak bisa diukur, itu belum selesai.",
+    "Cara kerjaku: ukur, bukan menebak. Setiap perbaikan punya bukti — skrip uji otomatis, screenshot piksel, atau angka pengukuran. Kalau sebuah klaim tidak bisa diukur, itu belum selesai.",
   ],
 };
 
@@ -59,8 +59,8 @@ export const projects = [
     tag: "Marketplace Digital & Top-Up",
     url: "https://nexshop.cloud",
     github: "https://github.com/ArielOsaze/NEXSHOP_ALL",
-    accent: "#ff5c7a",
-    accent2: "#ffb347",
+    accent: "#a855f7",
+    accent2: "#c7a0ff",
     blurb:
       "Marketplace top-up game & produk digital dengan pembayaran iPaymu, program reseller berjenjang, verifikasi KYC terenkripsi, dan asisten AI yang membaca katalog harga live.",
     role: "Full-stack — arsitektur, backend, frontend, keamanan, deployment",
@@ -134,8 +134,8 @@ export const projects = [
     tag: "Gateway Pesan Multi-Akun",
     url: "https://saybot.nexshop.cloud",
     github: "https://github.com/ArielOsaze/Whatsapp-Gateaway",
-    accent: "#0090f0",
-    accent2: "#00c2d4",
+    accent: "#8b5cf6",
+    accent2: "#a855f7",
     blurb:
       "Sistem manajemen pesan multi-akun untuk WhatsApp & Telegram: banyak sesi berjalan paralel, broadcast berantre dengan throttling, dashboard statistik real-time.",
     role: "Full-stack — gateway TypeScript, dashboard Next.js, deployment VPS + Vercel",
@@ -193,8 +193,8 @@ export const projects = [
     tag: "Live Wallpaper Engine Windows",
     url: "https://lumawall.xinet.id",
     github: "https://github.com/ArielOsaze/Lumawall",
-    accent: "#e83137",
-    accent2: "#e2a442",
+    accent: "#a855f7",
+    accent2: "#d8b4fe",
     blurb:
       "Wallpaper video untuk setiap monitor Windows — didekode GPU, bukan CPU. Pause bekerja per-monitor, kembali dalam 4 milidetik. 58 rilis, katalog 5.000+ wallpaper, empat bahasa.",
     role: "Pembuat tunggal — aplikasi C#, situs, sistem pembayaran, distribusi",
@@ -260,8 +260,8 @@ export const projects = [
     tag: "Pembukuan & Pajak Desktop",
     url: "https://akuntuntas.xinet.id",
     github: "https://github.com/ArielOsaze/akuntuntas",
-    accent: "#22c55e",
-    accent2: "#0ea5e9",
+    accent: "#9333ea",
+    accent2: "#a855f7",
     blurb:
       "Aplikasi desktop Windows untuk pembukuan dan perpajakan UMKM Indonesia — 100% offline, data tersimpan lokal, dari pembukuan harian sampai SPT.",
     role: "Pembuat tunggal — aplikasi, mode belajar, lisensi, situs penjualan",
@@ -324,7 +324,7 @@ export const projects = [
     url: null,
     github: "https://github.com/ArielOsaze",
     accent: "#8b5cf6",
-    accent2: "#ec4899",
+    accent2: "#a855f7",
     blurb:
       "Eksperimen marketplace game digital — fondasi yang kemudian tumbuh menjadi NexShop: auth JWT, keranjang, dan alur pesanan.",
     role: "Full-stack — Express + frontend vanilla",
@@ -363,8 +363,8 @@ export const projects = [
     tag: "REST API WhatsApp",
     url: null,
     github: "https://github.com/ArielOsaze",
-    accent: "#25d366",
-    accent2: "#128c7e",
+    accent: "#a855f7",
+    accent2: "#c7a0ff",
     blurb:
       "API WhatsApp mandiri berbasis Baileys dengan penyimpanan sesi PostgreSQL — fondasi integrasi notifikasi pesanan NexShop.",
     role: "Backend — API & integrasi",
@@ -401,8 +401,8 @@ export const projects = [
     tag: "Alat Uji Ketahanan Berizin",
     url: null,
     github: "https://github.com/ArielOsaze",
-    accent: "#f59e0b",
-    accent2: "#ef4444",
+    accent: "#6d28d9",
+    accent2: "#a855f7",
     blurb:
       "Penguji ketahanan HTTP yang aman dipakai: hanya untuk server yang kamu miliki, dengan pagar pengaman keras di dalam kodenya.",
     role: "Pembuat tunggal — alat + dokumentasi",
@@ -439,8 +439,8 @@ export const projects = [
     tag: "Situs Produk + Checkout",
     url: "https://lumawall.xinet.id",
     github: "https://github.com/ArielOsaze/Lumawall",
-    accent: "#e83137",
-    accent2: "#f4f6f8",
+    accent: "#a855f7",
+    accent2: "#e9d5ff",
     blurb:
       "Situs produk LumaWall empat bahasa dengan sistem pembayaran sendiri: checkout iPaymu, halaman sukses, dan pembuat kartu promo.",
     role: "Pembuat tunggal — situs, serverless API, renderer promo",

@@ -1,8 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// PRO-MIRROR — efek bergaya ReactBits Pro yang ditulis sendiri dari nol.
-// Katalog Pro tidak bisa di-install tanpa lisensi, jadi di sini aku meniru
-// DESAIN ANIMASINYA (bukan menyalin kode) memakai Canvas/WebGL/CSS murni.
-// Setiap komponen diberi nama sesuai efek Pro yang diinspirasi.
+// EFEK KHUSUS — komponen animasi yang ditulis sendiri dari nol.
+// Semuanya memakai Canvas/WebGL/CSS murni tanpa pustaka animasi berat.
 // ─────────────────────────────────────────────────────────────────────────────
 import { useEffect, useRef, useCallback, useMemo, useState } from "react";
 

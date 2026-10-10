@@ -301,7 +301,7 @@ function Typography({ textColor }) {
       anchorX="center"
       anchorY="middle"
     >
-      React Bits
+      Portofolio
     </Text>
   );
 }

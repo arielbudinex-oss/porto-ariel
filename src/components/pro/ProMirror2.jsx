@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// PRO-MIRROR 2 — kumpulan kedua efek bergaya ReactBits Pro, ditulis dari nol.
-// Meniru DESAIN ANIMASINYA (globe, hujan cahaya, neon reveal, dll), bukan
-// menyalin kode Pro yang berlisensi.
+// EFEK KHUSUS 2 — kumpulan kedua animasi yang ditulis dari nol.
+// Canvas/WebGL/CSS murni, tanpa ketergantungan pustaka animasi.
 // ─────────────────────────────────────────────────────────────────────────────
 import { useEffect, useRef, useState } from "react";
 

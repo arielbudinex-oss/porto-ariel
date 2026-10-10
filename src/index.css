@@ -1,59 +1,68 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   PALET & FONT — satu aksen ungu dipakai hemat, tombol primer putih solid,
+   sisanya hitam-putih-abu. Bukan gradient warna-warni.
+   ───────────────────────────────────────────────────────────────────────────── */
 @theme {
-  --color-ink: #05060a;
-  --color-ink-2: #0a0c12;
-  --color-ink-3: #10131c;
-  --color-line: #1e2330;
-  --color-mist: #9aa4b8;
-  --color-frost: #e8ecf4;
-  --color-neon: #64e6ff;
-  --color-violet: #8b5cf6;
-  --color-magenta: #ff5c9d;
-  --color-amber: #ffb347;
+  --color-ink: #120f17;        /* latar utama */
+  --color-ink-2: #1b1722;      /* permukaan kartu */
+  --color-ink-3: #241e2e;      /* permukaan naik */
+  --color-line: #2f293a;       /* garis batas */
+  --color-mist: #aaa;          /* teks redup */
+  --color-dim: #a1a1aa;        /* teks lebih redup */
+  --color-frost: #fff;
+  --color-accent: #a855f7;     /* aksen utama */
+  --color-accent-soft: #c7a0ff;
+
+  /* alias — dipakai sebagian komponen agar tidak perlu diubah satu per satu */
+  --color-neon: #c7a0ff;
+  --color-violet: #a855f7;
+  --color-magenta: #c7a0ff;
+  --color-amber: #e2a442;
   --color-lime: #a3e635;
 
-  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
-  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "Cascadia Code", monospace;
+  --font-sans: "Geist", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", monospace;
+  --font-display: "Geist", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Geist", "Segoe UI", system-ui, sans-serif;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 @font-face {
-  font-family: "Space Grotesk";
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url("/assets/fonts/spacegrotesk-latin.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
+  font-family: "Geist";
+  src: url("/assets/fonts/geist-sans.woff2") format("woff2");
   font-weight: 100 900;
+  font-style: normal;
   font-display: swap;
-  src: url("/assets/fonts/inter-latin.woff2") format("woff2");
 }
 @font-face {
-  font-family: "JetBrains Mono";
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/geist-mono.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: normal;
-  font-weight: 100 800;
   font-display: swap;
-  src: url("/assets/fonts/jetbrains-latin.woff2") format("woff2");
 }
 
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--color-ink);
 }
 
 body {
   background: var(--color-ink);
   color: var(--color-frost);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
+  font-weight: 400;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--color-neon) 40%, transparent);
+  background: rgba(168, 85, 247, 0.42);
   color: #fff;
 }
 
@@ -61,88 +70,94 @@ body {
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--color-ink); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--color-neon), var(--color-violet));
+  background: #37313f;
   border-radius: 99px;
   border: 2px solid var(--color-ink);
 }
+::-webkit-scrollbar-thumb:hover { background: #4a4257; }
 
-/* ── utility: glass ────────────────────────────────────────────────────── */
-.glass {
-  background: color-mix(in srgb, var(--color-ink-3) 72%, transparent);
-  backdrop-filter: blur(18px) saturate(1.4);
-  -webkit-backdrop-filter: blur(18px) saturate(1.4);
-  border: 1px solid color-mix(in srgb, var(--color-line) 80%, transparent);
+/* ── permukaan — radius besar, border tipis, tanpa glow ── */
+.surface {
+  background: var(--color-ink-2);
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
 }
 
-.glass-strong {
-  background: color-mix(in srgb, var(--color-ink-2) 88%, transparent);
-  backdrop-filter: blur(28px) saturate(1.6);
-  -webkit-backdrop-filter: blur(28px) saturate(1.6);
-  border: 1px solid color-mix(in srgb, var(--color-line) 90%, transparent);
+.surface-ghost {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(32px) saturate(1.3);
+  -webkit-backdrop-filter: blur(32px) saturate(1.3);
 }
 
-/* ── text gradient ─────────────────────────────────────────────────────── */
+/* tombol primer: PUTIH solid, teks gelap */
+.btn-primary {
+  background: #fff;
+  color: #111;
+  font-weight: 600;
+  border-radius: 999px;
+  transition: opacity 0.15s var(--ease-out), transform 0.15s var(--ease-out);
+}
+.btn-primary:hover { opacity: 0.88; }
+.btn-primary:active { transform: scale(0.98); }
+
+/* tombol sekunder: transparan + border halus */
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 999px;
+  transition: background 0.15s var(--ease-out);
+}
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* judul dengan gradient (dipakai hemat) */
 .text-grad {
-  background: linear-gradient(100deg, var(--color-neon) 0%, var(--color-violet) 45%, var(--color-magenta) 90%);
+  background: linear-gradient(135deg, #fff 0%, #8660fa 20%, #a855f7 40%, #8400ff 60%, #a855f7 80%, #fff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* ── grain overlay ─────────────────────────────────────────────────────── */
-.grain::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 60;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
+/* ── dot grid (statis, ringan, tanpa animasi) ───────────────── */
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* ── hide scrollbar (horizontal scrollers) ─────────────────────────────── */
-.no-bar::-webkit-scrollbar { display: none; }
-.no-bar { scrollbar-width: none; -ms-overflow-style: none; }
-
-/* ── pro-mirror: neon ring pulse ───────────────────────────────────────── */
-@keyframes ringPulse {
-  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-neon) 45%, transparent); }
-  50% { box-shadow: 0 0 0 12px color-mix(in srgb, var(--color-neon) 0%, transparent); }
+/* ── animasi masuk — hanya transform + opacity (GPU, mulus) ───────────── */
+@keyframes riseIn {
+  from { opacity: 0; transform: translate3d(0, 24px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
 }
-.ring-pulse { animation: ringPulse 2.6s ease-out infinite; }
+.rise { animation: riseIn 0.7s var(--ease-out) both; }
 
-@keyframes floaty {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
-.floaty { animation: floaty 6s ease-in-out infinite; }
+.fade { animation: fadeIn 0.5s var(--ease-out) both; }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-.shimmer {
-  background: linear-gradient(110deg, transparent 30%, color-mix(in srgb, #fff 18%, transparent) 50%, transparent 70%);
-  background-size: 200% 100%;
-  animation: shimmer 2.8s linear infinite;
-}
-
-/* ── marquee ───────────────────────────────────────────────────────────── */
+/* ── marquee ringan ───────────────────────────────────────────────────── */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee var(--marquee-speed, 40s) linear infinite;
+  animation: marquee var(--marquee-speed, 48s) linear infinite;
+  will-change: transform;
 }
 .marquee-track:hover { animation-play-state: paused; }
 
-/* ── perspective helpers ───────────────────────────────────────────────── */
-.persp { perspective: 1200px; }
-.preserve-3d { transform-style: preserve-3d; }
+/* ── scrollbar horizontal disembunyikan ───────────────────────────────── */
+.no-bar::-webkit-scrollbar { display: none; }
+.no-bar { scrollbar-width: none; -ms-overflow-style: none; }
+
+/* ── kursor berkedip (terminal) ───────────────────────────────────────── */
+@keyframes blinkCaret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+.caret { animation: blinkCaret 1.05s step-end infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
