@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   PALET & FONT — aksen teal/cyan (warna khas produk), latar gelap netral.
-   Satu aksen dipakai hemat; tombol primer putih solid.
+   PALET & FONT — aksen hangat: amber & merah (warna asli produk LumaWall).
+   Bukan cyan/teal (khas AI), bukan ungu. Latar gelap netral hangat.
    ───────────────────────────────────────────────────────────────────────────── */
 @theme {
-  --color-ink: #0a0d10;        /* latar utama */
-  --color-ink-2: #12171c;      /* permukaan kartu */
-  --color-ink-3: #1a2027;      /* permukaan naik */
-  --color-line: #232b33;       /* garis batas */
-  --color-mist: #9fb0bd;       /* teks redup */
-  --color-dim: #6b7c89;        /* teks lebih redup */
-  --color-frost: #f2f6f9;
-  --color-accent: #22d3ee;     /* aksen utama — teal */
-  --color-accent-soft: #67e8f9;
-  --color-cyan-deep: #0891b2;
+  --color-ink: #0c0a09;        /* latar utama */
+  --color-ink-2: #161311;      /* permukaan kartu */
+  --color-ink-3: #1f1b18;      /* permukaan naik */
+  --color-line: #2a2521;       /* garis batas */
+  --color-mist: #b8ada4;       /* teks redup */
+  --color-dim: #7d736b;        /* teks lebih redup */
+  --color-frost: #faf7f4;
+  --color-accent: #e2a442;     /* aksen utama — amber */
+  --color-accent-soft: #f3c778;
+  --color-crimson: #e83137;    /* merah LumaWall */
 
   /* alias — dipakai sebagian komponen agar tidak perlu diubah satu per satu */
-  --color-neon: #67e8f9;
-  --color-violet: #0891b2;
-  --color-magenta: #22d3ee;
-  --color-amber: #fbbf24;
-  --color-lime: #34d399;
+  --color-neon: #f3c778;
+  --color-violet: #e83137;
+  --color-magenta: #e2a442;
+  --color-amber: #e2a442;
+  --color-lime: #a3b565;
 
   --font-sans: "Geist", "Segoe UI", system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", monospace;
@@ -114,7 +114,7 @@ body {
 
 /* judul dengan gradient (dipakai hemat) */
 .text-grad {
-  background: linear-gradient(135deg, #67e8f9 0%, #22d3ee 25%, #ffffff 50%, #22d3ee 75%, #67e8f9 100%);
+  background: linear-gradient(135deg, #f3c778 0%, #e2a442 25%, #fff5e6 50%, #e2a442 75%, #f3c778 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

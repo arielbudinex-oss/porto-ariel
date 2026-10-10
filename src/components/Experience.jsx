@@ -9,7 +9,7 @@ export default function Experience() {
 
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-14 max-w-2xl">
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#67e8f9] uppercase">
+          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#f3c778] uppercase">
             02 — Pengalaman
           </p>
           <BlurText
@@ -29,17 +29,17 @@ export default function Experience() {
           {/* ── kolom kiri: linimasa pengalaman ───────────────────────── */}
           <div>
             <h3 className="mb-6 flex items-center gap-2.5 text-lg font-semibold text-white">
-              <Briefcase size={17} className="text-[#67e8f9]" /> Pengalaman kerja
+              <Briefcase size={17} className="text-[#f3c778]" /> Pengalaman kerja
             </h3>
 
             <div className="relative space-y-4">
-              <div className="absolute top-2 bottom-2 left-[7px] w-px bg-gradient-to-b from-white/40 via-[#232b33] to-transparent" />
+              <div className="absolute top-2 bottom-2 left-[7px] w-px bg-gradient-to-b from-white/40 via-[#2a2521] to-transparent" />
 
               {experience.map((e) => (
                 <div key={`${e.role}-${e.org}`} className="relative flex gap-5">
                   <span
-                    className={`relative z-10 mt-6 h-3.5 w-3.5 shrink-0 rounded-full border-2 border-[#0a0d10] ${
-                      e.highlight ? "bg-white" : "bg-[#6b7c89]"
+                    className={`relative z-10 mt-6 h-3.5 w-3.5 shrink-0 rounded-full border-2 border-[#0c0a09] ${
+                      e.highlight ? "bg-white" : "bg-[#7d736b]"
                     }`}
                   />
                   <div
@@ -51,7 +51,7 @@ export default function Experience() {
                       <h4 className="text-[16px] font-semibold text-white">{e.role}</h4>
                       <span className="font-mono text-[11px] text-white/40">{e.period}</span>
                     </div>
-                    <p className="mt-0.5 text-[14px] text-[#67e8f9]">{e.org}</p>
+                    <p className="mt-0.5 text-[14px] text-[#f3c778]">{e.org}</p>
                     {e.location && (
                       <p className="mt-1 flex items-center gap-1.5 font-mono text-[11px] text-white/35">
                         <MapPin size={11} /> {e.location}
@@ -62,7 +62,7 @@ export default function Experience() {
                       {e.tags.map((t) => (
                         <span
                           key={t}
-                          className="rounded-lg border border-[#232b33] bg-[#0a0d10] px-2.5 py-1 font-mono text-[11px] text-white/45"
+                          className="rounded-lg border border-[#2a2521] bg-[#0c0a09] px-2.5 py-1 font-mono text-[11px] text-white/45"
                         >
                           {t}
                         </span>
@@ -78,14 +78,14 @@ export default function Experience() {
           <div className="space-y-6">
             <div>
               <h3 className="mb-6 flex items-center gap-2.5 text-lg font-semibold text-white">
-                <GraduationCap size={18} className="text-[#67e8f9]" /> Pendidikan
+                <GraduationCap size={18} className="text-[#f3c778]" /> Pendidikan
               </h3>
               <div className="surface p-5">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <h4 className="text-[16px] font-semibold text-white">{owner.education.school}</h4>
                   <span className="font-mono text-[11px] text-white/40">{owner.education.period}</span>
                 </div>
-                <p className="mt-0.5 text-[14px] text-[#67e8f9]">{owner.education.degree}</p>
+                <p className="mt-0.5 text-[14px] text-[#f3c778]">{owner.education.degree}</p>
                 <p className="mt-2 inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.06] px-3 py-1 font-mono text-[12px] text-white">
                   IPK {owner.education.gpa}
                 </p>
@@ -95,14 +95,14 @@ export default function Experience() {
 
             <div>
               <h3 className="mb-6 flex items-center gap-2.5 text-lg font-semibold text-white">
-                <Sparkles size={17} className="text-[#67e8f9]" /> Keahlian utama
+                <Sparkles size={17} className="text-[#f3c778]" /> Keahlian utama
               </h3>
               <div className="surface p-5">
                 <div className="flex flex-wrap gap-2">
                   {topSkills.map((s) => (
                     <span
                       key={s}
-                      className="rounded-lg border border-[#232b33] bg-[#0a0d10] px-3 py-1.5 text-[12px] text-white/60 transition-colors hover:border-white/25 hover:text-white"
+                      className="rounded-lg border border-[#2a2521] bg-[#0c0a09] px-3 py-1.5 text-[12px] text-white/60 transition-colors hover:border-white/25 hover:text-white"
                     >
                       {s}
                     </span>
@@ -118,12 +118,12 @@ export default function Experience() {
                 Perusahaan
               </p>
               <h4 className="mt-1.5 text-xl font-bold text-white">Xinet.id</h4>
-              <p className="mt-1 font-mono text-[12px] text-[#67e8f9]">Build what&apos;s next.</p>
+              <p className="mt-1 font-mono text-[12px] text-[#f3c778]">Build what&apos;s next.</p>
               <p className="mt-4 text-[13px] leading-relaxed text-white/50">
                 Ekosistem produk digital: commerce, komunikasi, alat bisnis, otomasi, dan AI. NexShop,
                 SayBot, dan AkunTuntas dibangun di dalamnya.
               </p>
-              <div className="mt-5 grid grid-cols-3 gap-3 border-t border-[#232b33] pt-4">
+              <div className="mt-5 grid grid-cols-3 gap-3 border-t border-[#2a2521] pt-4">
                 {[
                   { n: "NexShop", d: "Commerce" },
                   { n: "SayBot", d: "Pesan" },
