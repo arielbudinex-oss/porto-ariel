@@ -73,7 +73,7 @@ export default function Nav() {
             href={owner.github}
             target="_blank"
             rel="noreferrer noopener"
-            className="ml-2 inline-flex items-center gap-2 rounded-full bg-[#ffffff] px-4 py-2 text-[14px] font-medium text-white transition-opacity hover:opacity-90"
+            className="ml-2 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[14px] font-medium text-black transition-opacity hover:opacity-90"
           >
             <Github size={15} /> GitHub
           </a>
