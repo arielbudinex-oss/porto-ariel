@@ -50,11 +50,11 @@ function App() {
   return (
     <ClickSpark
       sparkColor="#9db2ff"
-      sparkSize={9}
-      sparkRadius={22}
-      sparkCount={8}
-      duration={450}
-      extraScale={1.1}
+      sparkSize={18}
+      sparkRadius={28}
+      sparkCount={10}
+      duration={520}
+      extraScale={1.35}
     >
       <TargetCursor
         spinDuration={2.2}
