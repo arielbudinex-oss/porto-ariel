@@ -5,9 +5,9 @@ import ShinyText from "./rb/TextAnimations/ShinyText/ShinyText";
 
 const LINKS = [
   { href: "#proyek", label: "Proyek" },
+  { href: "#pengalaman", label: "Pengalaman" },
   { href: "#keahlian", label: "Keahlian" },
   { href: "#lab", label: "Lab Efek" },
-  { href: "#cara-kerja", label: "Cara Kerja" },
   { href: "#kontak", label: "Kontak" },
 ];
 

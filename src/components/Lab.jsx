@@ -44,7 +44,7 @@ export default function Lab() {
     <section id="lab" className="relative overflow-hidden py-28">
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-3xl">
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#d4d4d8] uppercase">05 — Lab Efek</p>
+          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#d4d4d8] uppercase">04 — Lab Efek</p>
           <h2 className="text-4xl font-bold tracking-[-0.02em] md:text-5xl">
             <GradientText
               colors={["#fff", "#a1a1aa", "#d4d4d8", "#fff"]}

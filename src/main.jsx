@@ -6,6 +6,7 @@ import Lenis from "lenis";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
+import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Lab from "./components/Lab";
 import { Journey, Contact, Footer } from "./components/Sections";
@@ -51,6 +52,7 @@ function App() {
       <main>
         <Hero />
         <Projects />
+        <Experience />
         <Skills />
         <Lab />
         <Journey />

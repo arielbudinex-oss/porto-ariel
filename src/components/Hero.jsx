@@ -36,11 +36,11 @@ export default function Hero() {
       <div className="mx-auto grid max-w-[1324px] gap-14 px-6 pt-12 pb-24 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
         {/* ── kolom kiri ─────────────────────────────────────────────── */}
         <div className={mounted ? "rise" : "opacity-0"}>
-          <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.05] py-1 pr-4 pl-1.5 text-[13px] text-white/70">
-            <span className="rounded-full bg-[#ffffff]/20 px-2.5 py-1 text-[11px] font-semibold text-[#d4d4d8]">
-              {live.length} live
+          <div className="mb-7 inline-flex flex-wrap items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.05] py-1 pr-4 pl-1.5 text-[13px] text-white/70">
+            <span className="rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-semibold text-white">
+              Founder Xinet.id
             </span>
-            {projects.length} proyek nyata · semua terverifikasi
+            {live.length} live · {projects.length} proyek nyata
           </div>
 
           <h1 className="text-[11.5vw] leading-[1.02] font-bold tracking-[-0.03em] sm:text-6xl lg:text-[64px]">

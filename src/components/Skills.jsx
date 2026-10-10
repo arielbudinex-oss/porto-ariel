@@ -53,7 +53,7 @@ export default function Skills() {
 
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-2xl">
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#d4d4d8] uppercase">02 — Keahlian</p>
+          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#d4d4d8] uppercase">03 — Keahlian</p>
           <BlurText
             text="Tumpukan teknologi yang benar-benar kupakai di produksi."
             delay={26}

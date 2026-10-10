@@ -6,17 +6,90 @@
 export const owner = {
   name: "Ariel Osaze Koinda Budi",
   short: "Ariel Osaze Koinda Budi",
-  role: "Full-Stack Developer & Product Builder",
+  role: "Founder & Product Engineer — Xinet.id",
   location: "Indonesia",
   email: "arielbudi4@gmail.com",
   github: "https://github.com/ArielOsaze",
+  xinet: "Xinet.id — Build what's next",
   tagline:
     "Membangun produk digital yang benar-benar dipakai — dari marketplace pembayaran, gateway pesan multi-akun, sampai aplikasi desktop pembukuan pajak.",
   bio: [
     "Aku membangun produk dari nol sampai produksi: backend, frontend, database, deployment, sampai halaman jualannya. Semua proyek di bawah ini berjalan nyata — punya pengguna, transaksi, dan server yang harus tetap hidup.",
     "Cara kerjaku: ukur, bukan menebak. Setiap perbaikan punya bukti — skrip uji otomatis, screenshot piksel, atau angka pengukuran. Kalau sebuah klaim tidak bisa diukur, itu belum selesai.",
   ],
+  about:
+    "Founder & Owner Xinet.id — perusahaan produk digital yang membangun produk teknologi mandiri di bidang commerce, komunikasi, alat bisnis, otomasi, dan AI. Fokus: strategi produk, arsitektur sistem, pengembangan, integrasi API, desain basis data, keamanan, deployment, dan UI/UX. Pengalaman gabungan: operasi & manajemen aset, pemasaran, perencanaan strategis, dan pengembangan teknologi — berfokus menyelesaikan masalah praktis dengan produk yang berguna, skalabel, dan aman.",
+  education: {
+    school: "Universitas Terbuka",
+    degree: "Manajemen — Business Administration and Management",
+    period: "Feb 2026 – Jun 2030",
+    gpa: "3,53 / 4,00",
+    note: "Menyelesaikan 18 SKS dengan IPK semester 3,53. Mempelajari Manajemen, Dasar Bisnis, Studi Organisasi, dan Bahasa Inggris.",
+  },
 };
+
+// ── Pengalaman kerja (dari profil profesional) ───────────────────────────────
+export const experience = [
+  {
+    role: "Founder & Owner",
+    org: "Xinet.id",
+    period: "Feb 2023 – sekarang",
+    location: "Semarang, Jawa Tengah · Remote",
+    desc: "Perusahaan produk digital: commerce, komunikasi, alat bisnis, otomasi, dan AI. Strategi produk, arsitektur sistem, pengembangan, integrasi API, desain basis data, keamanan, deployment, dan UI/UX.",
+    tags: ["Product Strategy", "System Architecture", "Full-Stack Development"],
+    highlight: true,
+  },
+  {
+    role: "Founder & Product Engineer",
+    org: "NexShop",
+    period: "Jul 2026 – sekarang",
+    location: "Indonesia · Remote",
+    desc: "Membangun dan memimpin pengembangan NexShop — platform commerce digital untuk produk digital, pembayaran, dan layanan reseller.",
+    tags: ["Product Development", "Full-Stack Development", "Payment Integration"],
+    highlight: true,
+  },
+  {
+    role: "Software Engineer",
+    org: "AkunTuntas",
+    period: "Sep 2026 – sekarang",
+    location: "Surakarta, Jawa Tengah · On-site",
+    desc: "Membangun sistem pembukuan & pajak yang sepenuhnya offline untuk bisnis Indonesia — penjualan, pembelian, arus kas, jurnal, dan laporan keuangan dalam satu aplikasi.",
+    tags: ["Software Development", "Product Development"],
+    highlight: true,
+  },
+  {
+    role: "Asset Management Specialist",
+    org: "PT Pegadaian (PUSAT GADAI INDONESIA)",
+    period: "Sep 2024 – sekarang",
+    location: "Jawa Tengah, Indonesia · Kontrak",
+    desc: "Manajemen gudang dan layanan pelanggan di industri pegadaian: penyimpanan aset, perawatan, kepatuhan audit, dan efisiensi operasional harian.",
+    tags: ["Asset Management", "Operational Compliance", "Customer Service"],
+  },
+  {
+    role: "Ex Branch Marketing",
+    org: "Deltalube",
+    period: "Mei 2023 – Des 2023",
+    location: "Indonesia",
+    desc: "Pemasaran cabang: akuisisi pelanggan, kualitas layanan, membangun hubungan, dan mendukung pertumbuhan bisnis.",
+    tags: ["Marketing", "Customer Acquisition"],
+  },
+];
+
+// ── Top skills (dari profil profesional) ────────────────────────────────────
+export const topSkills = [
+  "Full-Stack Development",
+  "Product Management",
+  "System Architecture",
+  "Strategic Planning for Growth",
+  "Problem Solving",
+  "Strategic Asset Management",
+  "Payment Integration",
+  "API Integration",
+  "Database Design",
+  "UI/UX Improvement",
+  "Security & Deployment",
+  "Growth Marketing",
+];
 
 export const stats = [
   { label: "Proyek nyata", value: 8, suffix: "" },
