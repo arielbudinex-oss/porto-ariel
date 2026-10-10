@@ -106,7 +106,7 @@ function ProjectCard({ project: p, open, onToggle }) {
       <div
         className="glass relative overflow-hidden rounded-3xl transition-colors duration-500"
         style={{
-          borderColor: open ? `color-mix(in srgb, ${p.accent} 35%, #262626)` : undefined,
+          borderColor: open ? `color-mix(in srgb, ${p.accent} 35%, #232b33)` : undefined,
         }}
       >
         {/* garis aksen atas */}
