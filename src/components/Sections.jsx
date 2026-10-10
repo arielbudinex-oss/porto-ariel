@@ -1,5 +1,6 @@
 import { journey, owner } from "../data/projects";
 import { ElasticSticker } from "./pro/ProMirror";
+import Lanyard from "./rb/Components/Lanyard/Lanyard";
 import { GithubLogo, EnvelopeSimple, MapPin, Sparkle, LinkedinLogo } from "@phosphor-icons/react";
 import { InteractiveCard } from "./Interactive";
 
@@ -125,53 +126,71 @@ export function Contact() {
         </div>
 
         {/* kartu ajakan, bisa diseret */}
-        <ElasticSticker className="mx-auto w-full max-w-md">
-          <div className="surface relative overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,.5)]">
-            {/* foto portrait */}
-            <div className="relative aspect-[4/5] w-full overflow-hidden">
-              <img
-                src="/assets/profile/ariel-portrait.webp"
-                alt={`${owner.name}, ${owner.role}`}
-                className="h-full w-full object-cover object-top"
-                loading="lazy"
+        <div className="mx-auto w-full max-w-md space-y-5">
+          {/* kartu nama 3D — bisa digoyang & dibalik */}
+          <div className="group/lanyard relative">
+            <div className="relative h-[380px] w-full overflow-hidden rounded-2xl border border-[#2b3037] bg-[#0e1013]">
+              <Lanyard
+                frontImage="/assets/profile/ariel-portrait.webp"
+                backImage="/assets/profile/ariel-avatar.webp"
+                orientation="portrait"
+                finish="glossy"
+                size={0.72}
+                anchor="center"
+                strapLength={0.42}
+                strapColor="#1a1f26"
+                metal="silver"
+                gravity={1}
+                damping={0.5}
+                elasticity={0.55}
+                breeze={0.35}
+                interactive
+                intro
+                cardColor="#14181d"
               />
-              {/* gradient bawah agar teks menyatu */}
-              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#16191d] via-[#16191d]/70 to-transparent" />
-              {/* identitas di atas gradient */}
-              <div className="absolute inset-x-0 bottom-0 p-7">
+            </div>
+            <span
+              aria-hidden
+              className="pointer-events-none absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 translate-y-1.5 items-center gap-1.5 rounded-full border border-[#9db2ff]/45 bg-[#0e1013]/85 px-3 py-1.5 text-[11px] font-medium whitespace-nowrap text-[#9db2ff] opacity-0 backdrop-blur transition-all duration-300 group-hover/lanyard:translate-y-0 group-hover/lanyard:opacity-100"
+            >
+              ✦ goyang & klik untuk membalik kartunya
+            </span>
+          </div>
+
+          <ElasticSticker>
+            <div className="surface relative overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,.5)]">
+              {/* identitas */}
+              <div className="p-7">
                 <h3 className="text-2xl leading-snug font-bold text-white">{owner.name}</h3>
                 <p className="mt-1 text-[13px] text-[#9db2ff]">{owner.role}</p>
+                <p className="mt-5 text-[13px] leading-relaxed text-white/45">{owner.bio[1]}</p>
+
+                <div className="mt-7 grid grid-cols-2 gap-3 pt-2">
+                  <div>
+                    <p className="text-2xl font-bold text-white">7</p>
+                    <p className="text-[11px] text-white/40">proyek nyata</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-white">265rb+</p>
+                    <p className="text-[11px] text-white/40">baris kode</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-white">4</p>
+                    <p className="text-[11px] text-white/40">produk live</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-white">265+</p>
+                    <p className="text-[11px] text-white/40">skrip uji</p>
+                  </div>
+                </div>
+
+                <p className="mt-6 text-center text-[11px] text-white/25">
+                  Geser kartunya, memang bisa digeser
+                </p>
               </div>
             </div>
-
-            <div className="p-7 pt-0">
-              <p className="text-[13px] leading-relaxed text-white/45">{owner.bio[1]}</p>
-
-              <div className="mt-7 grid grid-cols-2 gap-3 pt-2">
-                <div>
-                  <p className="text-2xl font-bold text-white">7</p>
-                  <p className="text-[11px] text-white/40">proyek nyata</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-white">265rb+</p>
-                  <p className="text-[11px] text-white/40">baris kode</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-white">4</p>
-                  <p className="text-[11px] text-white/40">produk live</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-white">265+</p>
-                  <p className="text-[11px] text-white/40">skrip uji</p>
-                </div>
-              </div>
-
-              <p className="mt-6 text-center text-[11px] text-white/25">
-               , geser kartunya, memang bisa digeser ,
-              </p>
-            </div>
-          </div>
-        </ElasticSticker>
+          </ElasticSticker>
+        </div>
       </div>
     </section>
   );

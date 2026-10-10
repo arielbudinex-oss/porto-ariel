@@ -168,15 +168,27 @@ export default function Hero() {
         </div>
       </div>
 
-      <a
-        href="#proyek"
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/35 transition-colors hover:text-[#9db2ff] md:flex"
+      {/* tombol gulir: muncul saat hero, hilang saat sudah masuk proyek */}
+      <button
+        onClick={() => {
+          const el = document.querySelector("#proyek");
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }}
+        aria-label="Gulir ke proyek"
+        className="group/scroll absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
       >
-        <span className="text-[11px] tracking-[0.06em] text-white/35 uppercase">gulir</span>
-        <span className="grid h-9 w-5 place-items-start rounded-full border border-white/15 p-1">
-          <span className="h-2 w-2 animate-bounce rounded-full bg-[#5b7cfa]" />
+        <span className="relative grid h-10 w-10 place-items-center rounded-full border border-white/12 bg-white/[0.03] backdrop-blur transition-all duration-300 group-hover/scroll:scale-110 group-hover/scroll:border-[#5b7cfa]/60 group-hover/scroll:bg-[#5b7cfa]/10">
+          <ArrowDown
+            size={15}
+            className="text-white/45 transition-all duration-300 group-hover/scroll:translate-y-0.5 group-hover/scroll:text-[#9db2ff]"
+          />
+          {/* denyut halus di sekeliling */}
+          <span className="pointer-events-none absolute inset-0 animate-ping rounded-full border border-[#5b7cfa]/25 [animation-duration:2.4s]" />
         </span>
-      </a>
+        <span className="text-[10px] tracking-[0.14em] text-white/25 uppercase transition-colors duration-300 group-hover/scroll:text-[#9db2ff]">
+          proyek
+        </span>
+      </button>
     </section>
   );
 }
