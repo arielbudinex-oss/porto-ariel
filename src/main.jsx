@@ -11,6 +11,8 @@ import Skills from "./components/Skills";
 import Lab from "./components/Lab";
 import { Journey, Contact, Footer } from "./components/Sections";
 import { Preloader } from "./components/pro/ProMirror";
+import ClickSpark from "./components/rb/Animations/ClickSpark/ClickSpark";
+import TargetCursor from "./components/rb/Animations/TargetCursor/TargetCursor";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -46,20 +48,37 @@ function App() {
   }, [loading]);
 
   return (
-    <div className="grain relative min-h-screen">
-      {loading && <Preloader onDone={() => setLoading(false)} />}
-      <Nav />
-      <main>
-        <Hero />
-        <Projects />
-        <Experience />
-        <Skills />
-        <Lab />
-        <Journey />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <ClickSpark
+      sparkColor="#9db2ff"
+      sparkSize={9}
+      sparkRadius={22}
+      sparkCount={8}
+      duration={450}
+      extraScale={1.1}
+    >
+      <TargetCursor
+        spinDuration={2.2}
+        hideDefaultCursor={false}
+        hoverDuration={0.25}
+        parallaxOn
+        cursorColor="#9db2ff"
+        cursorColorOnTarget="#5b7cfa"
+      />
+      <div className="grain relative min-h-screen">
+        {loading && <Preloader onDone={() => setLoading(false)} />}
+        <Nav />
+        <main>
+          <Hero />
+          <Projects />
+          <Experience />
+          <Skills />
+          <Lab />
+          <Journey />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ClickSpark>
   );
 }
 

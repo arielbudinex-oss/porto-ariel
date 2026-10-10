@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowDown, ArrowSquareOut, GithubLogo } from "@phosphor-icons/react";
+import Magnet from "./rb/Animations/Magnet/Magnet";
 import { owner, stats, projects } from "../data/projects";
 import { RotatingWord } from "./RotatingWord";
 import CountUp from "./rb/TextAnimations/CountUp/CountUp";
@@ -61,18 +62,22 @@ export default function Hero() {
           <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white/65">{owner.bio[0]}</p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a href="#proyek" className="btn-primary inline-flex items-center gap-2 px-7 py-3.5 text-[15px]">
-              Lihat {projects.length} proyek
-              <ArrowDown size={16} />
-            </a>
-            <a
-              href={owner.github}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="btn-ghost inline-flex items-center gap-2 px-6 py-3.5 text-[15px] font-medium"
-            >
-              <GithubLogo size={16} /> github.com/ArielOsaze
-            </a>
+            <Magnet padding={60} magnetStrength={4}>
+              <a href="#proyek" className="btn-primary inline-flex items-center gap-2 px-7 py-3.5 text-[15px]">
+                Lihat {projects.length} proyek
+                <ArrowDown size={16} />
+              </a>
+            </Magnet>
+            <Magnet padding={60} magnetStrength={3}>
+              <a
+                href={owner.github}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="btn-ghost inline-flex items-center gap-2 px-6 py-3.5 text-[15px] font-medium"
+              >
+                <GithubLogo size={16} /> github.com/ArielOsaze
+              </a>
+            </Magnet>
           </div>
 
           {/* statistik, menghitung naik saat terlihat */}

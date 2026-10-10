@@ -18,6 +18,10 @@ import Silk from "./rb/Backgrounds/Silk/Silk";
 import Topography from "./rb/Backgrounds/Topography/Topography";
 import Galaxy from "./rb/Backgrounds/Galaxy/Galaxy";
 import DotGrid from "./rb/Backgrounds/DotGrid/DotGrid";
+import MagneticLines from "./rb/Animations/MagnetLines/MagnetLines";
+import PixelBlast from "./rb/Backgrounds/PixelBlast/PixelBlast";
+import Radar from "./rb/Backgrounds/Radar/Radar";
+import RippleGrid from "./rb/Backgrounds/RippleGrid/RippleGrid";
 import { Broadcast, Sparkle, Cube, Stack } from "@phosphor-icons/react";
 
 // Aksen palet, emerald tua + krem hangat
@@ -158,6 +162,65 @@ const CARDS = [
       shockRadius: 220,
       resistance: 750,
       returnDuration: 1.4,
+    },
+  },
+  {
+    kicker: "Interaktif",
+    title: "Magnet Lines",
+    desc: "Barisan garis yang menoleh ke arah kursor, seperti kompas kecil.",
+    C: MagneticLines,
+    props: {
+      rows: 7,
+      columns: 11,
+      containerSize: "100%",
+      lineColor: "#9db2ff",
+      lineWidth: "3px",
+      lineHeight: "22px",
+      baseAngle: -8,
+    },
+  },
+  {
+    kicker: "Interaktif",
+    title: "Radar",
+    desc: "Sapuan radar yang berputar konstan, cocok untuk kesan pemantauan real-time.",
+    C: Radar,
+    props: {
+      speed: 0.8,
+      scale: 0.5,
+      ringCount: 8,
+      spokeCount: 8,
+      color: "#5b7cfa",
+      backgroundColor: "#0e1013",
+    },
+  },
+  {
+    kicker: "Interaktif",
+    title: "Ripple Grid",
+    desc: "Grid yang beriak mengikuti kursor, seperti permukaan air digital.",
+    C: RippleGrid,
+    props: {
+      enableRainbow: false,
+      gridColor: "#9db2ff",
+      rippleIntensity: 0.06,
+      gridSize: 8,
+      gridThickness: 12,
+      glowIntensity: 0.15,
+      opacity: 0.9,
+    },
+  },
+  {
+    kicker: "Interaktif",
+    title: "Pixel Blast",
+    desc: "Ledakan piksel yang merespons kursor dengan pola hidup.",
+    C: PixelBlast,
+    props: {
+      variant: "square",
+      pixelSize: 4,
+      color: "#5b7cfa",
+      patternScale: 2,
+      patternDensity: 1,
+      liquid: true,
+      liquidStrength: 0.1,
     },
   },
 ];
