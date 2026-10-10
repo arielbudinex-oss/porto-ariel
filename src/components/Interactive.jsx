@@ -174,6 +174,9 @@ export function InteractiveHint({ children, text = "geser", icon = "⇄", positi
 // ─────────────────────────────────────────────────────────────────────────────
 export function EasterEgg() {
   const [open, setOpen] = useState(false);
+  const [stage, setStage] = useState(0); // 0=flash, 1=boom, 2=pesan
+  const confettiRef = useRef(null);
+  const audioRef = useRef(null);
 
   useEffect(() => {
     let buffer = "";
@@ -183,6 +186,7 @@ export function EasterEgg() {
     const onKey = (e) => {
       if (e.key === "Escape") {
         setOpen(false);
+        setStage(0);
         return;
       }
       // jangan trigger saat mengetik di input
@@ -206,50 +210,218 @@ export function EasterEgg() {
       }
     };
 
+    const onTrigger = () => setOpen(true);
+
     window.addEventListener("keydown", onKey);
-    window.addEventListener("hermes:easteregg", () => setOpen(true));
+    window.addEventListener("hermes:easteregg", onTrigger);
     window.addEventListener("hermes:logoclick", onLogoClick);
 
     return () => {
       window.removeEventListener("keydown", onKey);
+      window.removeEventListener("hermes:easteregg", onTrigger);
+      window.removeEventListener("hermes:logoclick", onLogoClick);
       clearTimeout(clickTimer);
     };
   }, []);
+
+  // ── saat easter egg terbuka: gong sound + konfeti + reveal bertahap ──────
+  useEffect(() => {
+    if (!open) return;
+    setStage(0);
+
+    // 1. Suara gong — dibuat pakai Web Audio (tanpa file)
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      const ctx = new AC();
+      audioRef.current = ctx;
+      const now = ctx.currentTime;
+
+      // gong = nada dasar rendah + harmonik + decay panjang
+      [72, 145, 219, 291, 367, 441].forEach((f, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.value = f;
+        const amp = 0.34 / (i + 1.4);
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(amp, now + 0.012);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 3.4 - i * 0.35);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 3.6);
+      });
+      // dentuman awal
+      const thump = ctx.createOscillator();
+      const thumpGain = ctx.createGain();
+      thump.type = "triangle";
+      thump.frequency.setValueAtTime(120, now);
+      thump.frequency.exponentialRampToValueAtTime(38, now + 0.6);
+      thumpGain.gain.setValueAtTime(0.42, now);
+      thumpGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.9);
+      thump.connect(thumpGain).connect(ctx.destination);
+      thump.start(now);
+      thump.stop(now + 1);
+    } catch {
+      /* browser tanpa audio: lewati */
+    }
+
+    // 2. Konfeti canvas — 260 partikel meledak dari tengah
+    const canvas = confettiRef.current;
+    let raf;
+    if (canvas) {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      const ctx2 = canvas.getContext("2d");
+      ctx2.scale(dpr, dpr);
+      const W = window.innerWidth;
+      const H = window.innerHeight;
+      const COLORS = ["#5b7cfa", "#9db2ff", "#ffffff", "#e9e6df", "#3a55c9", "#7fb0a4", "#c94f4f"];
+
+      const parts = Array.from({ length: 260 }, () => {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 6 + Math.random() * 16;
+        return {
+          x: W / 2,
+          y: H / 2 - 60,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 5,
+          w: 6 + Math.random() * 8,
+          h: 8 + Math.random() * 12,
+          rot: Math.random() * Math.PI,
+          vr: (Math.random() - 0.5) * 0.32,
+          color: COLORS[(Math.random() * COLORS.length) | 0],
+          life: 1,
+        };
+      });
+
+      const t0 = performance.now();
+      const draw = (t) => {
+        const el = (t - t0) / 1000;
+        ctx2.clearRect(0, 0, W, H);
+        parts.forEach((p) => {
+          p.vy += 0.32;          // gravitasi
+          p.vx *= 0.992;         // gesekan udara
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.vr;
+          p.life = Math.max(0, 1 - el / 4.6);
+          ctx2.save();
+          ctx2.globalAlpha = p.life;
+          ctx2.translate(p.x, p.y);
+          ctx2.rotate(p.rot);
+          ctx2.fillStyle = p.color;
+          ctx2.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx2.restore();
+        });
+        if (el < 4.8) raf = requestAnimationFrame(draw);
+        else ctx2.clearRect(0, 0, W, H);
+      };
+      raf = requestAnimationFrame(draw);
+    }
+
+    // 3. Reveal bertahap: flash -> boom -> pesan
+    const s1 = setTimeout(() => setStage(1), 160);
+    const s2 = setTimeout(() => setStage(2), 900);
+
+    return () => {
+      clearTimeout(s1);
+      clearTimeout(s2);
+      cancelAnimationFrame(raf);
+      try {
+        audioRef.current?.close();
+      } catch {
+        /* noop */
+      }
+    };
+  }, [open]);
 
   if (!open) return null;
 
   return (
     <div
-      className="fixed inset-0 z-[200] grid place-items-center p-6"
-      style={{ background: "rgba(8,9,12,.84)", backdropFilter: "blur(12px)" }}
-      onClick={() => setOpen(false)}
+      className="fixed inset-0 z-[200] overflow-hidden"
+      style={{ background: stage >= 1 ? "rgba(8,9,12,.93)" : "rgba(8,9,12,.55)", backdropFilter: "blur(6px)", transition: "background .7s ease" }}
+      onClick={() => {
+        setOpen(false);
+        setStage(0);
+      }}
     >
+      {/* kilatan cahaya putih saat pertama terbuka */}
       <div
-        className="surface relative w-full max-w-lg overflow-hidden p-8 text-center"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="pointer-events-none absolute -top-24 left-1/2 h-52 w-52 -translate-x-1/2 rounded-full bg-[#5b7cfa]/20 blur-3xl" />
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-white"
+        style={{
+          opacity: stage === 0 ? 0.85 : 0,
+          transition: "opacity .55s ease-out",
+        }}
+      />
 
-        <p className="text-[13px] font-medium text-[#9db2ff]">Kamu menemukannya</p>
-        <h3 className="mt-3 text-3xl font-bold text-white">Easter egg</h3>
-        <p className="mx-auto mt-4 max-w-sm text-[14px] leading-relaxed text-white/60">
-          Kamu salah satu dari sedikit orang yang penasaran sampai ke sini. Itu sikap yang sama
-          yang kupakai membangun semua produk di halaman ini: coba, ukur, lalu buktikan.
-        </p>
-        <p className="mx-auto mt-5 max-w-sm text-[13px] leading-relaxed text-white/45">
-          Kalau kamu juga tipe yang suka mengulik, kirim pesan ke{" "}
-          <span className="text-[#9db2ff]">arielbudi4@gmail.com</span> dengan judul
-          &ldquo;EASTER EGG&rdquo;. Akan kubalas dengan cerita di balik layar.
-        </p>
+      {/* cincin gelombang kejut */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#9db2ff]"
+        style={{
+          width: stage >= 1 ? "160vmax" : "8vmax",
+          height: stage >= 1 ? "160vmax" : "8vmax",
+          opacity: stage === 0 ? 0.9 : 0,
+          transition: "all 1.1s cubic-bezier(.2,.8,.2,1)",
+        }}
+      />
 
-        <div className="mt-7 flex items-center justify-center gap-3">
-          <button
-            onClick={() => setOpen(false)}
-            className="rounded-full bg-white px-5 py-2.5 text-[14px] font-semibold text-[#14171b] transition-transform hover:scale-105"
-          >
-            Tutup
-          </button>
-          <span className="text-[12px] text-white/35">atau tekan Esc</span>
+      {/* konfeti */}
+      <canvas ref={confettiRef} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden />
+
+      {/* isi pesan */}
+      <div className="relative grid h-full place-items-center p-6">
+        <div
+          className="relative w-full max-w-xl text-center transition-all duration-700"
+          style={{
+            opacity: stage >= 2 ? 1 : 0,
+            transform: stage >= 2 ? "translateY(0) scale(1)" : "translateY(28px) scale(.94)",
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <p className="text-[13px] font-medium tracking-[0.24em] text-[#9db2ff] uppercase">kamu menemukannya</p>
+
+          <h3 className="mt-4 text-[clamp(2.4rem,7vw,4.6rem)] leading-[1.02] font-black tracking-[-0.03em] text-white">
+            GONG<span className="text-[#5b7cfa]">!</span>
+          </h3>
+          <p className="mt-2 text-[15px] text-white/60">
+            Ini bukan halaman biasa, dan kamu bukan pengunjung biasa.
+          </p>
+
+          <div className="mx-auto mt-8 max-w-md space-y-4 rounded-2xl border border-white/10 bg-white/[0.04] p-6 text-left backdrop-blur">
+            <p className="text-[14px] leading-relaxed text-white/70">
+              Kamu salah satu dari sedikit orang yang penasaran sampai sejauh ini. Itu sikap yang
+              sama yang kupakai membangun semua produk di halaman ini: <span className="text-white">coba, ukur, lalu buktikan.</span>
+            </p>
+            <p className="text-[13px] leading-relaxed text-white/50">
+              Kalau kamu juga tipe yang suka mengulik, kirim pesan ke{" "}
+              <span className="text-[#9db2ff]">arielbudi4@gmail.com</span> dengan judul{" "}
+              <span className="font-semibold text-white">&ldquo;EASTER EGG&rdquo;</span>.
+              Akan kubalas dengan cerita di balik layar — gratis, cuma untuk yang menemukan ini.
+            </p>
+          </div>
+
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <a
+              href="mailto:arielbudi4@gmail.com?subject=EASTER%20EGG"
+              className="rounded-full bg-white px-6 py-3 text-[14px] font-semibold text-[#14171b] transition-transform hover:scale-105"
+            >
+              Kirim pesan
+            </a>
+            <button
+              onClick={() => {
+                setOpen(false);
+                setStage(0);
+              }}
+              className="rounded-full border border-white/15 px-5 py-3 text-[14px] text-white/70 transition-colors hover:border-white/30 hover:text-white"
+            >
+              Tutup
+            </button>
+          </div>
+          <p className="mt-4 text-[12px] text-white/25">tekan Esc untuk menutup</p>
         </div>
       </div>
     </div>
