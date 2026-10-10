@@ -23,7 +23,7 @@ import PixelBlast from "./rb/Backgrounds/PixelBlast/PixelBlast";
 import Radar from "./rb/Backgrounds/Radar/Radar";
 import RippleGrid from "./rb/Backgrounds/RippleGrid/RippleGrid";
 import { Broadcast, Sparkle, Cube, Stack } from "@phosphor-icons/react";
-import { InteractiveCard } from "./Interactive";
+import { InteractiveCard, InteractiveHint } from "./Interactive";
 
 // Aksen palet, emerald tua + krem hangat
 const ACCENT = "#5b7cfa";
@@ -266,10 +266,18 @@ export default function Lab() {
                   </span>
                 </div>
 
-                <div className="relative mx-5 mb-3 h-52 overflow-hidden rounded-[10px] border border-[#2b3037] bg-[#12151a]">
+                <div className="group/effect relative mx-5 mb-3 h-52 overflow-hidden rounded-[10px] border border-[#2b3037] bg-[#12151a]">
                   <div className="absolute inset-0" style={c.filter ? { filter: c.filter } : undefined}>
                     <Comp {...(c.props ?? {})} />
                   </div>
+                  {c.kicker === "Interaktif" && (
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 translate-y-1.5 items-center gap-1.5 rounded-full border border-[#9db2ff]/45 bg-[#0e1013]/85 px-3 py-1.5 text-[11px] font-medium whitespace-nowrap text-[#9db2ff] opacity-0 backdrop-blur transition-all duration-300 group-hover/effect:translate-y-0 group-hover/effect:opacity-100"
+                    >
+                      ✦ gerakkan kursor di sini
+                    </span>
+                  )}
                 </div>
 
                 <p className="px-5 pb-5 text-[13px] leading-relaxed text-white/45">{c.desc}</p>

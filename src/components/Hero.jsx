@@ -63,12 +63,20 @@ export default function Hero() {
           <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white/65">{owner.bio[0]}</p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Magnet padding={60} magnetStrength={4}>
-              <a href="#proyek" className="btn-primary inline-flex items-center gap-2 px-7 py-3.5 text-[15px]">
-                Lihat {projects.length} proyek
-                <ArrowDown size={16} />
-              </a>
-            </Magnet>
+            <span className="group/cta relative inline-block">
+              <Magnet padding={60} magnetStrength={4}>
+                <a href="#proyek" className="btn-primary inline-flex items-center gap-2 px-7 py-3.5 text-[15px]">
+                  Lihat {projects.length} proyek
+                  <ArrowDown size={16} />
+                </a>
+              </Magnet>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -top-9 left-2 flex items-center gap-1.5 rounded-full border border-[#9db2ff]/40 bg-[#0e1013]/90 px-3 py-1 text-[11px] whitespace-nowrap text-[#9db2ff] opacity-0 backdrop-blur transition-all duration-300 group-hover/cta:opacity-100"
+              >
+                ↑ coba dekatkan kursor
+              </span>
+            </span>
             <Magnet padding={60} magnetStrength={3}>
               <a
                 href={owner.github}

@@ -12,7 +12,8 @@ import Lab from "./components/Lab";
 import { Journey, Contact, Footer } from "./components/Sections";
 import { Preloader } from "./components/pro/ProMirror";
 import ClickSpark from "./components/rb/Animations/ClickSpark/ClickSpark";
-import TargetCursor from "./components/rb/Animations/TargetCursor/TargetCursor";
+import GlowCursor from "./components/rb/Animations/GlowCursor/GlowCursor";
+import { EasterEgg } from "./components/Interactive";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -56,14 +57,23 @@ function App() {
       duration={520}
       extraScale={1.35}
     >
-      <TargetCursor
-        spinDuration={2.2}
-        hideDefaultCursor={false}
-        hoverDuration={0.25}
-        parallaxOn
-        cursorColor="#9db2ff"
-        cursorColorOnTarget="#5b7cfa"
-      />
+      <div className="pointer-events-none fixed inset-0 z-[90]">
+        <GlowCursor
+          color="#5b7cfa"
+          secondaryColor="#9db2ff"
+          trailLength={46}
+          trailWidth={7}
+          followSpeed={0.18}
+          glowIntensity={1.6}
+          glowSpread={1.1}
+          brightness={1.15}
+          pulseSpeed={0.9}
+          noiseStrength={0.03}
+          idleFade
+          opacity={0.9}
+          blendMode="screen"
+        />
+      </div>
       <div className="grain relative min-h-screen">
         {loading && <Preloader onDone={() => setLoading(false)} />}
         <Nav />
@@ -77,6 +87,7 @@ function App() {
           <Contact />
         </main>
         <Footer />
+        <EasterEgg />
       </div>
     </ClickSpark>
   );

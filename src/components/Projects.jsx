@@ -9,6 +9,7 @@ import {
   Pulse,
 } from "@phosphor-icons/react";
 import { projects } from "../data/projects";
+import { InteractiveHint } from "./Interactive";
 import ScrollReveal from "./rb/TextAnimations/ScrollReveal/ScrollReveal";
 import CountUp from "./rb/TextAnimations/CountUp/CountUp";
 import SpotlightCard from "./rb/Components/SpotlightCard/SpotlightCard";
