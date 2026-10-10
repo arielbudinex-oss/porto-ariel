@@ -131,36 +131,50 @@ export function Contact() {
 
         {/* kartu ajakan — bisa diseret */}
         <ElasticSticker className="mx-auto w-full max-w-md">
-          <div className="surface relative overflow-hidden p-8 shadow-[0_24px_80px_rgba(0,0,0,.5)]">
-            <div className="absolute -top-16 -right-16 h-44 w-44 rounded-full bg-[#5b7cfa]/10 blur-3xl" />
-
-            <Sparkle className="text-[#9db2ff]" size={22} />
-            <h3 className="mt-4 text-2xl leading-snug font-bold text-white">{owner.name}</h3>
-            <p className="mt-1 font-mono text-xs text-[#9db2ff]">{owner.role}</p>
-            <p className="mt-5 text-[13px] leading-relaxed text-white/45">{owner.bio[1]}</p>
-
-            <div className="mt-7 grid grid-cols-2 gap-3 border-t border-[#2b3037] pt-6">
-              <div>
-                <p className="text-2xl font-bold text-white">7</p>
-                <p className="text-[11px] text-white/40">proyek nyata</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-white">265rb+</p>
-                <p className="text-[11px] text-white/40">baris kode</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-white">4</p>
-                <p className="text-[11px] text-white/40">produk live</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-white">265+</p>
-                <p className="text-[11px] text-white/40">skrip uji</p>
+          <div className="surface relative overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,.5)]">
+            {/* foto portrait */}
+            <div className="relative aspect-[4/5] w-full overflow-hidden">
+              <img
+                src="/assets/profile/ariel-portrait.webp"
+                alt={`${owner.name} — ${owner.role}`}
+                className="h-full w-full object-cover object-top"
+                loading="lazy"
+              />
+              {/* gradient bawah agar teks menyatu */}
+              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#16191d] via-[#16191d]/70 to-transparent" />
+              {/* identitas di atas gradient */}
+              <div className="absolute inset-x-0 bottom-0 p-7">
+                <h3 className="text-2xl leading-snug font-bold text-white">{owner.name}</h3>
+                <p className="mt-1 text-[13px] text-[#9db2ff]">{owner.role}</p>
               </div>
             </div>
 
-            <p className="mt-6 text-center font-mono text-[10px] text-white/25">
-              — geser stikernya, memang bisa digeser —
-            </p>
+            <div className="p-7 pt-0">
+              <p className="text-[13px] leading-relaxed text-white/45">{owner.bio[1]}</p>
+
+              <div className="mt-7 grid grid-cols-2 gap-3 border-t border-[#2b3037] pt-6">
+                <div>
+                  <p className="text-2xl font-bold text-white">7</p>
+                  <p className="text-[11px] text-white/40">proyek nyata</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-white">265rb+</p>
+                  <p className="text-[11px] text-white/40">baris kode</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-white">4</p>
+                  <p className="text-[11px] text-white/40">produk live</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-white">265+</p>
+                  <p className="text-[11px] text-white/40">skrip uji</p>
+                </div>
+              </div>
+
+              <p className="mt-6 text-center text-[11px] text-white/25">
+                — geser kartunya, memang bisa digeser —
+              </p>
+            </div>
           </div>
         </ElasticSticker>
       </div>

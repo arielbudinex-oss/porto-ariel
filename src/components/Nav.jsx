@@ -48,8 +48,12 @@ export default function Nav() {
         }`}
       >
         <a href="#atas" className="flex items-center gap-3">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-white/10 font-mono text-[13px] font-bold text-white">
-            AO
+          <span className="h-8 w-8 overflow-hidden rounded-lg ring-1 ring-white/15">
+            <img
+              src="/assets/profile/ariel-avatar.webp"
+              alt={owner.name}
+              className="h-full w-full object-cover object-top"
+            />
           </span>
           <span className="hidden text-[15px] font-medium sm:block">
             <ShinyText text={owner.name} speed={6} color="#a1a1aa" shineColor="#fff" />
