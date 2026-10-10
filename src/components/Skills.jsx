@@ -53,7 +53,7 @@ export default function Skills() {
 
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-2xl">
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#a8d4b8] uppercase">03 — Keahlian</p>
+          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#9db2ff] uppercase">03 — Keahlian</p>
           <BlurText
             text="Tumpukan teknologi yang benar-benar kupakai di produksi."
             delay={26}
@@ -68,7 +68,7 @@ export default function Skills() {
         </header>
 
         {/* grid logo statis — tanpa strip berjalan */}
-        <div className="mb-12 grid grid-cols-3 gap-x-4 gap-y-6 border-y border-[#2a2a2c] py-8 sm:grid-cols-5 lg:grid-cols-7">
+        <div className="mb-12 grid grid-cols-3 gap-x-4 gap-y-6 border-y border-[#2b3037] py-8 sm:grid-cols-5 lg:grid-cols-7">
           {LOGOS.map((item) => (
             <span key={item.label} className="flex items-center gap-2.5" title={item.label}>
               <item.Icon size={20} color={item.color} />
@@ -81,9 +81,9 @@ export default function Skills() {
           {entries.map(([group, items]) => {
             const Icon = ICONS[group] ?? Terminal;
             return (
-              <div key={group} className="surface p-6 transition-colors duration-300 hover:border-[#2e7d5b]/30">
+              <div key={group} className="surface p-6 transition-colors duration-300 hover:border-[#5b7cfa]/30">
                 <div className="mb-4 flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#2e7d5b]/12 text-[#a8d4b8]">
+                  <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#5b7cfa]/12 text-[#9db2ff]">
                     <Icon size={17} />
                   </span>
                   <h3 className="text-[17px] font-semibold text-white">{group}</h3>
@@ -92,7 +92,7 @@ export default function Skills() {
                   {items.map((s) => (
                     <span
                       key={s}
-                      className="rounded-lg border border-[#2a2a2c] bg-[#0a0a0b] px-2.5 py-1 font-mono text-[11px] text-white/55 transition-colors hover:border-[#2e7d5b]/40 hover:text-[#a8d4b8]"
+                      className="rounded-lg border border-[#2b3037] bg-[#0e1013] px-2.5 py-1 font-mono text-[11px] text-white/55 transition-colors hover:border-[#5b7cfa]/40 hover:text-[#9db2ff]"
                     >
                       {s}
                     </span>
@@ -109,7 +109,7 @@ export default function Skills() {
               <CountUp to={total} duration={1.4} />
             </p>
             <p className="mt-1 text-[13px] text-white/45">teknologi di 6 bidang</p>
-            <div className="mt-5 space-y-2 border-t border-[#2a2a2c] pt-4 text-[12px] text-white/45">
+            <div className="mt-5 space-y-2 border-t border-[#2b3037] pt-4 text-[12px] text-white/45">
               <p className="flex justify-between">
                 <span>Bahasa</span> <span className="text-white/70">JS · TS · Python · C#</span>
               </p>
@@ -128,8 +128,8 @@ export default function Skills() {
           <h3 className="mb-6 text-2xl font-semibold text-white">Cara aku bekerja</h3>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {principles.map((pr, i) => (
-              <div key={pr.title} className="surface p-5 transition-colors duration-300 hover:border-[#2e7d5b]/30">
-                <span className="font-mono text-[11px] text-[#a8d4b8]">{String(i + 1).padStart(2, "0")}</span>
+              <div key={pr.title} className="surface p-5 transition-colors duration-300 hover:border-[#5b7cfa]/30">
+                <span className="font-mono text-[11px] text-[#9db2ff]">{String(i + 1).padStart(2, "0")}</span>
                 <h4 className="mt-2 text-[15px] font-semibold text-white">{pr.title}</h4>
                 <p className="mt-2 text-[13px] leading-relaxed text-white/45">{pr.desc}</p>
               </div>

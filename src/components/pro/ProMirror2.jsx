@@ -231,7 +231,7 @@ export function GradientBars({ className = "", bars = 26 }) {
           className="flex-1 rounded-t-full"
           style={{
             height: `${28 + Math.sin(i * 0.55) * 22 + (i % 3) * 9}%`,
-            background: `linear-gradient(180deg, rgba(212,212,216,0) 0%, rgba(212,212,216,.5) 45%, rgba(46,125,91,.75) 100%)`,
+            background: `linear-gradient(180deg, rgba(212,212,216,0) 0%, rgba(212,212,216,.5) 45%, rgba(91,124,250,.75) 100%)`,
             animation: `barWave ${3.4 + (i % 5) * 0.42}s ${i * 0.07}s ease-in-out infinite alternate`,
           }}
         />
@@ -327,7 +327,7 @@ export function TumbleWall({ items = [], className = "", height = 260 }) {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     el.appendChild(canvas);
 
-    const pal = ["#d4d4d8", "#a1a1aa", "#d4d4d8", "#7ba888", "#e8dcc4"];
+    const pal = ["#d4d4d8", "#a1a1aa", "#d4d4d8", "#7fb0a4", "#e9e6df"];
     bodies.current = items.map((label, i) => ({
       label,
       x: 30 + Math.random() * (W - 60),
@@ -522,7 +522,7 @@ export function MosaicWaves({ className = "", cols = 18, rows = 7 }) {
             key={i}
             className="rounded-[3px]"
             style={{
-              background: "linear-gradient(140deg, rgba(212,212,216,.32), rgba(46,125,91,.22))",
+              background: "linear-gradient(140deg, rgba(212,212,216,.32), rgba(91,124,250,.22))",
               animation: `mosaicShift ${2.8 + (c % 5) * 0.3}s ${(c * 0.11 + r * 0.16).toFixed(2)}s ease-in-out infinite`,
             }}
           />
@@ -546,7 +546,7 @@ export function AuroraTide({ className = "" }) {
     <div className={`pointer-events-none overflow-hidden ${className}`} aria-hidden="true">
       {[
         { c: "rgba(212,212,216,.32)", d: 22, y: "-18%" },
-        { c: "rgba(46,125,91,.30)", d: 27, y: "-6%" },
+        { c: "rgba(91,124,250,.30)", d: 27, y: "-6%" },
         { c: "rgba(212,212,216,.26)", d: 33, y: "6%" },
       ].map((l, i) => (
         <span

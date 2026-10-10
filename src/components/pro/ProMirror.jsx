@@ -131,7 +131,7 @@ export function StarfieldWarp({
       }));
     };
 
-    const palette = ["#d4d4d8", "#a1a1aa", "#d4d4d8", "#ffffff", "#7ba888"];
+    const palette = ["#d4d4d8", "#a1a1aa", "#d4d4d8", "#ffffff", "#7fb0a4"];
 
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
@@ -446,7 +446,7 @@ export function BlinkingGrid({ className = "", cols = 34, rows = 14 }) {
           key={i}
           className="aspect-square"
           style={{
-            background: r > 0.86 ? "rgba(212,212,216,.18)" : r > 0.68 ? "rgba(46,125,91,.12)" : "rgba(30,35,48,.22)",
+            background: r > 0.86 ? "rgba(212,212,216,.18)" : r > 0.68 ? "rgba(91,124,250,.12)" : "rgba(30,35,48,.22)",
             animation: `blink ${3 + r * 6}s ${r * 4}s ease-in-out infinite`,
           }}
         />
@@ -493,17 +493,17 @@ export function ComparisonSlider({ before, after, label, className = "" }) {
       />
 
       <div
-        className="absolute inset-y-0 z-10 w-0.5 bg-[#2e7d5b] shadow-[0_0_18px_rgba(46,125,91,.7)]"
+        className="absolute inset-y-0 z-10 w-0.5 bg-[#5b7cfa] shadow-[0_0_18px_rgba(91,124,250,.7)]"
         style={{ left: `${pos}%` }}
       >
-        <div className="absolute top-1/2 left-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full border-2 border-[#2e7d5b] bg-black/95 text-[#2e7d5b] shadow-[0_0_20px_rgba(46,125,91,.5)] backdrop-blur">
+        <div className="absolute top-1/2 left-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full border-2 border-[#5b7cfa] bg-black/95 text-[#5b7cfa] shadow-[0_0_20px_rgba(91,124,250,.5)] backdrop-blur">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
             <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" />
           </svg>
         </div>
         {/* label mengikuti handle */}
         <div
-          className="absolute top-1/2 mt-9 -translate-x-1/2 rounded-full bg-black/90 px-2.5 py-1 font-mono text-[10px] whitespace-nowrap text-[#2e7d5b] backdrop-blur"
+          className="absolute top-1/2 mt-9 -translate-x-1/2 rounded-full bg-black/90 px-2.5 py-1 font-mono text-[10px] whitespace-nowrap text-[#5b7cfa] backdrop-blur"
           style={{ left: "50%" }}
         >
           geser ⇄
@@ -512,7 +512,7 @@ export function ComparisonSlider({ before, after, label, className = "" }) {
       <div className="absolute bottom-3 left-3 rounded-full border border-white/20 bg-black/85 px-3.5 py-1.5 text-xs font-semibold text-white backdrop-blur">
         ← DESAIN LAMA
       </div>
-      <div className="absolute right-3 bottom-3 rounded-full border border-[#2e7d5b]/40 bg-[#2e7d5b]/20 px-3.5 py-1.5 text-xs font-semibold text-[#a8d4b8] backdrop-blur">
+      <div className="absolute right-3 bottom-3 rounded-full border border-[#5b7cfa]/40 bg-[#5b7cfa]/20 px-3.5 py-1.5 text-xs font-semibold text-[#9db2ff] backdrop-blur">
         DESAIN BARU →
       </div>
       {label && (

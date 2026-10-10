@@ -43,7 +43,7 @@ export default function Nav() {
       <nav
         className={`mx-auto flex max-w-[1324px] items-center justify-between rounded-[14px] px-2 py-2 pl-5 transition-all duration-500 ${
           scrolled
-            ? "border border-white/[0.07] bg-[#0a0a0b]/45 shadow-[0_8px_32px_rgba(0,0,0,.28),inset_0_.5px_0_rgba(255,255,255,.08)] backdrop-blur-2xl backdrop-saturate-150"
+            ? "border border-white/[0.07] bg-[#0e1013]/45 shadow-[0_8px_32px_rgba(0,0,0,.28),inset_0_.5px_0_rgba(255,255,255,.08)] backdrop-blur-2xl backdrop-saturate-150"
             : "border border-transparent"
         }`}
       >
@@ -66,14 +66,14 @@ export default function Nav() {
               }`}
             >
               {l.label}
-              {active === l.href && <span className="absolute inset-x-3.5 bottom-1 h-px bg-[#2e7d5b]" />}
+              {active === l.href && <span className="absolute inset-x-3.5 bottom-1 h-px bg-[#5b7cfa]" />}
             </a>
           ))}
           <a
             href={owner.github}
             target="_blank"
             rel="noreferrer noopener"
-            className="ml-2 inline-flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-semibold text-[#1a1206] shadow-[0_2px_14px_rgba(46,125,91,.28)] transition-transform hover:scale-[1.03]" style={{ backgroundImage: "linear-gradient(160deg,#e8dcc4 0%,#2e7d5b 45%,#d6c8ab 100%)" }}
+            className="ml-2 inline-flex items-center gap-2 rounded-full bg-[#5b7cfa] px-4 py-2 text-[14px] font-semibold text-white shadow-[0_2px_14px_rgba(91,124,250,.28)] transition-transform hover:scale-[1.03]"
           >
             <Github size={15} /> GitHub
           </a>
@@ -105,7 +105,7 @@ export default function Nav() {
             target="_blank"
             rel="noreferrer noopener"
             onClick={() => setOpen(false)}
-            className="mt-1 flex items-center gap-2 rounded-xl bg-[#2e7d5b]/15 px-4 py-3 text-[14px] text-[#a8d4b8]"
+            className="mt-1 flex items-center gap-2 rounded-xl bg-[#5b7cfa]/15 px-4 py-3 text-[14px] text-[#9db2ff]"
           >
             <Github size={15} /> github.com/ArielOsaze
           </a>

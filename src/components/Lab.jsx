@@ -21,9 +21,9 @@ import DotGrid from "./rb/Backgrounds/DotGrid/DotGrid";
 import { Radio, Sparkles, Move3d, Layers3 } from "lucide-react";
 
 // Aksen palet — emerald tua + krem hangat
-const EMERALD = "#2e7d5b";
-const EMERALD_SOFT = "#a8d4b8";
-const CREAM = "#e8dcc4";
+const ACCENT = "#5b7cfa";
+const ACCENT_SOFT = "#9db2ff";
+const IVORY = "#e9e6df";
 
 const CARDS = [
   {
@@ -32,7 +32,7 @@ const CARDS = [
     desc: "Cahaya bergelombang yang mengalir pelan — dipakai sebagai latar hero saat halaman dibuka.",
     C: Aurora,
     span: "lg:col-span-2",
-    props: { colorStops: [EMERALD, "#1b5e42", EMERALD_SOFT], amplitude: 1.0, blend: 0.5 },
+    props: { colorStops: [ACCENT, "#3a55c9", ACCENT_SOFT], amplitude: 1.0, blend: 0.5 },
   },
   {
     kicker: "Partikel",
@@ -43,7 +43,7 @@ const CARDS = [
       particleCount: 180,
       particleSpread: 12,
       speed: 0.08,
-      particleColors: [EMERALD_SOFT, EMERALD, CREAM],
+      particleColors: [ACCENT_SOFT, ACCENT, IVORY],
       moveParticlesOnHover: true,
       particleBaseSize: 90,
       alphaParticles: true,
@@ -55,9 +55,9 @@ const CARDS = [
     desc: "Garis kontur yang bergerak seperti peta topografi — aksen kedalaman tanpa ramai.",
     C: Topography,
     props: {
-      lowColor: "#1b5e42",
-      midColor: EMERALD,
-      highColor: EMERALD_SOFT,
+      lowColor: "#3a55c9",
+      midColor: ACCENT,
+      highColor: ACCENT_SOFT,
       speed: 0.3,
       morphAmount: 2.4,
       bands: 2.4,
@@ -74,14 +74,14 @@ const CARDS = [
     title: "Orb",
     desc: "Bola cahaya yang berdenyut tenang dan menoleh mengikuti kursor.",
     C: Orb,
-    props: { hue: 0, hoverIntensity: 0.4, rotateOnHover: true, backgroundColor: "#0c120e" },
+    props: { hue: 0, hoverIntensity: 0.4, rotateOnHover: true, backgroundColor: "#0e1013" },
   },
   {
     kicker: "Latar",
     title: "Balatro",
     desc: "Pola fraktal berputar dengan kontras tinggi — dipakai sebagai tekstur bagian penutup.",
     C: Balatro,
-    props: { color1: EMERALD, color2: "#0c120e", color3: EMERALD_SOFT, speed: 0.6, spinAmount: 0.6, contrast: 3.2 },
+    props: { color1: ACCENT, color2: "#0e1013", color3: ACCENT_SOFT, speed: 0.6, spinAmount: 0.6, contrast: 3.2 },
   },
   {
     kicker: "Latar",
@@ -89,7 +89,7 @@ const CARDS = [
     desc: "Tirai gelap yang mengalun perlahan; pergerakannya sengaja dibuat lambat agar tidak mengganggu bacaan.",
     C: DarkVeil,
     props: { hueShift: 0, speed: 0.5 },
-    filter: "sepia(1) hue-rotate(70deg) saturate(1.9) brightness(1.02)",
+    filter: "sepia(1) hue-rotate(178deg) saturate(3.2) brightness(1.1)",
   },
   {
     kicker: "Latar",
@@ -98,7 +98,7 @@ const CARDS = [
     C: LightRays,
     props: {
       raysOrigin: "top-center",
-      raysColor: EMERALD_SOFT,
+      raysColor: ACCENT_SOFT,
       raysSpeed: 0.8,
       lightSpread: 1.1,
       rayLength: 1.6,
@@ -111,7 +111,7 @@ const CARDS = [
     title: "Threads",
     desc: "Benang halus yang mengalir seperti lipatan kain — gerakannya menenangkan.",
     C: Threads,
-    props: { color: [0.62, 0.78, 0.67], amplitude: 1.4, distance: 0.4, lineCount: 70, thickness: 0.7, speed: 0.5 },
+    props: { color: [0.55, 0.64, 0.95], amplitude: 1.4, distance: 0.4, lineCount: 70, thickness: 0.7, speed: 0.5 },
   },
   {
     kicker: "Latar",
@@ -124,7 +124,7 @@ const CARDS = [
       beamNumber: 10,
       lightColor: "#d4d4d8",
       beamColor: "#ffffff",
-      backgroundColor: "#0c120e",
+      backgroundColor: "#0e1013",
       speed: 2,
       noiseIntensity: 1.6,
       scale: 0.22,
@@ -152,7 +152,7 @@ const CARDS = [
     props: {
       dotSize: 3,
       gap: 22,
-      baseColor: "#2a3d31",
+      baseColor: "#2b3037",
       activeColor: "#ffffff",
       proximity: 110,
       shockRadius: 220,
@@ -167,9 +167,9 @@ export default function Lab() {
     <section id="lab" className="relative overflow-hidden py-28">
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-3xl">
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#a8d4b8] uppercase">04 — Lab Efek</p>
+          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-[#9db2ff] uppercase">04 — Lab Efek</p>
           <h2 className="text-4xl font-bold tracking-[-0.02em] md:text-5xl">
-            <GradientText colors={["#fff", "#a3aca6", "#a8d4b8", "#fff"]} animationSpeed={8} className="text-4xl font-bold md:text-5xl">
+            <GradientText colors={["#fff", "#9aa3ad", "#9db2ff", "#fff"]} animationSpeed={8} className="text-4xl font-bold md:text-5xl">
               Efek yang kupakai
             </GradientText>{" "}
             <span className="text-white">di halaman ini.</span>
@@ -187,19 +187,19 @@ export default function Lab() {
             return (
               <article
                 key={c.title}
-                className={`surface group relative overflow-hidden transition-colors duration-300 hover:border-[#2e7d5b]/50 ${c.span ?? ""}`}
+                className={`surface group relative overflow-hidden transition-colors duration-300 hover:border-[#5b7cfa]/50 ${c.span ?? ""}`}
               >
                 <div className="flex items-start justify-between gap-3 p-5 pb-3">
                   <div>
-                    <p className="font-mono text-[10px] tracking-[0.2em] text-[#a8d4b8] uppercase">{c.kicker}</p>
+                    <p className="font-mono text-[10px] tracking-[0.2em] text-[#9db2ff] uppercase">{c.kicker}</p>
                     <h3 className="mt-1 text-[17px] font-semibold text-white">{c.title}</h3>
                   </div>
-                  <span className="rounded-lg border border-[#2a3d31] bg-[#0c120e] p-1.5 text-white/40">
+                  <span className="rounded-lg border border-[#2b3037] bg-[#0e1013] p-1.5 text-white/40">
                     {i % 4 === 0 ? <Radio size={13} /> : i % 4 === 1 ? <Move3d size={13} /> : i % 4 === 2 ? <Layers3 size={13} /> : <Sparkles size={13} />}
                   </span>
                 </div>
 
-                <div className="relative mx-5 mb-3 h-52 overflow-hidden rounded-[10px] border border-[#2a3d31] bg-[#0f1512]">
+                <div className="relative mx-5 mb-3 h-52 overflow-hidden rounded-[10px] border border-[#2b3037] bg-[#12151a]">
                   <div className="absolute inset-0" style={c.filter ? { filter: c.filter } : undefined}>
                     <Comp {...(c.props ?? {})} />
                   </div>
@@ -213,9 +213,9 @@ export default function Lab() {
 
         {/* baris komponen interaktif */}
         <div className="mt-14 grid gap-4 lg:grid-cols-3">
-          <SpotlightCard className="surface rounded-[14px]" spotlightColor="rgba(46,125,91,0.28)" intensity={0.4}>
+          <SpotlightCard className="surface rounded-[14px]" spotlightColor="rgba(91,124,250,0.28)" intensity={0.4}>
             <div className="p-6">
-              <p className="font-mono text-[10px] tracking-[0.2em] text-[#a8d4b8] uppercase">Interaktif</p>
+              <p className="font-mono text-[10px] tracking-[0.2em] text-[#9db2ff] uppercase">Interaktif</p>
               <h3 className="mt-1 text-[17px] font-semibold text-white">Spotlight Card</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-white/45">
                 Sorotan lembut mengikuti kursor di permukaan kartu — kupakai untuk kartu proyek supaya terasa hidup tanpa ramai.
@@ -224,7 +224,7 @@ export default function Lab() {
           </SpotlightCard>
 
           <div className="surface p-6">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#a8d4b8] uppercase">Teks</p>
+            <p className="font-mono text-[10px] tracking-[0.2em] text-[#9db2ff] uppercase">Teks</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Decrypted Text</h3>
             <p className="mt-3 font-mono text-[13px] text-white/70">
               <DecryptedText
@@ -237,23 +237,23 @@ export default function Lab() {
               />
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              <StarBorder as="span" color="#a8d4b8" speed="4s" thickness={1}>
-                <span className="px-3 py-1.5 font-mono text-[11px] text-[#a8d4b8]">Star Border</span>
+              <StarBorder as="span" color="#9db2ff" speed="4s" thickness={1}>
+                <span className="px-3 py-1.5 font-mono text-[11px] text-[#9db2ff]">Star Border</span>
               </StarBorder>
-              <span className="rounded-lg border border-[#2a3d31] bg-[#0c120e] px-3 py-1.5 font-mono text-[11px] text-white/45">
+              <span className="rounded-lg border border-[#2b3037] bg-[#0e1013] px-3 py-1.5 font-mono text-[11px] text-white/45">
                 komponen lepas, tanpa pustaka animasi berat
               </span>
             </div>
           </div>
 
           <div className="surface p-6">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#a8d4b8] uppercase">Teks</p>
+            <p className="font-mono text-[10px] tracking-[0.2em] text-[#9db2ff] uppercase">Teks</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Shiny Text</h3>
             <div className="mt-5 grid place-items-center py-3">
               <ShinyText
                 text="Ariel Osaze Koinda Budi"
-                color="#a8d4b8"
-                shineColor="#f6f4ee"
+                color="#9db2ff"
+                shineColor="#f2f4f7"
                 speed={3.2}
                 shineWidth={110}
                 direction="left"
@@ -270,7 +270,7 @@ export default function Lab() {
         {/* baris angka & kartu miring */}
         <div className="mt-14 grid gap-4 lg:grid-cols-[1fr_1.2fr]">
           <div className="surface flex flex-col justify-center p-7">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#a8d4b8] uppercase">Hitungan</p>
+            <p className="font-mono text-[10px] tracking-[0.2em] text-[#9db2ff] uppercase">Hitungan</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Angka yang naik</h3>
             <p className="mt-2 text-[13px] leading-relaxed text-white/45">
               Angka bergerak naik saat masuk layar — dipakai di ringkasan supaya capaian terasa, bukan sekadar terbaca.
@@ -285,7 +285,7 @@ export default function Lab() {
                 <div key={x.l}>
                   <p className="text-3xl font-bold text-white">
                     <CountUp to={x.v} duration={1.5} separator="." />
-                    <span className="text-[#a8d4b8]">{x.s ?? ""}</span>
+                    <span className="text-[#9db2ff]">{x.s ?? ""}</span>
                   </p>
                   <p className="mt-1 text-[11px] tracking-[0.06em] text-white/40 uppercase">{x.l}</p>
                 </div>
@@ -294,7 +294,7 @@ export default function Lab() {
           </div>
 
           <div className="surface p-7">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#a8d4b8] uppercase">Miring</p>
+            <p className="font-mono text-[10px] tracking-[0.2em] text-[#9db2ff] uppercase">Miring</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Kartu yang mengikuti kursor</h3>
             <p className="mt-2 text-[13px] leading-relaxed text-white/45">
               Kartu miring mengikuti arah kursor, seperti memegang foto — kupakai untuk pratinjau karya.

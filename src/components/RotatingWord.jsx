@@ -41,9 +41,9 @@ export function RotatingWord({ words = [], interval = 2600, className = "" }) {
       <span
         className="col-start-1 row-start-1 justify-self-start font-semibold whitespace-nowrap"
         style={{
-          // gradien emas metalik: terang → gelap → kilau
+          // gradien sapphire — senada chrome situs
           backgroundImage:
-            "linear-gradient(180deg, #f7e7bd 0%, #e6cd8f 22%, #2e7d5b 48%, #d6c8ab 62%, #d9bd7d 82%, #e8dcc4 100%)",
+            "linear-gradient(180deg, #c9d6ff 0%, #9db2ff 24%, #5b7cfa 52%, #3a55c9 68%, #7b93f5 85%, #b9c8ff 100%)",
           WebkitBackgroundClip: "text",
           backgroundClip: "text",
           color: "transparent",

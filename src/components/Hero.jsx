@@ -27,17 +27,17 @@ export default function Hero() {
         cursorForce={0.12}
         bulgeStrength={68}
         glowRadius={180}
-        gradientFrom="rgba(46, 125, 91, 0.30)"
-        gradientTo="rgba(168, 212, 184, 0.20)"
-        glowColor="#0c120e"
+        gradientFrom="rgba(91, 124, 250, 0.30)"
+        gradientTo="rgba(157, 178, 255, 0.20)"
+        glowColor="#0e1013"
       />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-[#0c120e]/60 to-[#0c120e]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-[#0e1013]/60 to-[#0e1013]" />
 
       <div className="mx-auto grid max-w-[1324px] gap-14 px-6 pt-12 pb-24 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
         {/* ── kolom kiri ─────────────────────────────────────────────── */}
         <div className={mounted ? "rise" : "opacity-0"}>
           <div className="mb-7 inline-flex flex-wrap items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.05] py-1 pr-4 pl-1.5 text-[13px] text-white/70">
-            <span className="rounded-full border border-[#2e7d5b]/35 bg-[#2e7d5b]/12 px-2.5 py-1 text-[11px] font-semibold text-[#a8d4b8]">
+            <span className="rounded-full border border-[#5b7cfa]/35 bg-[#5b7cfa]/12 px-2.5 py-1 text-[11px] font-semibold text-[#9db2ff]">
               Founder Xinet.id
             </span>
             {live.length} live · {projects.length} proyek nyata
@@ -81,7 +81,7 @@ export default function Hero() {
               <div key={s.label}>
                 <dt className="text-3xl font-bold tracking-tight text-white md:text-4xl">
                   <CountUp to={s.value} duration={1.6} separator="." />
-                  <span className="text-[#2e7d5b]">{s.suffix}</span>
+                  <span className="text-[#5b7cfa]">{s.suffix}</span>
                 </dt>
                 <dd className="mt-1.5 text-[11px] tracking-[0.08em] text-white/40 uppercase">{s.label}</dd>
               </div>
@@ -92,16 +92,16 @@ export default function Hero() {
         {/* ── kolom kanan: panel terminal ────────────────────────────── */}
         <div className={`relative ${mounted ? "rise" : "opacity-0"}`} style={{ animationDelay: "120ms" }}>
           <div className="surface overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,.5)]">
-            <div className="flex items-center gap-2 border-b border-[#2a2a2c] px-5 py-3.5">
+            <div className="flex items-center gap-2 border-b border-[#2b3037] px-5 py-3.5">
               <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
               <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
               <span className="h-3 w-3 rounded-full bg-[#28c840]" />
               <span className="ml-3 font-mono text-xs text-white/40">ariel@produksi ~ %</span>
             </div>
 
-            <div className="space-y-3.5 bg-[#0f1512] p-6 font-mono text-[13px] leading-relaxed">
+            <div className="space-y-3.5 bg-[#12151a] p-6 font-mono text-[13px] leading-relaxed">
               <p className="text-white/35">
-                <span className="text-[#2e7d5b]">➜</span> <span className="text-white/80">whoami</span>
+                <span className="text-[#5b7cfa]">➜</span> <span className="text-white/80">whoami</span>
               </p>
               <p className="pl-4 text-white/60">
                 {owner.name} — full-stack developer.
@@ -110,7 +110,7 @@ export default function Hero() {
               </p>
 
               <p className="text-white/35">
-                <span className="text-[#2e7d5b]">➜</span> <span className="text-white/80">ls proyek-live/</span>
+                <span className="text-[#5b7cfa]">➜</span> <span className="text-white/80">ls proyek-live/</span>
               </p>
               <ul className="space-y-1.5 pl-4">
                 {live.map((p, i) => (
@@ -120,7 +120,7 @@ export default function Hero() {
                       href={p.url}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="text-white/75 transition-colors hover:text-[#a8d4b8]"
+                      className="text-white/75 transition-colors hover:text-[#9db2ff]"
                     >
                       {p.name}
                     </a>
@@ -130,8 +130,8 @@ export default function Hero() {
               </ul>
 
               <p className="text-white/35">
-                <span className="text-[#2e7d5b]">➜</span> <span className="text-white/80">npm run build</span>
-                <span className="caret ml-2 inline-block h-3.5 w-[7px] bg-[#2e7d5b] align-middle" />
+                <span className="text-[#5b7cfa]">➜</span> <span className="text-white/80">npm run build</span>
+                <span className="caret ml-2 inline-block h-3.5 w-[7px] bg-[#5b7cfa] align-middle" />
               </p>
               <div className="space-y-1 pl-4 text-[12px] text-white/50">
                 <p>✓ 265.000+ baris kode · 8 proyek</p>
@@ -140,7 +140,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between border-t border-[#2a2a2c] px-5 py-3">
+            <div className="flex items-center justify-between border-t border-[#2b3037] px-5 py-3">
               <ShinyText
                 text="Semua angka diukur dari source code"
                 speed={5}
@@ -156,11 +156,11 @@ export default function Hero() {
 
       <a
         href="#proyek"
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/35 transition-colors hover:text-[#a8d4b8] md:flex"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/35 transition-colors hover:text-[#9db2ff] md:flex"
       >
         <span className="font-mono text-[10px] tracking-[0.25em] uppercase">gulir</span>
         <span className="grid h-9 w-5 place-items-start rounded-full border border-white/15 p-1">
-          <span className="h-2 w-2 animate-bounce rounded-full bg-[#2e7d5b]" />
+          <span className="h-2 w-2 animate-bounce rounded-full bg-[#5b7cfa]" />
         </span>
       </a>
     </section>

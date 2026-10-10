@@ -1,31 +1,33 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   PALET & FONT — emerald tua + krem hangat (mewah klasik, old-money).
-   Hijau tua sebagai aksen utama, krem sebagai aksen hangat.
-   Bukan ungu, bukan cyan, bukan emas champagne.
+   PALET CHROME — netral premium (graphite + sapphire).
+   Warna aksen global sengaja DIBUAT NETRAL & TENANG, karena warna hidup ada
+   di kartu proyek: tiap proyek memakai warna brand aslinya sendiri
+   (NexShop sky, LumaWall crimson, AkunTuntas navy, dst — diekstrak dari
+   situs produksi masing-masing).
+   Dilarang: ungu, cyan-neon, emas champagne, hijau lumut.
    ───────────────────────────────────────────────────────────────────────────── */
 @theme {
-  --color-ink: #0c120e;        /* hijau-hitam pekat */
-  --color-ink-2: #141d17;      /* permukaan kartu */
-  --color-ink-3: #1c2820;      /* permukaan naik */
-  --color-line: #2a3d31;       /* garis batas */
-  --color-mist: #a3aca6;       /* teks redup */
-  --color-dim: #6b756e;        /* teks lebih redup */
-  --color-frost: #f6f4ee;      /* putih krem */
-  --color-accent: #2e7d5b;     /* emerald tua — aksen utama */
-  --color-accent-soft: #a8d4b8;
-  --color-accent-deep: #1b5e42;
-  --color-cream: #e8dcc4;      /* krem hangat */
-  --color-cream-soft: #d6c8ab;
-  --color-crimson: #a8553f;    /* terracotta lembut */
+  --color-ink: #0e1013;        /* graphite pekat */
+  --color-ink-2: #16191d;      /* permukaan kartu */
+  --color-ink-3: #1e2227;      /* permukaan naik */
+  --color-line: #2b3037;       /* garis batas */
+  --color-mist: #9aa3ad;       /* teks redup */
+  --color-dim: #646d78;        /* teks lebih redup */
+  --color-frost: #f2f4f7;      /* putih dingin bersih */
+  --color-accent: #5b7cfa;     /* sapphire — aksen chrome */
+  --color-accent-soft: #9db2ff;
+  --color-accent-deep: #3a55c9;
+  --color-ivory: #e9e6df;      /* krem netral */
+  --color-crimson: #d9544f;
 
   /* alias — dipakai sebagian komponen agar tidak perlu diubah satu per satu */
-  --color-neon: #a8d4b8;
-  --color-violet: #2e7d5b;
-  --color-magenta: #2e7d5b;
-  --color-amber: #e8dcc4;
-  --color-lime: #7ba888;
+  --color-neon: #9db2ff;
+  --color-violet: #5b7cfa;
+  --color-magenta: #5b7cfa;
+  --color-amber: #e9e6df;
+  --color-lime: #7fb0a4;
 
   --font-sans: "Geist", "Segoe UI", system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", monospace;
@@ -67,7 +69,7 @@ body {
 }
 
 ::selection {
-  background: rgba(46, 125, 91, 0.45);
+  background: rgba(91, 124, 250, 0.35);
   color: #fff;
 }
 
@@ -75,11 +77,11 @@ body {
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--color-ink); }
 ::-webkit-scrollbar-thumb {
-  background: #2c3a30;
+  background: #343a42;
   border-radius: 99px;
   border: 2px solid var(--color-ink);
 }
-::-webkit-scrollbar-thumb:hover { background: #3a4a3e; }
+::-webkit-scrollbar-thumb:hover { background: #434a54; }
 
 /* ── permukaan — radius besar, border tipis, tanpa glow ── */
 .surface {
@@ -89,16 +91,16 @@ body {
 }
 
 .surface-ghost {
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(32px) saturate(1.3);
   -webkit-backdrop-filter: blur(32px) saturate(1.3);
 }
 
-/* tombol primer: krem solid, teks hijau tua */
+/* tombol primer: putih bersih, teks gelap */
 .btn-primary {
-  background: var(--color-cream);
-  color: #16261d;
+  background: #f2f4f7;
+  color: #14171b;
   font-weight: 600;
   border-radius: 999px;
   transition: opacity 0.15s var(--ease-out), transform 0.15s var(--ease-out);
@@ -118,7 +120,7 @@ body {
 
 /* judul dengan gradient (dipakai hemat) */
 .text-grad {
-  background: linear-gradient(135deg, #a8d4b8 0%, #2e7d5b 30%, #e8dcc4 55%, #2e7d5b 80%, #a8d4b8 100%);
+  background: linear-gradient(135deg, #9db2ff 0%, #5b7cfa 30%, #f2f4f7 55%, #5b7cfa 80%, #9db2ff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -164,7 +166,7 @@ body {
 @keyframes blinkCaret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 .caret { animation: blinkCaret 1.05s step-end infinite; }
 
-/* ── kilau lembut untuk judul aksen (pengganti efek glitch) ───────────── */
+/* ── kilau lembut untuk judul aksen ───────────────────────────────────── */
 @keyframes sheen {
   0%   { background-position: 0% 50%; }
   100% { background-position: 200% 50%; }
@@ -172,12 +174,12 @@ body {
 .text-sheen {
   background: linear-gradient(
     100deg,
-    #a8d4b8 0%,
-    #2e7d5b 20%,
-    #f6f4ee 35%,
-    #e8dcc4 50%,
-    #2e7d5b 70%,
-    #a8d4b8 100%
+    #9db2ff 0%,
+    #5b7cfa 20%,
+    #f2f4f7 35%,
+    #e9e6df 50%,
+    #5b7cfa 70%,
+    #9db2ff 100%
   );
   background-size: 200% 100%;
   -webkit-background-clip: text;
