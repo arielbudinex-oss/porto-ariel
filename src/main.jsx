@@ -13,7 +13,7 @@ import { Journey, Contact, Footer } from "./components/Sections";
 import { Preloader } from "./components/pro/ProMirror";
 import ClickSpark from "./components/rb/Animations/ClickSpark/ClickSpark";
 import GlowCursor from "./components/rb/Animations/GlowCursor/GlowCursor";
-import { EasterEgg, ScrollProgress } from "./components/Interactive";
+import { EasterEgg } from "./components/Interactive";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -50,7 +50,6 @@ function App() {
 
   return (
     <>
-      <ScrollProgress />
       <ClickSpark
         sparkColor="#9db2ff"
         sparkSize={18}
