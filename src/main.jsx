@@ -8,7 +8,7 @@ import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import Skills from "./components/Skills";
-import Lab from "./components/Lab";
+import { LazySection, LazyLab } from "./components/LazySection";
 import { Journey, Contact, Footer } from "./components/Sections";
 import { Preloader } from "./components/pro/ProMirror";
 import ClickSpark from "./components/rb/Animations/ClickSpark/ClickSpark";
@@ -83,7 +83,9 @@ function App() {
             <Projects />
             <Experience />
             <Skills />
-            <Lab />
+            <LazySection minHeight={1400}>
+              <LazyLab />
+            </LazySection>
             <Journey />
             <Contact />
           </main>

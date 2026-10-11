@@ -116,6 +116,94 @@ export function InteractiveStat({ children, className = "", accent = "#5b7cfa" }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// LazyEffect — hanya merender efek berat (WebGL/canvas) saat elemen masuk
+// viewport, dan berhenti merender saat keluar. Ini penghematan terbesar:
+// 24 efek Lab tidak lagi jalan bersamaan.
+// ─────────────────────────────────────────────────────────────────────────────
+export function LazyEffect({ children, className = "", rootMargin = "200px" }) {
+  const ref = useRef(null);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setShow(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => setShow(entry.isIntersecting),
+      { rootMargin }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [rootMargin]);
+
+  return (
+    <div ref={ref} className={className}>
+      {show ? children : null}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Tilt3D — kartu yang miring mengikuti posisi kursor (efek kedalaman).
+// Ringan: hanya transform CSS, tanpa library.
+// ─────────────────────────────────────────────────────────────────────────────
+export function Tilt3D({ children, className = "", max = 7, scale = 1.015, glare = true, accent = "#5b7cfa" }) {
+  const ref = useRef(null);
+  const raf = useRef(0);
+
+  const onMove = useCallback((e) => {
+    const el = ref.current;
+    if (!el) return;
+    cancelAnimationFrame(raf.current);
+    raf.current = requestAnimationFrame(() => {
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      const rx = (0.5 - py) * max * 2;
+      const ry = (px - 0.5) * max * 2;
+      el.style.transform = `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale3d(${scale},${scale},1)`;
+      if (glare) {
+        el.style.setProperty("--tx-glare-x", `${(px * 100).toFixed(1)}%`);
+        el.style.setProperty("--tx-glare-y", `${(py * 100).toFixed(1)}%`);
+      }
+    });
+  }, [max, scale, glare]);
+
+  const onLeave = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    cancelAnimationFrame(raf.current);
+    el.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)";
+  }, []);
+
+  useEffect(() => () => cancelAnimationFrame(raf.current), []);
+
+  return (
+    <div
+      ref={ref}
+      onPointerMove={onMove}
+      onPointerLeave={onLeave}
+      className={`relative transition-transform duration-200 ease-out will-change-transform ${className}`}
+      style={{ transformStyle: "preserve-3d", "--tx-accent": accent }}
+    >
+      {glare && (
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-20 opacity-0 transition-opacity duration-300 hover:opacity-100"
+          style={{
+            background: `radial-gradient(340px circle at var(--tx-glare-x,50%) var(--tx-glare-y,50%), color-mix(in srgb, var(--tx-accent) 12%, transparent), transparent 65%)`,
+          }}
+        />
+      )}
+      {children}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // InteractiveHint — label kecil yang muncul saat kursor masuk supaya pengunjung
 // TAHU elemen itu bisa diapain ("geser", "klik", "tarik"). Ini yang bikin
 // interaktivitas terasa "dikasih tau", bukan cuma diam-diam bisa.

@@ -23,7 +23,7 @@ import PixelBlast from "./rb/Backgrounds/PixelBlast/PixelBlast";
 import Radar from "./rb/Backgrounds/Radar/Radar";
 import RippleGrid from "./rb/Backgrounds/RippleGrid/RippleGrid";
 import { Broadcast, Sparkle, Cube, Stack } from "@phosphor-icons/react";
-import { InteractiveCard, InteractiveHint } from "./Interactive";
+import { InteractiveCard, InteractiveHint, LazyEffect } from "./Interactive";
 
 // Aksen palet, emerald tua + krem hangat
 const ACCENT = "#5b7cfa";
@@ -267,9 +267,11 @@ export default function Lab() {
                 </div>
 
                 <div className="group/effect relative mx-5 mb-3 h-52 overflow-hidden rounded-[10px] border border-[#2b3037] bg-[#12151a]">
-                  <div className="absolute inset-0" style={c.filter ? { filter: c.filter } : undefined}>
-                    <Comp {...(c.props ?? {})} />
-                  </div>
+                  <LazyEffect className="absolute inset-0" rootMargin="150px">
+                    <div className="absolute inset-0" style={c.filter ? { filter: c.filter } : undefined}>
+                      <Comp {...(c.props ?? {})} />
+                    </div>
+                  </LazyEffect>
                   {c.kicker === "Interaktif" && (
                     <span
                       aria-hidden
@@ -376,7 +378,7 @@ export default function Lab() {
             </p>
             <div className="mt-5 grid place-items-center">
               <TiltedCard
-                imageSrc="/assets/projects/lumawall/01-dashboard.png"
+                imageSrc="/assets/projects/lumawall/01-dashboard.webp"
                 altText="LumaWall dashboard"
                 captionText="LumaWall. 58 rilis"
                 containerHeight="240px"

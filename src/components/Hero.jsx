@@ -39,12 +39,12 @@ export default function Hero() {
         <ImageTrail
           variant={1}
           items={[
-            "/assets/projects/nexshop/01-admin.png",
-            "/assets/projects/lumawall/01-dashboard.png",
-            "/assets/projects/akuntuntas/01-dashboard.png",
-            "/assets/projects/saybot/01-og.png",
-            "/assets/projects/nexshop/02-admin-mobile.png",
-            "/assets/projects/lumawall/02-catalog.png",
+            "/assets/projects/nexshop/01-admin.webp",
+            "/assets/projects/lumawall/01-dashboard.webp",
+            "/assets/projects/akuntuntas/01-dashboard.webp",
+            "/assets/projects/saybot/01-og.webp",
+            "/assets/projects/nexshop/02-admin-mobile.webp",
+            "/assets/projects/lumawall/02-catalog.webp",
           ]}
         />
       </div>

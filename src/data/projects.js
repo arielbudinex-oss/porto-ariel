@@ -186,15 +186,15 @@ export const projects = [
       "iPaymu", "TokoVoucher", "Nginx", "Tailwind CSS", "Gemini/Groq/OpenRouter", "Puppeteer",
     ],
     screenshots: [
-      { src: "/assets/projects/nexshop/01-admin.png", caption: "Dashboard admin, desain baru, terang dan berbasis kartu" },
-      { src: "/assets/projects/nexshop/05-before.png", caption: "Desain lama, tema gelap, sebelum redesign" },
-      { src: "/assets/projects/nexshop/02-admin-mobile.png", caption: "Versi mobile, tata letak bertumpuk, bukan zoom" },
-      { src: "/assets/projects/nexshop/03-staff.png", caption: "Tampilan staf, peran terpisah dari admin" },
-      { src: "/assets/projects/nexshop/04-staff-mobile.png", caption: "Mobile staf, tata letak menyesuaikan" },
+      { src: "/assets/projects/nexshop/01-admin.webp", caption: "Dashboard admin, desain baru, terang dan berbasis kartu" },
+      { src: "/assets/projects/nexshop/05-before.webp", caption: "Desain lama, tema gelap, sebelum redesign" },
+      { src: "/assets/projects/nexshop/02-admin-mobile.webp", caption: "Versi mobile, tata letak bertumpuk, bukan zoom" },
+      { src: "/assets/projects/nexshop/03-staff.webp", caption: "Tampilan staf, peran terpisah dari admin" },
+      { src: "/assets/projects/nexshop/04-staff-mobile.webp", caption: "Mobile staf, tata letak menyesuaikan" },
     ],
     compare: {
-      before: "/assets/projects/nexshop/05-before.png",
-      after: "/assets/projects/nexshop/01-admin.png",
+      before: "/assets/projects/nexshop/05-before.webp",
+      after: "/assets/projects/nexshop/01-admin.webp",
       label: "Redesign panel admin, tema gelap lama vs terang baru",
     },
     proof: [
@@ -254,7 +254,7 @@ export const projects = [
       "PostgreSQL", "BullMQ", "Redis", "Docker", "Vercel", "pm2",
     ],
     screenshots: [
-      { src: "/assets/projects/saybot/01-og.png", caption: "Kartu merek SayBot, biru #0090f0 & cyan #00c2d4 yang dikunci kontrak CI" },
+      { src: "/assets/projects/saybot/01-og.webp", caption: "Kartu merek SayBot, biru #0090f0 & cyan #00c2d4 yang dikunci kontrak CI" },
     ],
     proof: [
       "44 skrip kontrak & regtest: palet, responsif, inbox, drawer mobile, menu landing",
@@ -317,11 +317,11 @@ export const projects = [
       "WinEvent Hooks", "DWM", "MSIX", "Inno Setup", "Vercel Serverless",
     ],
     screenshots: [
-      { src: "/assets/projects/lumawall/01-dashboard.png", caption: "Dashboard, wallpaper unggulan, statistik, dan katalog" },
-      { src: "/assets/projects/lumawall/02-catalog.png", caption: "Katalog 5.000+ wallpaper dengan pencarian & filter" },
-      { src: "/assets/projects/lumawall/03-displays.png", caption: "Manajemen multi-monitor per layar" },
-      { src: "/assets/projects/lumawall/04-library.png", caption: "Pustaka pribadi dengan pengaturan per wallpaper" },
-      { src: "/assets/projects/lumawall/05-performance.png", caption: "Panel performa, kontrol decode & pause" },
+      { src: "/assets/projects/lumawall/01-dashboard.webp", caption: "Dashboard, wallpaper unggulan, statistik, dan katalog" },
+      { src: "/assets/projects/lumawall/02-catalog.webp", caption: "Katalog 5.000+ wallpaper dengan pencarian & filter" },
+      { src: "/assets/projects/lumawall/03-displays.webp", caption: "Manajemen multi-monitor per layar" },
+      { src: "/assets/projects/lumawall/04-library.webp", caption: "Pustaka pribadi dengan pengaturan per wallpaper" },
+      { src: "/assets/projects/lumawall/05-performance.webp", caption: "Panel performa, kontrol decode & pause" },
     ],
     proof: [
       "Riset kompetitor bertag [DOC]/[DEV]/[SRC], klaim dipisah dari spekulasi",
@@ -379,12 +379,12 @@ export const projects = [
       "Python 3.11", "PyInstaller", "SQLite", "Desktop Windows", "Sistem Lisensi", "Offline-first",
     ],
     screenshots: [
-      { src: "/assets/projects/akuntuntas/01-dashboard.png", caption: "Dashboard, omzet, laba, kas, aset, pajak, ekuitas dalam satu layar" },
-      { src: "/assets/projects/akuntuntas/02-penjualan.png", caption: "Transaksi penjualan dengan alur pembukuan ganda" },
-      { src: "/assets/projects/akuntuntas/03-pajak.png", caption: "Modul pajak. PPh 31E dan ambang PKP" },
-      { src: "/assets/projects/akuntuntas/04-laporan.png", caption: "Laporan keuangan sesuai SAK EMKM" },
-      { src: "/assets/projects/akuntuntas/05-payroll.png", caption: "Payroll terintegrasi pembukuan" },
-      { src: "/assets/projects/akuntuntas/06-produk.png", caption: "Data produk & inventaris" },
+      { src: "/assets/projects/akuntuntas/01-dashboard.webp", caption: "Dashboard, omzet, laba, kas, aset, pajak, ekuitas dalam satu layar" },
+      { src: "/assets/projects/akuntuntas/02-penjualan.webp", caption: "Transaksi penjualan dengan alur pembukuan ganda" },
+      { src: "/assets/projects/akuntuntas/03-pajak.webp", caption: "Modul pajak. PPh 31E dan ambang PKP" },
+      { src: "/assets/projects/akuntuntas/04-laporan.webp", caption: "Laporan keuangan sesuai SAK EMKM" },
+      { src: "/assets/projects/akuntuntas/05-payroll.webp", caption: "Payroll terintegrasi pembukuan" },
+      { src: "/assets/projects/akuntuntas/06-produk.webp", caption: "Data produk & inventaris" },
     ],
     proof: [
       "Mode pemula mengutip dasar hukum per konsep pajak",

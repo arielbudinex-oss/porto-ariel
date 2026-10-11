@@ -9,7 +9,7 @@ import {
   Pulse,
 } from "@phosphor-icons/react";
 import { projects } from "../data/projects";
-import { InteractiveHint } from "./Interactive";
+import { InteractiveHint, Tilt3D } from "./Interactive";
 import ScrollReveal from "./rb/TextAnimations/ScrollReveal/ScrollReveal";
 import CountUp from "./rb/TextAnimations/CountUp/CountUp";
 import SpotlightCard from "./rb/Components/SpotlightCard/SpotlightCard";
@@ -309,9 +309,11 @@ function ProjectCard({ project: p, open, onToggle }) {
                 {/* galeri screenshot */}
                 {hasShots ? (
                   <div className="space-y-3">
-                    <PixelDissolve trigger={shot} className="rounded-2xl border border-line">
-                      <ShotImage src={p.screenshots[shot].src} alt={p.screenshots[shot].caption} />
-                    </PixelDissolve>
+                    <Tilt3D max={5} scale={1.012} accent={p.accent}>
+                      <PixelDissolve trigger={shot} className="overflow-hidden rounded-2xl border border-line">
+                        <ShotImage src={p.screenshots[shot].src} alt={p.screenshots[shot].caption} />
+                      </PixelDissolve>
+                    </Tilt3D>
                     <p className="px-1 text-[12px] text-mist">{p.screenshots[shot].caption}</p>
                     {p.screenshots.length > 1 && (
                       <div className="no-bar flex gap-2 overflow-x-auto pb-1">

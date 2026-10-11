@@ -1,8 +1,12 @@
+import { lazy, Suspense } from "react";
 import { journey, owner } from "../data/projects";
 import { ElasticSticker } from "./pro/ProMirror";
-import Lanyard from "./rb/Components/Lanyard/Lanyard";
+import { LazyEffect } from "./Interactive";
 import { GithubLogo, EnvelopeSimple, MapPin, Sparkle, LinkedinLogo } from "@phosphor-icons/react";
 import { InteractiveCard } from "./Interactive";
+
+// Lanyard memakai three.js (~240KB gzip) — dimuat hanya saat kartu mendekat viewport
+const Lanyard = lazy(() => import("./rb/Components/Lanyard/Lanyard"));
 
 export function Journey() {
   return (
@@ -130,7 +134,9 @@ export function Contact() {
           {/* kartu nama 3D — bisa digoyang & dibalik */}
           <div className="group/lanyard relative">
             <div className="relative h-[380px] w-full overflow-hidden rounded-2xl border border-[#2b3037] bg-[#0e1013]">
-              <Lanyard
+              <LazyEffect className="absolute inset-0" rootMargin="600px">
+                <Suspense fallback={<div className="grid h-full place-items-center text-[12px] text-white/30">memuat kartu…</div>}>
+                  <Lanyard
                 frontImage="/assets/profile/ariel-portrait.webp"
                 backImage="/assets/profile/ariel-avatar.webp"
                 orientation="portrait"
@@ -148,6 +154,8 @@ export function Contact() {
                 intro
                 cardColor="#14181d"
               />
+                </Suspense>
+              </LazyEffect>
             </div>
             <span
               aria-hidden
