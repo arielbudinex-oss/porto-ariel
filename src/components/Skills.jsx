@@ -149,10 +149,9 @@ export default function Skills() {
         <div className="mt-16">
           <h3 className="mb-6 text-2xl font-semibold text-white">Cara aku bekerja</h3>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {principles.map((pr, i) => (
+            {principles.map((pr) => (
               <InteractiveCard key={pr.title} className="surface p-5" accent="#5b7cfa">
-                <span className="font-mono text-[11px] text-[#9db2ff]">{String(i + 1).padStart(2, "0")}</span>
-                <h4 className="mt-2 text-[15px] font-semibold text-white">{pr.title}</h4>
+                <h4 className="text-[15px] font-semibold text-white">{pr.title}</h4>
                 <p className="mt-2 text-[13px] leading-relaxed text-white/45">{pr.desc}</p>
               </InteractiveCard>
             ))}

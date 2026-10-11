@@ -220,18 +220,13 @@ function ProjectCard({ project: p, open, onToggle }) {
                     Yang dibangun
                   </h4>
                   <ul className="space-y-4">
-                    {p.features.map((f, i) => (
-                      <li key={f.title} className="group/f flex gap-4">
+                    {p.features.map((f) => (
+                      <li key={f.title} className="flex gap-3">
                         <span
-                          className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg border text-[11px] transition-transform group-hover/f:scale-110"
-                          style={{
-                            borderColor: `color-mix(in srgb, ${p.accent} 25%, transparent)`,
-                            color: p.accent,
-                            background: `color-mix(in srgb, ${p.accent} 8%, transparent)`,
-                          }}
-                        >
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
+                          aria-hidden
+                          className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full"
+                          style={{ background: `color-mix(in srgb, ${p.accent} 80%, transparent)` }}
+                        />
                         <div>
                           <p className="text-sm font-medium text-frost">{f.title}</p>
                           <p className="mt-1 text-[13px] leading-relaxed text-mist">{f.desc}</p>

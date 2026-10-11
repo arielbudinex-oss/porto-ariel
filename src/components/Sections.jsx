@@ -26,18 +26,15 @@ export function Journey() {
           </p>
         </header>
 
-        {/* perjalanan: grid rapi dengan penanda tahap */}
+        {/* perjalanan: grid rapi */}
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {journey.map((j, i) => (
+          {journey.map((j) => (
             <InteractiveCard
               key={j.step}
               className="surface flex flex-col p-6"
               accent="#5b7cfa"
             >
-              <div className="flex items-center justify-between">
-                <span className="text-[12px] font-medium text-[#9db2ff]">{j.step}</span>
-                <span className="text-[11px] text-white/25">Tahap {i + 1}</span>
-              </div>
+              <span className="text-[12px] font-medium text-[#9db2ff]">{j.step}</span>
               <h3 className="mt-3 text-lg font-semibold text-white">{j.title}</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-white/45">{j.desc}</p>
             </InteractiveCard>

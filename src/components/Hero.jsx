@@ -143,9 +143,8 @@ export default function Hero() {
                 <span className="text-[#5b7cfa]">➜</span> <span className="text-white/80">ls proyek-live/</span>
               </p>
               <ul className="space-y-1.5 pl-4">
-                {live.map((p, i) => (
+                {live.map((p) => (
                   <li key={p.id} className="flex items-center gap-2">
-                    <span className="text-white/25">{String(i + 1).padStart(2, "0")}</span>
                     <img src={p.icon} alt="" className="h-4 w-4 rounded object-contain" loading="lazy" />
                     <a
                       href={p.url}
