@@ -259,14 +259,15 @@ const CursorGrid = ({
     rebuild();
     wake();
 
-    container.addEventListener('pointermove', onPointerMove);
-    container.addEventListener('pointerdown', onPointerDown);
+    // dengarkan di window supaya tetap bekerja walau wrapper-nya pointer-events-none
+    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerdown', onPointerDown);
 
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
-      container.removeEventListener('pointermove', onPointerMove);
-      container.removeEventListener('pointerdown', onPointerDown);
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerdown', onPointerDown);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cellSize]);

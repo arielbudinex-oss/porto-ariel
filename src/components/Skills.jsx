@@ -3,6 +3,7 @@ import CountUp from "./rb/TextAnimations/CountUp/CountUp";
 import BlurText from "./rb/TextAnimations/BlurText/BlurText";
 import { TerminalWindow, Cpu, Database, Cloud, Lock, Plugs } from "@phosphor-icons/react";
 import { InteractiveCard, InteractiveBadge } from "./Interactive";
+import CursorGrid from "./rb/Animations/CursorGrid/CursorGrid";
 import {
   SiReact, SiNodedotjs, SiTypescript, SiPython, SiSharp, SiPostgresql,
   SiSupabase, SiRedis, SiDocker, SiNginx, SiVercel, SiTailwindcss,
@@ -51,6 +52,24 @@ export default function Skills() {
   return (
     <section id="keahlian" className="relative overflow-hidden py-28">
       <div className="dot-grid pointer-events-none absolute inset-0 -z-10 opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+      {/* grid yang menyala mengikuti kursor */}
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-80">
+        <CursorGrid
+          cellSize={64}
+          color="#5b7cfa"
+          radius={170}
+          falloff="smooth"
+          holdTime={500}
+          fadeDuration={900}
+          lineWidth={1.4}
+          maxOpacity={0.9}
+          gridOpacity={0}
+          fillOpacity={0}
+          cellRadius={3}
+          clickPulse
+          pulseSpeed={700}
+        />
+      </div>
 
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-2xl">

@@ -77,8 +77,9 @@ class ImageTrailVariant1 {
       const rect = this.container.getBoundingClientRect();
       this.mousePos = getLocalPointerPos(ev, rect);
     };
-    container.addEventListener('mousemove', handlePointerMove);
-    container.addEventListener('touchmove', handlePointerMove);
+    // dengarkan di window supaya tetap bekerja walau wrapper-nya pointer-events-none
+    window.addEventListener('mousemove', handlePointerMove);
+    window.addEventListener('touchmove', handlePointerMove);
 
     const initRender = ev => {
       const rect = this.container.getBoundingClientRect();
@@ -87,11 +88,11 @@ class ImageTrailVariant1 {
 
       this.rafId = requestAnimationFrame(() => this.render());
 
-      container.removeEventListener('mousemove', initRender);
-      container.removeEventListener('touchmove', initRender);
+      window.removeEventListener('mousemove', initRender);
+      window.removeEventListener('touchmove', initRender);
     };
-    container.addEventListener('mousemove', initRender);
-    container.addEventListener('touchmove', initRender);
+    window.addEventListener('mousemove', initRender);
+    window.addEventListener('touchmove', initRender);
     this.handlePointerMove = handlePointerMove;
     this.initRender = initRender;
   }
@@ -159,10 +160,10 @@ class ImageTrailVariant1 {
       cancelAnimationFrame(this.rafId);
       this.rafId = null;
     }
-    this.container.removeEventListener('mousemove', this.handlePointerMove);
-    this.container.removeEventListener('touchmove', this.handlePointerMove);
-    this.container.removeEventListener('mousemove', this.initRender);
-    this.container.removeEventListener('touchmove', this.initRender);
+    window.removeEventListener('mousemove', this.handlePointerMove);
+    window.removeEventListener('touchmove', this.handlePointerMove);
+    window.removeEventListener('mousemove', this.initRender);
+    window.removeEventListener('touchmove', this.initRender);
     this.images.forEach(img => {
       gsap.killTweensOf(img.DOM.el);
       img.destroy();

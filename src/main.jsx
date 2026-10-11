@@ -13,7 +13,7 @@ import { Journey, Contact, Footer } from "./components/Sections";
 import { Preloader } from "./components/pro/ProMirror";
 import ClickSpark from "./components/rb/Animations/ClickSpark/ClickSpark";
 import GlowCursor from "./components/rb/Animations/GlowCursor/GlowCursor";
-import { EasterEgg } from "./components/Interactive";
+import { EasterEgg, ScrollProgress } from "./components/Interactive";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -49,47 +49,50 @@ function App() {
   }, [loading]);
 
   return (
-    <ClickSpark
-      sparkColor="#9db2ff"
-      sparkSize={18}
-      sparkRadius={28}
-      sparkCount={10}
-      duration={520}
-      extraScale={1.35}
-    >
-      <div className="pointer-events-none fixed inset-0 z-[90]">
-        <GlowCursor
-          color="#5b7cfa"
-          secondaryColor="#9db2ff"
-          trailLength={46}
-          trailWidth={7}
-          followSpeed={0.18}
-          glowIntensity={1.6}
-          glowSpread={1.1}
-          brightness={1.15}
-          pulseSpeed={0.9}
-          noiseStrength={0.03}
-          idleFade
-          opacity={0.9}
+    <>
+      <ScrollProgress />
+      <ClickSpark
+        sparkColor="#9db2ff"
+        sparkSize={18}
+        sparkRadius={28}
+        sparkCount={10}
+        duration={520}
+        extraScale={1.35}
+      >
+        <div className="pointer-events-none fixed inset-0 z-[90]">
+          <GlowCursor
+            color="#5b7cfa"
+            secondaryColor="#9db2ff"
+            trailLength={46}
+            trailWidth={7}
+            followSpeed={0.18}
+            glowIntensity={1.6}
+            glowSpread={1.1}
+            brightness={1.15}
+            pulseSpeed={0.9}
+            noiseStrength={0.03}
+            idleFade
+            opacity={0.9}
           blendMode="screen"
-        />
-      </div>
-      <div className="grain relative min-h-screen">
-        {loading && <Preloader onDone={() => setLoading(false)} />}
-        <Nav />
-        <main>
-          <Hero />
-          <Projects />
-          <Experience />
-          <Skills />
-          <Lab />
-          <Journey />
-          <Contact />
-        </main>
-        <Footer />
-        <EasterEgg />
-      </div>
-    </ClickSpark>
+          />
+        </div>
+        <div className="grain relative min-h-screen">
+          {loading && <Preloader onDone={() => setLoading(false)} />}
+          <Nav />
+          <main>
+            <Hero />
+            <Projects />
+            <Experience />
+            <Skills />
+            <Lab />
+            <Journey />
+            <Contact />
+          </main>
+          <Footer />
+          <EasterEgg />
+        </div>
+      </ClickSpark>
+    </>
   );
 }
 

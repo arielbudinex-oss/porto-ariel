@@ -1,11 +1,40 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// InteractiveCard — pembungkus universal supaya SEMUA kartu di halaman hidup:
+// ScrollProgress — garis tipis di atas layar yang menunjukkan seberapa jauh
+// pengunjung sudah membaca. Memberi rasa "kemajuan" saat menjelajah.
+// ─────────────────────────────────────────────────────────────────────────────
+import { useRef, useCallback, useEffect, useState } from "react";
+
+export function ScrollProgress() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(h > 0 ? Math.min(1, window.scrollY / h) : 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div aria-hidden className="fixed top-0 left-0 z-[150] h-[2.5px] w-full bg-transparent">
+      <div
+        className="h-full rounded-r-full bg-gradient-to-r from-[#3a55c9] via-[#5b7cfa] to-[#9db2ff] transition-[width] duration-150 ease-out"
+        style={{ width: `${progress * 100}%`, boxShadow: "0 0 12px rgba(91,124,250,.6)" }}
+      />
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ScrollProgress selesai. InteractiveCard dst di bawah.
+// ─────────────────────────────────────────────────────────────────────────────
 //   • sorotan lembut mengikuti kursor di permukaan (spotlight)
 //   • kartu terangkat + membesar sedikit saat kursor di atasnya
 //   • garis tepi menyala mengikuti warna aksen
 // Dipakai di Experience, Skills, Journey, Lab, dan Contact.
 // ─────────────────────────────────────────────────────────────────────────────
-import { useRef, useCallback, useEffect, useState } from "react";
 
 export function InteractiveCard({
   children,

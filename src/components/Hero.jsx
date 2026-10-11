@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowDown, ArrowSquareOut, GithubLogo } from "@phosphor-icons/react";
 import Magnet from "./rb/Animations/Magnet/Magnet";
+import ImageTrail from "./rb/Animations/ImageTrail/ImageTrail";
 import { InteractiveStat } from "./Interactive";
 import { owner, stats, projects } from "../data/projects";
 import { RotatingWord } from "./RotatingWord";
@@ -33,6 +34,20 @@ export default function Hero() {
         gradientTo="rgba(157, 178, 255, 0.20)"
         glowColor="#0e1013"
       />
+      {/* jejak screenshot proyek yang muncul saat kursor bergerak */}
+      <div className="pointer-events-none absolute inset-0 -z-10 hidden opacity-30 md:block">
+        <ImageTrail
+          variant={1}
+          items={[
+            "/assets/projects/nexshop/01-admin.png",
+            "/assets/projects/lumawall/01-dashboard.png",
+            "/assets/projects/akuntuntas/01-dashboard.png",
+            "/assets/projects/saybot/01-og.png",
+            "/assets/projects/nexshop/02-admin-mobile.png",
+            "/assets/projects/lumawall/02-catalog.png",
+          ]}
+        />
+      </div>
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-[#0e1013]/60 to-[#0e1013]" />
 
       <div className="mx-auto grid max-w-[1324px] gap-14 px-6 pt-12 pb-24 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
