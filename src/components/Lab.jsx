@@ -314,9 +314,9 @@ export default function Lab() {
 
         {/* baris komponen interaktif */}
         <div className="mt-14 grid gap-4 lg:grid-cols-3">
-          <SpotlightCard className="surface rounded-[14px]" spotlightColor="rgba(91,124,250,0.28)" intensity={0.4}>
+          <SpotlightCard className="surface rounded-[14px]" spotlightColor="rgba(56,189,248,0.26)" intensity={0.4}>
             <div className="p-6">
-              <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">Interaktif</p>
+              <p className="text-[11px] font-medium tracking-[0.01em] text-[#38bdf8]">Interaktif</p>
               <h3 className="mt-1 text-[17px] font-semibold text-white">Spotlight Card</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-white/45">
                 Sorotan lembut mengikuti kursor di permukaan kartu, kupakai untuk kartu proyek supaya terasa hidup tanpa ramai.
@@ -325,7 +325,7 @@ export default function Lab() {
           </SpotlightCard>
 
           <div className="surface p-6">
-            <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">Teks</p>
+            <p className="text-[11px] font-medium tracking-[0.01em] text-[#e9e6df]">Teks</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Decrypted Text</h3>
             <p className="mt-3 font-mono text-[13px] text-white/70">
               <DecryptedText
@@ -338,8 +338,8 @@ export default function Lab() {
               />
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              <StarBorder as="span" color="#9db2ff" speed="4s" thickness={1}>
-                <span className="px-3 py-1.5 font-mono text-[11px] text-[#9db2ff]">Star Border</span>
+              <StarBorder as="span" color="#e668a7" speed="4s" thickness={1}>
+                <span className="px-3 py-1.5 font-mono text-[11px] text-[#e668a7]">Star Border</span>
               </StarBorder>
               <span className="rounded-lg border border-[#2b3037] bg-[#0e1013] px-3 py-1.5 font-mono text-[11px] text-white/45">
                 komponen lepas, tanpa pustaka animasi berat
@@ -348,12 +348,12 @@ export default function Lab() {
           </div>
 
           <div className="surface p-6">
-            <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">Teks</p>
+            <p className="text-[11px] font-medium tracking-[0.01em] text-[#e668a7]">Teks</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Shiny Text</h3>
             <div className="mt-5 grid place-items-center py-3">
               <ShinyText
                 text="Ariel Osaze Koinda Budi"
-                color="#9db2ff"
+                color="#e668a7"
                 shineColor="#f2f4f7"
                 speed={3.2}
                 shineWidth={110}
@@ -371,7 +371,7 @@ export default function Lab() {
         {/* baris angka & kartu miring */}
         <div className="mt-14 grid gap-4 lg:grid-cols-[1fr_1.2fr]">
           <div className="surface flex flex-col justify-center p-7">
-            <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">Hitungan</p>
+            <p className="text-[11px] font-medium tracking-[0.01em] text-[#4ade80]">Hitungan</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Angka yang naik</h3>
             <p className="mt-2 text-[13px] leading-relaxed text-white/45">
               Angka bergerak naik saat masuk layar, dipakai di ringkasan supaya capaian terasa, bukan sekadar terbaca.
@@ -386,7 +386,7 @@ export default function Lab() {
                 <div key={x.l}>
                   <p className="text-3xl font-bold text-white">
                     <CountUp to={x.v} duration={1.5} separator="." />
-                    <span className="text-[#9db2ff]">{x.s ?? ""}</span>
+                    <span className="text-[#4ade80]">{x.s ?? ""}</span>
                   </p>
                   <p className="mt-1 text-[11px] tracking-[0.06em] text-white/40 uppercase">{x.l}</p>
                 </div>
@@ -395,7 +395,7 @@ export default function Lab() {
           </div>
 
           <div className="surface p-7">
-            <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">Miring</p>
+            <p className="text-[11px] font-medium tracking-[0.01em] text-[#38bdf8]">Miring</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Kartu yang mengikuti kursor</h3>
             <p className="mt-2 text-[13px] leading-relaxed text-white/45">
               Kartu miring mengikuti arah kursor, seperti memegang foto, kupakai untuk pratinjau karya.
