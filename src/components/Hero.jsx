@@ -146,6 +146,7 @@ export default function Hero() {
                 {live.map((p, i) => (
                   <li key={p.id} className="flex items-center gap-2">
                     <span className="text-white/25">{String(i + 1).padStart(2, "0")}</span>
+                    <img src={p.icon} alt="" className="h-4 w-4 rounded object-contain" loading="lazy" />
                     <a
                       href={p.url}
                       target="_blank"

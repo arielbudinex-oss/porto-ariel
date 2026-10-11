@@ -155,14 +155,18 @@ function ProjectCard({ project: p, open, onToggle }) {
           className="flex w-full items-center gap-5 px-5 py-5 text-left md:px-8 md:py-6"
         >
           <span
-            className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border font-display text-lg font-bold"
+            className="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-2xl border"
             style={{
               borderColor: `color-mix(in srgb, ${p.accent} 30%, transparent)`,
               background: `color-mix(in srgb, ${p.accent} 10%, transparent)`,
-              color: p.accent,
             }}
           >
-            {p.name.slice(0, 2).toUpperCase()}
+            <img
+              src={p.icon}
+              alt={`Logo ${p.name}`}
+              className="h-8 w-8 object-contain"
+              loading="lazy"
+            />
           </span>
 
           <div className="min-w-0 flex-1">

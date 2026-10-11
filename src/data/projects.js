@@ -131,6 +131,7 @@ export const skills = {
 export const projects = [
   {
     id: "nexshop",
+    icon: "/assets/projects/icons/nexshop.png",
     name: "NexShop",
     tag: "Marketplace Digital & Top-Up",
     url: "https://nexshop.cloud",
@@ -207,6 +208,7 @@ export const projects = [
   },
   {
     id: "saybot",
+    icon: "/assets/projects/icons/saybot.png",
     name: "SayBot Messaging Gateway",
     tag: "Gateway Pesan Multi-Akun",
     url: "https://saybot.nexshop.cloud",
@@ -266,6 +268,7 @@ export const projects = [
   },
   {
     id: "lumawall",
+    icon: "/assets/projects/icons/lumawall.png",
     name: "LumaWall",
     tag: "Live Wallpaper Engine Windows",
     url: "https://lumawall.xinet.id",
@@ -333,6 +336,7 @@ export const projects = [
   },
   {
     id: "akuntuntas",
+    icon: "/assets/projects/icons/akuntuntas.png",
     name: "AkunTuntas",
     tag: "Pembukuan & Pajak Desktop",
     url: "https://akuntuntas.xinet.id",
@@ -396,6 +400,7 @@ export const projects = [
   },
   {
     id: "waapi",
+    icon: "/assets/projects/icons/waapi.png",
     name: "WhatsApp WA API",
     tag: "REST API WhatsApp",
     url: null,
@@ -435,6 +440,7 @@ export const projects = [
   },
   {
     id: "loadtest",
+    icon: "/assets/projects/icons/loadtest.png",
     name: "Safe Loadtest",
     tag: "Alat Uji Ketahanan Berizin",
     url: null,
@@ -474,6 +480,7 @@ export const projects = [
   },
   {
     id: "lumawall-site",
+    icon: "/assets/projects/icons/lumawall.png",
     name: "LumaWall Site & Payment",
     tag: "Situs Produk + Checkout",
     url: "https://lumawall.xinet.id",
