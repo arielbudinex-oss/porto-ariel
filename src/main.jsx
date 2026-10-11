@@ -71,8 +71,11 @@ function App() {
             pulseSpeed={0.9}
             noiseStrength={0.03}
             idleFade
+            idleTimeout={500}
+            fadeDuration={700}
+            maxDevicePixelRatio={1}
             opacity={0.9}
-          blendMode="screen"
+            blendMode="screen"
           />
         </div>
         <div className="grain relative min-h-screen">

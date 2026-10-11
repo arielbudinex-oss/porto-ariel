@@ -51,6 +51,7 @@ export default function Skills() {
 
   return (
     <section id="keahlian" className="relative overflow-hidden py-28">
+      <div aria-hidden className="ambient ambient-ahli" />
       <div className="dot-grid pointer-events-none absolute inset-0 -z-10 opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
       {/* grid yang menyala mengikuti kursor */}
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-80">

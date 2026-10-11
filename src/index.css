@@ -132,6 +132,62 @@ body {
   background-size: 24px 24px;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   COLOR THEORY — ambient wash per-section.
+   Setiap section punya "suhu" warna sendiri, tapi semuanya masih satu keluarga
+   analogous dari sapphire (biru 235°) → indigo (250°) → periwinkle (225°) →
+   teal-ink (200°). Pergeseran hue maksimal 35°, jadi mata merasa "berubah"
+   tanpa terasa acak. Aksen komplementer hangat (krem/ivory) hanya muncul
+   sesekali sebagai penyeimbang, tidak pernah mendominasi.
+   Semua layer ini radial-gradient statis (tanpa canvas) → nol beban GPU.
+   ───────────────────────────────────────────────────────────────────────────── */
+.ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+.ambient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ambient, none);
+  opacity: 0.9;
+  transition: opacity 0.6s var(--ease-out);
+}
+
+/* suhu per section */
+.ambient-hero   { --ambient: radial-gradient(900px 520px at 18% 12%, rgba(91, 124, 250, 0.14), transparent 62%), radial-gradient(700px 460px at 85% 78%, rgba(58, 85, 201, 0.11), transparent 60%); }
+.ambient-proyek { --ambient: radial-gradient(880px 540px at 82% 8%, rgba(120, 108, 255, 0.11), transparent 62%), radial-gradient(640px 420px at 8% 92%, rgba(91, 124, 250, 0.09), transparent 58%); }
+.ambient-kerja  { --ambient: radial-gradient(860px 500px at 12% 20%, rgba(88, 132, 255, 0.11), transparent 60%), radial-gradient(620px 400px at 88% 86%, rgba(70, 96, 214, 0.09), transparent 58%); }
+.ambient-ahli   { --ambient: radial-gradient(900px 520px at 78% 16%, rgba(110, 148, 255, 0.11), transparent 62%), radial-gradient(600px 380px at 14% 88%, rgba(91, 124, 250, 0.08), transparent 58%); }
+.ambient-lab    { --ambient: radial-gradient(880px 500px at 20% 24%, rgba(130, 116, 255, 0.12), transparent 62%), radial-gradient(660px 420px at 84% 82%, rgba(96, 118, 240, 0.09), transparent 60%); }
+.ambient-jalan  { --ambient: radial-gradient(840px 480px at 76% 18%, rgba(96, 138, 235, 0.10), transparent 60%), radial-gradient(600px 380px at 10% 86%, rgba(91, 124, 250, 0.08), transparent 58%); }
+.ambient-kontak { --ambient: radial-gradient(900px 540px at 24% 20%, rgba(91, 124, 250, 0.13), transparent 62%), radial-gradient(680px 440px at 86% 84%, rgba(233, 230, 223, 0.05), transparent 60%); }
+
+/* kartu proyek: ambient dari warna brand proyek itu sendiri */
+.ambient-project {
+  --ambient: radial-gradient(760px 460px at 12% 6%, color-mix(in srgb, var(--p-accent) 13%, transparent), transparent 62%),
+             radial-gradient(600px 400px at 92% 94%, color-mix(in srgb, var(--p-accent) 9%, transparent), transparent 58%);
+}
+
+/* aksen kartu: saat hover, warna brand proyek "menyala" pelan di tepi */
+.card-accent-glow {
+  position: relative;
+}
+.card-accent-glow::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s var(--ease-out);
+  background: radial-gradient(420px 220px at 50% 0%, color-mix(in srgb, var(--p-accent) 22%, transparent), transparent 70%);
+}
+.card-accent-glow:hover::after { opacity: 1; }
+
+
 /* ── animasi masuk — hanya transform + opacity (GPU, mulus) ───────────── */
 @keyframes riseIn {
   from { opacity: 0; transform: translate3d(0, 24px, 0); }

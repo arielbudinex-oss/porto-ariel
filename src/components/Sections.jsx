@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { journey, owner } from "../data/projects";
 import { ElasticSticker } from "./pro/ProMirror";
 import { LazyEffect } from "./Interactive";
-import { GithubLogo, EnvelopeSimple, MapPin, Sparkle, LinkedinLogo } from "@phosphor-icons/react";
+import { GithubLogo, EnvelopeSimple, MapPin, Sparkle, LinkedinLogo, InstagramLogo, WhatsappLogo, ArrowUpRight } from "@phosphor-icons/react";
 import { InteractiveCard } from "./Interactive";
 
 // Lanyard memakai three.js (~240KB gzip) — dimuat hanya saat kartu mendekat viewport
@@ -11,6 +11,7 @@ const Lanyard = lazy(() => import("./rb/Components/Lanyard/Lanyard"));
 export function Journey() {
   return (
     <section id="cara-kerja" className="relative py-28">
+      <div aria-hidden className="ambient ambient-jalan" />
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-14 max-w-2xl">
           <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">
@@ -50,6 +51,7 @@ export function Journey() {
 export function Contact() {
   return (
     <section id="kontak" className="relative overflow-hidden py-28">
+      <div aria-hidden className="ambient ambient-kontak" />
 
       <div className="mx-auto grid max-w-[1324px] gap-12 px-6 lg:grid-cols-[1fr_.9fr] lg:items-center">
         <div>
@@ -72,33 +74,55 @@ export function Contact() {
               <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#5b7cfa]/12 text-[#9db2ff]">
                 <EnvelopeSimple size={16} />
               </span>
-              <span>
-                <span className="block text-[11px] text-white/40">
-                  Email
+              <span className="flex flex-1 items-center justify-between">
+                <span>
+                  <span className="block text-[11px] text-white/40">Email</span>
+                  <span className="text-[15px] text-white/80">Kirim pesan langsung</span>
                 </span>
-                <span className="text-[15px] text-white/80">{owner.email}</span>
+                <ArrowUpRight size={14} className="text-white/30" />
               </span>
             </InteractiveCard>
+
             <InteractiveCard
               as="a"
-              href={owner.github}
+              href={owner.whatsapp}
               target="_blank"
               rel="noreferrer noopener"
               className="surface flex items-center gap-4 p-4"
-              accent="#5b7cfa"
+              accent="#4ade80"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-white/[0.06] text-white/70">
-                <GithubLogo size={16} />
+              <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#4ade80]/15 text-[#6ee7a0]">
+                <WhatsappLogo size={16} weight="fill" />
               </span>
-              <span>
-                <span className="block text-[11px] text-white/40">
-                  GitHub
+              <span className="flex flex-1 items-center justify-between">
+                <span>
+                  <span className="block text-[11px] text-white/40">WhatsApp</span>
+                  <span className="text-[15px] text-white/80">Chat sekarang</span>
                 </span>
-                <span className="text-[15px] text-white/80">
-                  github.com/ArielOsaze
-                </span>
+                <ArrowUpRight size={14} className="text-white/30" />
               </span>
             </InteractiveCard>
+
+            <InteractiveCard
+              as="a"
+              href={owner.instagram}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="surface flex items-center gap-4 p-4"
+              accent="#e668a7"
+            >
+              <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#e668a7]/15 text-[#f484bb]">
+                <InstagramLogo size={16} weight="fill" />
+              </span>
+              <span className="flex flex-1 items-center justify-between">
+                <span>
+                  <span className="block text-[11px] text-white/40">Instagram</span>
+                  <span className="text-[15px] text-white/80">Ikuti keseharianku</span>
+                </span>
+                <ArrowUpRight size={14} className="text-white/30" />
+              </span>
+            </InteractiveCard>
+
             <InteractiveCard
               as="a"
               href={owner.linkedin}
@@ -110,13 +134,35 @@ export function Contact() {
               <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#5b7cfa]/12 text-[#9db2ff]">
                 <LinkedinLogo size={16} />
               </span>
-              <span>
-                <span className="block text-[11px] text-white/40">LinkedIn</span>
-                <span className="text-[15px] text-white/80">
-                  linkedin.com/in/ariel-osaze-koinda-budi
+              <span className="flex flex-1 items-center justify-between">
+                <span>
+                  <span className="block text-[11px] text-white/40">LinkedIn</span>
+                  <span className="text-[15px] text-white/80">Terhubung profesional</span>
                 </span>
+                <ArrowUpRight size={14} className="text-white/30" />
               </span>
             </InteractiveCard>
+
+            <InteractiveCard
+              as="a"
+              href={owner.github}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="surface flex items-center gap-4 p-4"
+              accent="#9aa3ad"
+            >
+              <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-white/[0.06] text-white/70">
+                <GithubLogo size={16} />
+              </span>
+              <span className="flex flex-1 items-center justify-between">
+                <span>
+                  <span className="block text-[11px] text-white/40">GitHub</span>
+                  <span className="text-[15px] text-white/80">Lihat source code</span>
+                </span>
+                <ArrowUpRight size={14} className="text-white/30" />
+              </span>
+            </InteractiveCard>
+
             <InteractiveCard className="surface flex items-center gap-4 p-4" accent="#9db2ff">
               <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-white/[0.06] text-white/70">
                 <MapPin size={16} />

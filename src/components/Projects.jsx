@@ -84,6 +84,7 @@ export default function Projects() {
 
   return (
     <section id="proyek" className="relative py-28">
+      <div aria-hidden className="ambient ambient-proyek" />
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <header className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>

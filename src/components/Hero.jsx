@@ -21,6 +21,7 @@ export default function Hero() {
 
   return (
     <section id="atas" className="relative isolate min-h-[100svh] overflow-hidden pt-28">
+      <div aria-hidden className="ambient ambient-hero" />
       {/* latar: titik-titik interaktif yang mengikuti kursor */}
       <DotField
         className="absolute inset-0 -z-20 h-full w-full"

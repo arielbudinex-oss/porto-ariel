@@ -111,6 +111,20 @@ class ImageTrailVariant1 {
     if (this.isIdle && this.zIndexVal !== 1) {
       this.zIndexVal = 1;
     }
+    // hemat GPU: saat idle & mouse diam, hentikan loop; restart begitu bergerak
+    if (this.isIdle && distance < 0.5) {
+      this.rafId = null;
+      window.addEventListener(
+        'mousemove',
+        () => {
+          if (!this.destroyed && this.rafId === null) {
+            this.rafId = requestAnimationFrame(() => this.render());
+          }
+        },
+        { once: true }
+      );
+      return;
+    }
     this.rafId = requestAnimationFrame(() => this.render());
   }
 

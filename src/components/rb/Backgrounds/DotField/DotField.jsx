@@ -38,7 +38,8 @@ const DotField = memo(({
     const glowEl = glowRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d', { alpha: true });
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    // DPR 1.5: titik-titik tetap tajam tapi 44% lebih sedikit piksel dari DPR 2
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     let resizeTimer;
 
     function resize() {
@@ -107,8 +108,23 @@ const DotField = memo(({
     const speedInterval = setInterval(updateMouseSpeed, 20);
 
     let frameCount = 0;
+    let gradient = null;
+    let gradientKey = '';
+    let lastIdleRender = 0;
+    let visible = true;
+
+    // hemat GPU: pause saat section tidak terlihat
+    const io = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+    }, { rootMargin: '100px' });
+    io.observe(canvas);
 
     function tick() {
+      if (document.hidden || !visible) {
+        rafRef.current = requestAnimationFrame(tick);
+        return;
+      }
+
       frameCount++;
       const dots = dotsRef.current;
       const m = mouseRef.current;
@@ -124,6 +140,18 @@ const DotField = memo(({
 
       glowOpacity.current += (eng - glowOpacity.current) * 0.08;
 
+      // hemat GPU: kalau sudah tenang (tidak ada gerakan & tidak ada wave/sparkle),
+      // gambar ulang hanya 5x/detik supaya CPU/GPU istirahat
+      const animated = p.waveAmplitude > 0 || p.sparkle;
+      if (!animated && eng === 0 && glowOpacity.current < 0.001) {
+        const now = performance.now();
+        if (now - lastIdleRender < 200) {
+          rafRef.current = requestAnimationFrame(tick);
+          return;
+        }
+        lastIdleRender = now;
+      }
+
       if (glowEl) {
         glowEl.setAttribute('cx', m.x);
         glowEl.setAttribute('cy', m.y);
@@ -132,10 +160,15 @@ const DotField = memo(({
 
       ctx.clearRect(0, 0, w, h);
 
-      const grad = ctx.createLinearGradient(0, 0, w, h);
-      grad.addColorStop(0, p.gradientFrom);
-      grad.addColorStop(1, p.gradientTo);
-      ctx.fillStyle = grad;
+      // gradient di-cache: sebelumnya dibuat ulang SETIAP frame (boros CPU)
+      const key = `${w}x${h}|${p.gradientFrom}|${p.gradientTo}`;
+      if (!gradient || gradientKey !== key) {
+        gradient = ctx.createLinearGradient(0, 0, w, h);
+        gradient.addColorStop(0, p.gradientFrom);
+        gradient.addColorStop(1, p.gradientTo);
+        gradientKey = key;
+      }
+      ctx.fillStyle = gradient;
 
       const cr = p.cursorRadius;
       const crSq = cr * cr;
@@ -219,6 +252,7 @@ const DotField = memo(({
       cancelAnimationFrame(rafRef.current);
       clearInterval(speedInterval);
       clearTimeout(resizeTimer);
+      io.disconnect();
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', onMouseMove);
     };

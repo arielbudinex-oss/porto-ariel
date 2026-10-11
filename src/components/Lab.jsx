@@ -229,6 +229,7 @@ const CARDS = [
 export default function Lab() {
   return (
     <section id="lab" className="relative overflow-hidden py-28">
+      <div aria-hidden className="ambient ambient-lab" />
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-3xl">
           <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">Lab Efek</p>

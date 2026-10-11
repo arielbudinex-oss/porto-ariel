@@ -11,6 +11,8 @@ export const owner = {
   email: "arielbudi4@gmail.com",
   github: "https://github.com/ArielOsaze",
   linkedin: "https://www.linkedin.com/in/ariel-osaze-koinda-budi-991b5a284",
+  instagram: "https://www.instagram.com/arielbudii/",
+  whatsapp: "https://wa.me/6287792634063",
   xinet: "Xinet.id. Build what's next",
   tagline:
     "Membangun produk digital yang benar-benar dipakai, dari marketplace pembayaran, gateway pesan multi-akun, sampai aplikasi desktop pembukuan pajak.",

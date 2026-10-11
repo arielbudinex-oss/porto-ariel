@@ -230,6 +230,7 @@ const GlowCursor = ({
     let fade = 0;
     let lastInputTime = performance.now();
     let lastFrameTime = performance.now();
+    let lastRenderTime = 0;
     let raf = 0;
     let destroyed = false;
 
@@ -271,9 +272,30 @@ const GlowCursor = ({
 
     const render = now => {
       if (destroyed) return;
+
+      // hemat GPU: saat tab tidak terlihat, jangan render sama sekali
+      if (document.hidden) {
+        raf = requestAnimationFrame(render);
+        return;
+      }
+
       const config = propsRef.current;
       const delta = Math.min((now - lastFrameTime) / 16.667, 3);
       lastFrameTime = now;
+
+      // hemat GPU: kalau trail sudah benar-benar pudar (idle), lewati render —
+      // cukup render 4x/detik. Syaratnya berbasis waktu sejak input terakhir,
+      // bukan pointerInside (yang bisa tetap true kalau pointer tidak pernah
+      // meninggalkan jendela).
+      const fullyFaded = fade < 0.004;
+      if (fullyFaded && config.idleFade && now - lastInputTime > 150) {
+        if (now - lastRenderTime > 250) {
+          renderer.render({ scene: mesh });
+          lastRenderTime = now;
+        }
+        raf = requestAnimationFrame(render);
+        return;
+      }
 
       if (initialized) {
         const headEase = 1 - Math.pow(1 - clamp(config.followSpeed, 0.01, 0.99), delta);

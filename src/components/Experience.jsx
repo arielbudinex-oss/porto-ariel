@@ -6,6 +6,7 @@ import { InteractiveCard, InteractiveBadge } from "./Interactive";
 export default function Experience() {
   return (
     <section id="pengalaman" className="relative overflow-hidden py-28">
+      <div aria-hidden className="ambient ambient-kerja" />
       <div className="dot-grid pointer-events-none absolute inset-0 -z-10 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_78%)]" />
 
       <div className="mx-auto max-w-[1324px] px-6">
