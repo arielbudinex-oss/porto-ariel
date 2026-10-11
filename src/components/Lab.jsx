@@ -25,30 +25,38 @@ import RippleGrid from "./rb/Backgrounds/RippleGrid/RippleGrid";
 import { Broadcast, Sparkle, Cube, Stack } from "@phosphor-icons/react";
 import { InteractiveCard, InteractiveHint, LazyEffect } from "./Interactive";
 
-// Aksen palet, emerald tua + krem hangat
-const ACCENT = "#5b7cfa";
-const ACCENT_SOFT = "#9db2ff";
+// ── Palet warna Lab ─────────────────────────────────────────────────────────
+// Tiap efek punya identitas warnanya sendiri supaya section ini tidak monoton.
+// Semua hue sudah dipakai di halaman ini: sapphire (chrome), sky (NexShop),
+// rose (Instagram), crimson (palet dasar), krem (ivory), hijau (WhatsApp).
+const SAPPHIRE = "#5b7cfa";
+const SKY = "#38bdf8";
+const ROSE = "#e668a7";
+const CRIMSON = "#d9544f";
 const IVORY = "#e9e6df";
+const GREEN = "#4ade80";
 
 const CARDS = [
   {
     kicker: "Latar",
     title: "Aurora",
-    desc: "Cahaya bergelombang yang mengalir pelan, dipakai sebagai latar hero saat halaman dibuka.",
+    desc: "Cahaya bergelombang tiga warna yang mengalir pelan, paletnya bisa diganti bebas.",
     C: Aurora,
     span: "lg:col-span-2",
-    props: { colorStops: [ACCENT, "#3a55c9", ACCENT_SOFT], amplitude: 1.0, blend: 0.5 },
+    accent: SAPPHIRE,
+    props: { colorStops: [SAPPHIRE, SKY, ROSE], amplitude: 1.0, blend: 0.5 },
   },
   {
     kicker: "Partikel",
     title: "Particles",
     desc: "Serbuk cahaya 3D yang bergeser halus; makin dekat kursor, makin reaktif.",
     C: Particles,
+    accent: IVORY,
     props: {
       particleCount: 180,
       particleSpread: 12,
       speed: 0.08,
-      particleColors: [ACCENT_SOFT, ACCENT, IVORY],
+      particleColors: [IVORY, SKY, SAPPHIRE],
       moveParticlesOnHover: true,
       particleBaseSize: 90,
       alphaParticles: true,
@@ -59,10 +67,11 @@ const CARDS = [
     title: "Topography",
     desc: "Garis kontur yang bergerak seperti peta topografi, aksen kedalaman tanpa ramai.",
     C: Topography,
+    accent: CRIMSON,
     props: {
-      lowColor: "#3a55c9",
-      midColor: ACCENT,
-      highColor: ACCENT_SOFT,
+      lowColor: "#4a1618",
+      midColor: CRIMSON,
+      highColor: "#f2b3b0",
       speed: 0.3,
       morphAmount: 2.4,
       bands: 2.4,
@@ -79,31 +88,35 @@ const CARDS = [
     title: "Orb",
     desc: "Bola cahaya yang berdenyut tenang dan menoleh mengikuti kursor.",
     C: Orb,
-    props: { hue: 0, hoverIntensity: 0.4, rotateOnHover: true, backgroundColor: "#0e1013" },
+    accent: ROSE,
+    props: { hue: 245, hoverIntensity: 0.4, rotateOnHover: true, backgroundColor: "#0e1013" },
   },
   {
     kicker: "Latar",
     title: "Balatro",
-    desc: "Pola fraktal berputar dengan kontras tinggi, dipakai sebagai tekstur bagian penutup.",
+    desc: "Pola fraktal berputar dengan kontras tinggi, tekstur hidup untuk latar yang berani.",
     C: Balatro,
-    props: { color1: ACCENT, color2: "#0e1013", color3: ACCENT_SOFT, speed: 0.6, spinAmount: 0.6, contrast: 3.2 },
+    accent: ROSE,
+    props: { color1: ROSE, color2: "#0e1013", color3: CRIMSON, speed: 0.6, spinAmount: 0.6, contrast: 3.2 },
   },
   {
     kicker: "Latar",
     title: "Dark Veil",
     desc: "Tirai gelap yang mengalun perlahan; pergerakannya sengaja dibuat lambat agar tidak mengganggu bacaan.",
     C: DarkVeil,
+    accent: CRIMSON,
     props: { hueShift: 0, speed: 0.5 },
-    filter: "sepia(1) hue-rotate(178deg) saturate(3.2) brightness(1.1)",
+    filter: "sepia(1) hue-rotate(310deg) saturate(2.8) brightness(1.08)",
   },
   {
     kicker: "Latar",
     title: "Light Rays",
     desc: "Berkas cahaya dari atas yang mengikuti kursor, memberi kesan sorot panggung.",
     C: LightRays,
+    accent: IVORY,
     props: {
       raysOrigin: "top-center",
-      raysColor: ACCENT_SOFT,
+      raysColor: IVORY,
       raysSpeed: 0.8,
       lightSpread: 1.1,
       rayLength: 1.6,
@@ -116,18 +129,20 @@ const CARDS = [
     title: "Threads",
     desc: "Benang halus yang mengalir seperti lipatan kain, gerakannya menenangkan.",
     C: Threads,
-    props: { color: [0.55, 0.64, 0.95], amplitude: 1.4, distance: 0.4, lineCount: 70, thickness: 0.7, speed: 0.5 },
+    accent: SKY,
+    props: { color: [0.22, 0.74, 0.97], amplitude: 1.4, distance: 0.4, lineCount: 70, thickness: 0.7, speed: 0.5 },
   },
   {
     kicker: "Latar",
     title: "Beams",
     desc: "Balok cahaya bersilangan dengan butiran halus, seperti cahaya menembus jendela.",
     C: Beams,
+    accent: IVORY,
     props: {
       beamWidth: 2.2,
       beamHeight: 16,
       beamNumber: 10,
-      lightColor: "#d4d4d8",
+      lightColor: "#e9e6df",
       beamColor: "#ffffff",
       backgroundColor: "#0e1013",
       speed: 2,
@@ -138,27 +153,30 @@ const CARDS = [
   {
     kicker: "Latar",
     title: "Silk",
-    desc: "Permukaan sutra yang bergelombang lembut, dipakai di bagian ajakan menghubungi.",
+    desc: "Permukaan sutra yang bergelombang lembut, kilaunya bergerak seperti kain sungguhan.",
     C: Silk,
-    props: { speed: 3, scale: 1.1, color: "#ffffff", noiseIntensity: 1.2 },
+    accent: IVORY,
+    props: { speed: 3, scale: 1.1, color: "#e9e6df", noiseIntensity: 1.2 },
   },
   {
     kicker: "Latar",
     title: "Galaxy",
-    desc: "Bintang kecil yang berputar perlahan, latar bagian keahlian.",
+    desc: "Bintang kecil yang berputar perlahan dengan kedipan lembut dan reaksi kursor.",
     C: Galaxy,
-    props: { hueShift: 42, density: 1.1, speed: 0.8 },
+    accent: ROSE,
+    props: { hueShift: 215, saturation: 0.55, density: 1.1, speed: 0.8 },
   },
   {
     kicker: "Interaktif",
     title: "Dot Grid",
     desc: "Titik-titik yang memantul saat kursor mendekat, lalu kembali tenang sendiri.",
     C: DotGrid,
+    accent: SKY,
     props: {
       dotSize: 3,
       gap: 22,
       baseColor: "#2b3037",
-      activeColor: "#ffffff",
+      activeColor: SKY,
       proximity: 110,
       shockRadius: 220,
       resistance: 750,
@@ -170,11 +188,12 @@ const CARDS = [
     title: "Magnet Lines",
     desc: "Barisan garis yang menoleh ke arah kursor, seperti kompas kecil.",
     C: MagneticLines,
+    accent: ROSE,
     props: {
       rows: 7,
       columns: 11,
       containerSize: "100%",
-      lineColor: "#9db2ff",
+      lineColor: ROSE,
       lineWidth: "3px",
       lineHeight: "22px",
       baseAngle: -8,
@@ -185,12 +204,13 @@ const CARDS = [
     title: "Radar",
     desc: "Sapuan radar yang berputar konstan, cocok untuk kesan pemantauan real-time.",
     C: Radar,
+    accent: GREEN,
     props: {
       speed: 0.8,
       scale: 0.5,
       ringCount: 8,
       spokeCount: 8,
-      color: "#5b7cfa",
+      color: GREEN,
       backgroundColor: "#0e1013",
     },
   },
@@ -199,9 +219,10 @@ const CARDS = [
     title: "Ripple Grid",
     desc: "Grid yang beriak mengikuti kursor, seperti permukaan air digital.",
     C: RippleGrid,
+    accent: SAPPHIRE,
     props: {
       enableRainbow: false,
-      gridColor: "#9db2ff",
+      gridColor: SAPPHIRE,
       rippleIntensity: 0.06,
       gridSize: 8,
       gridThickness: 12,
@@ -214,10 +235,11 @@ const CARDS = [
     title: "Pixel Blast",
     desc: "Ledakan piksel yang merespons kursor dengan pola hidup.",
     C: PixelBlast,
+    accent: CRIMSON,
     props: {
       variant: "square",
       pixelSize: 4,
-      color: "#5b7cfa",
+      color: CRIMSON,
       patternScale: 2,
       patternDensity: 1,
       liquid: true,
@@ -254,12 +276,12 @@ export default function Lab() {
                 as="article"
                 key={c.title}
                 className={`surface group relative overflow-hidden ${c.span ?? ""}`}
-                accent="#5b7cfa"
+                accent={c.accent}
                 lift={6}
               >
                 <div className="flex items-start justify-between gap-3 p-5 pb-3">
                   <div>
-                    <p className="text-[11px] font-medium tracking-[0.01em] text-[#9db2ff]">{c.kicker}</p>
+                    <p className="text-[11px] font-medium tracking-[0.01em]" style={{ color: c.accent }}>{c.kicker}</p>
                     <h3 className="mt-1 text-[17px] font-semibold text-white">{c.title}</h3>
                   </div>
                   <span className="rounded-lg border border-[#2b3037] bg-[#0e1013] p-1.5 text-white/40">
@@ -276,7 +298,8 @@ export default function Lab() {
                   {c.kicker === "Interaktif" && (
                     <span
                       aria-hidden
-                      className="pointer-events-none absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 translate-y-1.5 items-center gap-1.5 rounded-full border border-[#9db2ff]/45 bg-[#0e1013]/85 px-3 py-1.5 text-[11px] font-medium whitespace-nowrap text-[#9db2ff] opacity-0 backdrop-blur transition-all duration-300 group-hover/effect:translate-y-0 group-hover/effect:opacity-100"
+                      className="pointer-events-none absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 translate-y-1.5 items-center gap-1.5 rounded-full border bg-[#0e1013]/85 px-3 py-1.5 text-[11px] font-medium whitespace-nowrap opacity-0 backdrop-blur transition-all duration-300 group-hover/effect:translate-y-0 group-hover/effect:opacity-100"
+                      style={{ borderColor: `color-mix(in srgb, ${c.accent} 45%, transparent)`, color: c.accent }}
                     >
                       ✦ gerakkan kursor di sini
                     </span>
