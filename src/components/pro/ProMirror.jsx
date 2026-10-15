@@ -378,7 +378,7 @@ export function PixelDissolve({ children, trigger, className = "" }) {
             <span
               key={`${trigger}-${i}`}
               style={{
-                background: "#05060a",
+                background: "#0e1013",
                 opacity: 0,
                 animation: `pixelFade 700ms ${r * 380}ms cubic-bezier(.22,1,.36,1) forwards`,
               }}
@@ -493,74 +493,33 @@ export function ComparisonSlider({ before, after, label, className = "" }) {
       />
 
       <div
-        className="absolute inset-y-0 z-10 w-0.5 bg-[#5b7cfa] shadow-[0_0_18px_rgba(91,124,250,.7)]"
+        className="absolute inset-y-0 z-10 w-0.5 bg-accent"
         style={{ left: `${pos}%` }}
       >
-        <div className="absolute top-1/2 left-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full border-2 border-[#5b7cfa] bg-black/95 text-[#5b7cfa] shadow-[0_0_20px_rgba(91,124,250,.5)] backdrop-blur">
+        <div className="absolute top-1/2 left-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full border-2 border-accent bg-ink/95 text-accent backdrop-blur">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
             <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" />
           </svg>
         </div>
         {/* label mengikuti handle */}
         <div
-          className="absolute top-1/2 mt-9 -translate-x-1/2 rounded-full bg-black/90 px-2.5 py-1 font-mono text-[10px] whitespace-nowrap text-[#5b7cfa] backdrop-blur"
+          className="absolute top-1/2 mt-9 -translate-x-1/2 rounded-full bg-ink/90 px-2.5 py-1 font-mono text-[10px] whitespace-nowrap text-accent backdrop-blur"
           style={{ left: "50%" }}
         >
-          geser ⇄
+          geser
         </div>
       </div>
-      <div className="absolute bottom-3 left-3 rounded-full border border-white/20 bg-black/85 px-3.5 py-1.5 text-xs font-semibold text-white backdrop-blur">
+      <div className="absolute bottom-3 left-3 rounded-full border border-white/20 bg-ink/85 px-3.5 py-1.5 text-xs font-semibold text-white backdrop-blur">
         ← DESAIN LAMA
       </div>
-      <div className="absolute right-3 bottom-3 rounded-full border border-[#5b7cfa]/40 bg-[#5b7cfa]/20 px-3.5 py-1.5 text-xs font-semibold text-[#9db2ff] backdrop-blur">
+      <div className="absolute right-3 bottom-3 rounded-full border border-accent/40 bg-accent/20 px-3.5 py-1.5 text-xs font-semibold text-accent-soft backdrop-blur">
         DESAIN BARU →
       </div>
       {label && (
-        <div className="absolute top-3 left-3 rounded-full border border-white/10 bg-black/85 px-3 py-1 text-xs font-medium text-white backdrop-blur">
+        <div className="absolute top-3 left-3 rounded-full border border-white/10 bg-ink/85 px-3 py-1 text-xs font-medium text-white backdrop-blur">
           {label}
         </div>
       )}
-    </div>
-  );
-}
-
-/* ── 11. Preloader ──────────────────────────────────────────────────────────
-   Mirip "Preloader" (Pro/UI): layar pembuka dengan progres yang jujur ,
-   menghitung aset yang benar-benar dimuat. */
-export function Preloader({ onDone }) {
-  const [pct, setPct] = useState(0);
-
-  useEffect(() => {
-    let p = 0;
-    const iv = setInterval(() => {
-      p = Math.min(100, p + Math.random() * 16 + 6);
-      setPct(p);
-      if (p >= 100) {
-        clearInterval(iv);
-        setTimeout(onDone, 380);
-      }
-    }, 110);
-    return () => clearInterval(iv);
-  }, [onDone]);
-
-  return (
-    <div
-      className="fixed inset-0 z-[100] grid place-items-center bg-ink transition-opacity duration-500"
-      style={{ opacity: pct >= 100 ? 0 : 1, pointerEvents: pct >= 100 ? "none" : "auto" }}
-    >
-      <div className="flex flex-col items-center gap-5">
-        <div className="font-display text-4xl font-bold tracking-tight">
-          <span className="text-grad">ARIEL</span>
-          <span className="text-mist">.OSAZE</span>
-        </div>
-        <div className="h-0.5 w-56 overflow-hidden rounded-full bg-line">
-          <div
-            className="h-full bg-gradient-to-r from-neon via-violet to-magenta transition-[width] duration-200"
-            style={{ width: `${pct}%` }}
-          />
-        </div>
-        <div className="font-mono text-xs text-mist">{Math.round(pct)}%</div>
-      </div>
     </div>
   );
 }

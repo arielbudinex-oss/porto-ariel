@@ -1,8 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// InteractiveCard — pembungkus universal supaya SEMUA kartu di halaman hidup:
-//   • sorotan lembut mengikuti kursor di permukaan (spotlight)
-//   • kartu terangkat + membesar sedikit saat kursor di atasnya
-//   • garis tepi menyala mengikuti warna aksen
+// InteractiveCard — pembungkus kartu: satu bahasa gerak, yaitu cahaya.
+//   • sorotan lembut mengikuti kursor di permukaan kartu
+//   • garis tepi menyala tipis mengikuti warna aksen saat kursor masuk
 // Dipakai di Experience, Skills, Journey, Lab, dan Contact.
 // ─────────────────────────────────────────────────────────────────────────────
 import { useRef, useCallback, useEffect, useState } from "react";
@@ -12,7 +11,6 @@ export function InteractiveCard({
   className = "",
   accent = "#5b7cfa",
   radius = "14px",
-  lift = 4,
   as: Tag = "div",
   ...rest
 }) {
@@ -26,25 +24,11 @@ export function InteractiveCard({
     el.style.setProperty("--iy", `${e.clientY - r.top}px`);
   }, []);
 
-  const onEnter = useCallback(() => {
-    const el = ref.current;
-    if (!el) return;
-    el.style.transform = `translate3d(0, -${lift}px, 0)`;
-  }, [lift]);
-
-  const onLeave = useCallback(() => {
-    const el = ref.current;
-    if (!el) return;
-    el.style.transform = "translate3d(0, 0, 0)";
-  }, []);
-
   return (
     <Tag
       ref={ref}
       onPointerMove={onMove}
-      onPointerEnter={onEnter}
-      onPointerLeave={onLeave}
-      className={`group/interactive relative transition-[transform,border-color] duration-300 ease-out will-change-transform ${className}`}
+      className={`group/interactive relative ${className}`}
       style={{ "--i-accent": accent, borderRadius: radius }}
       {...rest}
     >
@@ -77,7 +61,7 @@ export function InteractiveCard({
 export function InteractiveBadge({ children, className = "", accent = "#5b7cfa", as: Tag = "span", ...rest }) {
   return (
     <Tag
-      className={`inline-flex cursor-default items-center transition-all duration-200 hover:-translate-y-0.5 ${className}`}
+      className={`inline-flex cursor-default items-center transition-colors duration-200 ${className}`}
       style={{ "--b-accent": accent }}
       onPointerEnter={(e) => {
         e.currentTarget.style.borderColor = `color-mix(in srgb, ${accent} 55%, transparent)`;
@@ -93,25 +77,6 @@ export function InteractiveBadge({ children, className = "", accent = "#5b7cfa",
     >
       {children}
     </Tag>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// InteractiveStat — angka besar yang terangkat + menyala saat disentuh.
-// ─────────────────────────────────────────────────────────────────────────────
-export function InteractiveStat({ children, className = "", accent = "#5b7cfa" }) {
-  return (
-    <div
-      className={`transition-transform duration-300 ease-out hover:-translate-y-1 ${className}`}
-      onPointerEnter={(e) => {
-        e.currentTarget.style.textShadow = `0 0 24px color-mix(in srgb, ${accent} 45%, transparent)`;
-      }}
-      onPointerLeave={(e) => {
-        e.currentTarget.style.textShadow = "";
-      }}
-    >
-      {children}
-    </div>
   );
 }
 
@@ -204,59 +169,6 @@ export function Tilt3D({ children, className = "", max = 7, scale = 1.015, glare
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// InteractiveHint — label kecil yang muncul saat kursor masuk supaya pengunjung
-// TAHU elemen itu bisa diapain ("geser", "klik", "tarik"). Ini yang bikin
-// interaktivitas terasa "dikasih tau", bukan cuma diam-diam bisa.
-// ─────────────────────────────────────────────────────────────────────────────
-export function InteractiveHint({ children, text = "geser", icon = "⇄", position = "top", accent = "#9db2ff" }) {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const enter = () => setVisible(true);
-    const leave = () => setVisible(false);
-    el.addEventListener("pointerenter", enter);
-    el.addEventListener("pointerleave", leave);
-    return () => {
-      el.removeEventListener("pointerenter", enter);
-      el.removeEventListener("pointerleave", leave);
-    };
-  }, []);
-
-  const posClass =
-    position === "top"
-      ? "top-3 left-1/2 -translate-x-1/2"
-      : position === "bottom"
-        ? "bottom-3 left-1/2 -translate-x-1/2"
-        : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2";
-
-  return (
-    <span ref={ref} className="relative inline-block w-full">
-      {children}
-      <span
-        aria-hidden
-        className={`pointer-events-none absolute z-30 flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[11px] font-medium whitespace-nowrap backdrop-blur transition-all duration-300 ${posClass}`}
-        style={{
-          borderColor: `color-mix(in srgb, ${accent} 45%, transparent)`,
-          background: "rgba(14,16,19,.85)",
-          color: accent,
-          opacity: visible ? 1 : 0,
-          transform: `${position === "center" ? "translate(-50%, -50%)" : "translateX(-50%)"} ${
-            visible ? "translateY(0)" : position === "top" ? "translateY(6px)" : "translateY(-6px)"
-          }`,
-          boxShadow: "0 6px 24px rgba(0,0,0,.4)",
-        }}
-      >
-        <span className="text-[13px] leading-none">{icon}</span>
-        {text}
-      </span>
-    </span>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
 // SecretTerminal — easter egg "gong": mode terminal rahasia yang bisa diajak
 // ngobrol. Pengunjung bisa mengetik perintah dan terminal menjawab dengan gaya
 // developer. Ada perintah rahasia tersembunyi di dalamnya.
@@ -303,7 +215,7 @@ const COMMANDS = {
   ],
   "npm run gong": [
     "> porto-ariel@1.0.0 gong",
-    "> menjalankan ritual rahasia...",
+    "> menjalankan ritual rahasia…",
     "",
     "  GONG!  GONG!  GONG!",
     "",
@@ -342,11 +254,11 @@ export function EasterEgg() {
     let clickTimer;
 
     const onKey = (e) => {
-      if (open) return;
       if (e.key === "Escape") {
         setOpen(false);
         return;
       }
+      if (open) return;
       if (["INPUT", "TEXTAREA"].includes(document.activeElement?.tagName)) return;
       if (e.key.length === 1) {
         buffer = (buffer + e.key.toLowerCase()).slice(-14);
@@ -393,8 +305,8 @@ export function EasterEgg() {
     setBooted(false);
 
     const bootLines = [
-      { t: 0, text: "terminal-ariel v1.0 — kanal rahasia" },
-      { t: 420, text: "memuat data pengunjung..." },
+      { t: 0, text: "terminal-ariel v1.0 · kanal rahasia" },
+      { t: 420, text: "memuat data pengunjung…" },
       { t: 900, text: "status: PENASARAN TERDETEKSI" },
       { t: 1350, text: "" },
       { t: 1500, text: "Selamat. Kamu menemukan terminal yang tidak ada di peta." },
@@ -433,7 +345,7 @@ export function EasterEgg() {
     }
     if (cmd === "exit" || cmd === "quit") {
       setTimeout(() => setOpen(false), 250);
-      setHistory((h) => [...h, { type: "out", text: "Menutup terminal... sampai jumpa." }]);
+      setHistory((h) => [...h, { type: "out", text: "Menutup terminal… sampai jumpa." }]);
       return;
     }
 
@@ -466,18 +378,15 @@ export function EasterEgg() {
       onClick={() => setOpen(false)}
     >
       <div
-        className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-[#2b3037] bg-[#0b0d10] shadow-[0_30px_120px_rgba(0,0,0,.7)]"
+        className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-line bg-console-2 shadow-[0_30px_120px_rgba(0,0,0,.7)]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* header terminal */}
-        <div className="flex items-center gap-2 border-b border-[#2b3037] bg-[#0e1013] px-4 py-3">
-          <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-          <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-          <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-          <span className="ml-3 font-mono text-[12px] text-white/40">rahasia@arielbudi.web.id ~ %</span>
+        <div className="flex items-center gap-2 border-b border-line bg-ink px-4 py-3">
+          <span className="font-mono text-[12px] text-white/55">rahasia@arielbudi.web.id ~ %</span>
           <button
             onClick={() => setOpen(false)}
-            className="ml-auto rounded-md px-2 py-1 font-mono text-[11px] text-white/40 transition-colors hover:bg-white/5 hover:text-white"
+            className="ml-auto rounded-md px-2 py-1 font-mono text-[11px] text-white/55 transition-colors hover:bg-white/5 hover:text-white"
           >
             esc
           </button>
@@ -486,17 +395,17 @@ export function EasterEgg() {
         {/* isi terminal */}
         <div
           ref={scrollRef}
-          className="no-bar h-[52vh] max-h-[460px] overflow-y-auto bg-[#0b0d10] p-5 font-mono text-[13px] leading-relaxed"
+          className="no-bar h-[52vh] max-h-[460px] overflow-y-auto bg-console-2 p-5 font-mono text-[13px] leading-relaxed"
           onClick={() => inputRef.current?.focus()}
         >
           {history.map((line, i) => (
             <div key={i} className="whitespace-pre-wrap">
               {line.type === "in" ? (
                 <p className="text-white/80">
-                  <span className="text-[#5b7cfa]">➜</span> <span className="text-[#9db2ff]">~</span> {line.text}
+                  <span className="text-accent">➜</span> <span className="text-accent-soft">~</span> {line.text}
                 </p>
               ) : (
-                <p className={line.text.startsWith("  ") || line.text.includes("===") ? "text-[#9db2ff]" : "text-white/55"}>
+                <p className={line.text.startsWith("  ") || line.text.includes("===") ? "text-accent-soft" : "text-white/55"}>
                   {line.text}
                 </p>
               )}
@@ -505,29 +414,29 @@ export function EasterEgg() {
 
           {booted && (
             <form onSubmit={onSubmit} className="mt-1 flex items-center gap-2">
-              <span className="shrink-0 text-[#5b7cfa]">➜</span>
-              <span className="shrink-0 text-[#9db2ff]">~</span>
+              <span className="shrink-0 text-accent">➜</span>
+              <span className="shrink-0 text-accent-soft">~</span>
               <input
                 ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                className="w-full flex-1 bg-transparent font-mono text-[13px] text-white/85 outline-none placeholder:text-white/25"
-                placeholder="ketik perintah di sini..."
+                className="w-full flex-1 bg-transparent font-mono text-[13px] text-white/85 placeholder:text-white/55"
+                placeholder="ketik perintah di sini…"
                 autoComplete="off"
                 spellCheck={false}
                 aria-label="Terminal rahasia"
               />
             </form>
           )}
-          {!booted && <span className="caret inline-block h-3.5 w-[7px] bg-[#9db2ff] align-middle" />}
+          {!booted && <span className="caret inline-block h-3.5 w-[7px] bg-accent-soft align-middle" />}
         </div>
 
         {/* footer */}
-        <div className="flex items-center justify-between border-t border-[#2b3037] bg-[#0e1013] px-4 py-2.5">
-          <p className="font-mono text-[11px] text-white/30">
-            kamu menemukan terminal rahasia — coba <span className="text-[#9db2ff]">help</span>
+        <div className="flex items-center justify-between border-t border-line bg-ink px-4 py-2.5">
+          <p className="font-mono text-[11px] text-white/55">
+            kamu menemukan terminal rahasia, ketik <span className="text-accent-soft">help</span>
           </p>
-          <p className="font-mono text-[11px] text-white/25">easter egg</p>
+          <p className="font-mono text-[11px] text-white/55">easter egg</p>
         </div>
       </div>
     </div>

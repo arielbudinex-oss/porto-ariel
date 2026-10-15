@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import { ArrowDown, ArrowSquareOut, GithubLogo } from "@phosphor-icons/react";
 import Magnet from "./rb/Animations/Magnet/Magnet";
-import ImageTrail from "./rb/Animations/ImageTrail/ImageTrail";
-import { InteractiveStat } from "./Interactive";
 import { owner, stats, projects } from "../data/projects";
 import { RotatingWord } from "./RotatingWord";
 import CountUp from "./rb/TextAnimations/CountUp/CountUp";
 import DotField from "./rb/Backgrounds/DotField/DotField";
-import ShinyText from "./rb/TextAnimations/ShinyText/ShinyText";
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
@@ -16,14 +13,19 @@ export default function Hero() {
     return () => clearTimeout(t);
   }, []);
 
-  const live = projects.filter((p) => p.url);
+  // "live" = produk dengan domain produksi; proyek yang berbagi domain
+  // yang sama dengan produk lain tidak dihitung dua kali.
+  const live = projects.filter(
+    (p, i, arr) => p.url && arr.findIndex((x) => x.url === p.url) === i
+  );
   const [first, second, ...rest] = owner.name.split(" ");
 
   return (
-    <section id="atas" className="relative isolate min-h-[100svh] overflow-hidden pt-28">
+    <section id="atas" className="relative isolate min-h-[100svh] overflow-hidden pt-24">
       <div aria-hidden className="ambient ambient-hero" />
       {/* latar: titik-titik interaktif yang mengikuti kursor */}
       <DotField
+        aria-hidden="true"
         className="absolute inset-0 -z-20 h-full w-full"
         dotRadius={1.5}
         dotSpacing={16}
@@ -35,27 +37,13 @@ export default function Hero() {
         gradientTo="rgba(157, 178, 255, 0.20)"
         glowColor="#0e1013"
       />
-      {/* jejak screenshot proyek yang muncul saat kursor bergerak */}
-      <div className="pointer-events-none absolute inset-0 -z-10 hidden opacity-30 md:block">
-        <ImageTrail
-          variant={1}
-          items={[
-            "/assets/projects/nexshop/01-admin.webp",
-            "/assets/projects/lumawall/01-dashboard.webp",
-            "/assets/projects/akuntuntas/01-dashboard.webp",
-            "/assets/projects/saybot/01-og.webp",
-            "/assets/projects/nexshop/02-admin-mobile.webp",
-            "/assets/projects/lumawall/02-catalog.webp",
-          ]}
-        />
-      </div>
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-[#0e1013]/60 to-[#0e1013]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-ink/60 to-ink" />
 
-      <div className="mx-auto grid max-w-[1324px] gap-14 px-6 pt-12 pb-24 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
+      <div className="mx-auto grid max-w-[1324px] gap-14 px-6 pt-6 pb-40 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)] lg:items-center">
         {/* ── kolom kiri ─────────────────────────────────────────────── */}
         <div className={mounted ? "rise" : "opacity-0"}>
           <div className="mb-7 inline-flex flex-wrap items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.05] py-1 pr-4 pl-1.5 text-[13px] text-white/70">
-            <span className="rounded-full border border-[#5b7cfa]/35 bg-[#5b7cfa]/12 px-2.5 py-1 text-[11px] font-semibold text-[#9db2ff]">
+            <span className="rounded-full border border-accent/35 bg-accent/12 px-2.5 py-1 text-[11px] font-semibold text-accent-soft">
               Founder Xinet.id
             </span>
             {live.length} live · {projects.length} proyek nyata
@@ -88,9 +76,9 @@ export default function Hero() {
               </Magnet>
               <span
                 aria-hidden
-                className="pointer-events-none absolute -top-9 left-2 flex items-center gap-1.5 rounded-full border border-[#9db2ff]/40 bg-[#0e1013]/90 px-3 py-1 text-[11px] whitespace-nowrap text-[#9db2ff] opacity-0 backdrop-blur transition-all duration-300 group-hover/cta:opacity-100"
+                className="hint-cursor pointer-events-none absolute -top-9 left-2 flex items-center gap-1.5 rounded-full border border-accent-soft/40 bg-ink/90 px-3 py-1 text-[11px] whitespace-nowrap text-accent-soft opacity-0 backdrop-blur transition-opacity duration-300 group-hover/cta:opacity-100 group-focus-within/cta:opacity-100"
               >
-                ↑ coba dekatkan kursor
+                coba dekatkan kursor
               </span>
             </span>
             <Magnet padding={60} magnetStrength={3}>
@@ -108,13 +96,13 @@ export default function Hero() {
           {/* statistik, menghitung naik saat terlihat */}
           <dl className="mt-14 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-7 sm:grid-cols-4">
             {stats.map((s) => (
-              <InteractiveStat key={s.label} accent="#5b7cfa">
+              <div key={s.label}>
                 <dt className="text-3xl font-bold tracking-tight text-white md:text-4xl">
-                  <CountUp to={s.value} duration={1.6} separator="." />
-                  <span className="text-[#5b7cfa]">{s.suffix}</span>
+                  <CountUp to={s.value} duration={1.1} separator="." />
+                  <span className="text-accent">{s.suffix}</span>
                 </dt>
-                <dd className="mt-1.5 text-[11px] tracking-[0.08em] text-white/40 uppercase">{s.label}</dd>
-              </InteractiveStat>
+                <dd className="mt-1.5 text-[11px] tracking-[0.08em] text-white/55 uppercase">{s.label}</dd>
+              </div>
             ))}
           </dl>
         </div>
@@ -122,16 +110,9 @@ export default function Hero() {
         {/* ── kolom kanan: panel terminal ────────────────────────────── */}
         <div className={`relative ${mounted ? "rise" : "opacity-0"}`} style={{ animationDelay: "120ms" }}>
           <div className="surface overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,.5)]">
-            <div className="flex items-center gap-2 border-b border-[#2b3037] px-5 py-3.5">
-              <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-              <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-              <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-              <span className="ml-3 font-mono text-xs text-white/40">ariel@produksi ~ %</span>
-            </div>
-
-            <div className="space-y-3.5 bg-[#12151a] p-6 font-mono text-[13px] leading-relaxed">
-              <p className="text-white/35">
-                <span className="text-[#5b7cfa]">➜</span> <span className="text-white/80">whoami</span>
+            <div className="space-y-3.5 bg-console p-6 font-mono text-[13px] leading-relaxed">
+              <p className="text-white/55">
+                <span className="text-accent">➜</span> <span className="text-white/80">whoami</span>
               </p>
               <p className="pl-4 text-white/60">
                 {owner.name}, full-stack developer.
@@ -139,8 +120,8 @@ export default function Hero() {
                 Backend, frontend, database, deploy, sampai halaman jualan.
               </p>
 
-              <p className="text-white/35">
-                <span className="text-[#5b7cfa]">➜</span> <span className="text-white/80">ls proyek-live/</span>
+              <p className="text-white/55">
+                <span className="text-accent">➜</span> <span className="text-white/80">ls proyek-live/</span>
               </p>
               <ul className="space-y-1.5 pl-4">
                 {live.map((p) => (
@@ -150,18 +131,18 @@ export default function Hero() {
                       href={p.url}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="text-white/75 transition-colors hover:text-[#9db2ff]"
+                      className="text-white/75 transition-colors hover:text-accent-soft"
                     >
                       {p.name}
                     </a>
-                    <ArrowSquareOut size={13} className="text-white/30" />
+                    <ArrowSquareOut size={13} className="text-white/55" />
                   </li>
                 ))}
               </ul>
 
-              <p className="text-white/35">
-                <span className="text-[#5b7cfa]">➜</span> <span className="text-white/80">npm run build</span>
-                <span className="caret ml-2 inline-block h-3.5 w-[7px] bg-[#5b7cfa] align-middle" />
+              <p className="text-white/55">
+                <span className="text-accent">➜</span> <span className="text-white/80">npm run build</span>
+                <span className="caret ml-2 inline-block h-3.5 w-[7px] bg-accent align-middle" />
               </p>
               <div className="space-y-1 pl-4 text-[12px] text-white/50">
                 <p>✓ 265.000+ baris kode · 7 proyek</p>
@@ -170,15 +151,9 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between border-t border-[#2b3037] px-5 py-3">
-              <ShinyText
-                text="Semua angka diukur dari source code"
-                speed={5}
-                color="#6b6478"
-                shineColor="#d4d4d8"
-                className="font-mono text-[11px]"
-              />
-              <span className="font-mono text-[11px] text-white/25">v1.0</span>
+            <div className="flex items-center justify-between border-t border-line px-5 py-3">
+              <span className="font-mono text-[11px] text-white/55">Semua angka diukur dari source code</span>
+              <span className="font-mono text-[11px] text-white/55">v1.0</span>
             </div>
           </div>
         </div>
@@ -193,15 +168,10 @@ export default function Hero() {
         aria-label="Gulir ke proyek"
         className="group/scroll absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
       >
-        <span className="relative grid h-10 w-10 place-items-center rounded-full border border-white/12 bg-white/[0.03] backdrop-blur transition-all duration-300 group-hover/scroll:scale-110 group-hover/scroll:border-[#5b7cfa]/60 group-hover/scroll:bg-[#5b7cfa]/10">
-          <ArrowDown
-            size={15}
-            className="text-white/45 transition-all duration-300 group-hover/scroll:translate-y-0.5 group-hover/scroll:text-[#9db2ff]"
-          />
-          {/* denyut halus di sekeliling */}
-          <span className="pointer-events-none absolute inset-0 animate-ping rounded-full border border-[#5b7cfa]/25 [animation-duration:2.4s]" />
+        <span className="grid h-10 w-10 place-items-center rounded-full border border-white/12 bg-white/[0.03] backdrop-blur transition-colors duration-300 group-hover/scroll:border-accent/60 group-hover/scroll:bg-accent/10">
+          <ArrowDown size={15} className="text-white/55" />
         </span>
-        <span className="text-[10px] tracking-[0.14em] text-white/25 uppercase transition-colors duration-300 group-hover/scroll:text-[#9db2ff]">
+        <span className="text-[10px] tracking-[0.14em] text-white/55 uppercase">
           proyek
         </span>
       </button>

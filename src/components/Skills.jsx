@@ -1,6 +1,5 @@
 import { skills, principles } from "../data/projects";
 import CountUp from "./rb/TextAnimations/CountUp/CountUp";
-import BlurText from "./rb/TextAnimations/BlurText/BlurText";
 import { TerminalWindow, Cpu, Database, Cloud, Lock, Plugs } from "@phosphor-icons/react";
 import { InteractiveCard, InteractiveBadge } from "./Interactive";
 import CursorGrid from "./rb/Animations/CursorGrid/CursorGrid";
@@ -54,7 +53,7 @@ export default function Skills() {
       <div aria-hidden className="ambient ambient-ahli" />
       <div className="dot-grid pointer-events-none absolute inset-0 -z-10 opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
       {/* grid yang menyala mengikuti kursor */}
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-80">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 opacity-80">
         <CursorGrid
           cellSize={64}
           color="#5b7cfa"
@@ -74,15 +73,11 @@ export default function Skills() {
 
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-2xl">
-          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">Keahlian</p>
-          <BlurText
-            text="Tumpukan teknologi yang benar-benar kupakai di produksi."
-            delay={26}
-            animateBy="words"
-            direction="top"
-            className="text-4xl font-bold tracking-[-0.02em] text-white md:text-5xl"
-          />
-          <p className="mt-5 text-[15px] leading-relaxed text-white/50">
+          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-accent-soft">Keahlian</p>
+          <h2 className="text-4xl font-bold tracking-[-0.02em] text-white md:text-5xl">
+            Tumpukan teknologi yang benar-benar kupakai di produksi.
+          </h2>
+          <p className="mt-5 max-w-[65ch] text-[15px] leading-relaxed text-white/50">
             Dihimpun dari package.json, source code, dan konfigurasi deploy semua proyek, bukan daftar
             hafalan. <span className="text-white/85">{total} teknologi</span> di enam bidang.
           </p>
@@ -93,7 +88,7 @@ export default function Skills() {
           {LOGOS.map((item) => (
             <span key={item.label} className="flex items-center gap-2.5" title={item.label}>
               <item.Icon size={20} color={item.color} />
-              <span className="truncate text-[12px] whitespace-nowrap text-white/40">{item.label}</span>
+              <span className="truncate text-[12px] whitespace-nowrap text-white/55">{item.label}</span>
             </span>
           ))}
         </div>
@@ -104,7 +99,7 @@ export default function Skills() {
             return (
               <InteractiveCard key={group} className="surface p-6" accent="#5b7cfa">
                 <div className="mb-4 flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-[#5b7cfa]/12 text-[#9db2ff]">
+                  <span className="grid h-10 w-10 place-items-center rounded-[10px] bg-accent/12 text-accent-soft">
                     <Icon size={17} />
                   </span>
                   <h3 className="text-[17px] font-semibold text-white">{group}</h3>
@@ -113,7 +108,7 @@ export default function Skills() {
                   {items.map((s) => (
                     <InteractiveBadge
                       key={s}
-                      className="rounded-lg border border-[#2b3037] bg-[#0e1013] px-2.5 py-1 font-mono text-[11px] text-white/55"
+                      className="rounded-lg border border-line bg-ink px-2.5 py-1 font-mono text-[11px] text-white/55"
                       accent="#5b7cfa"
                     >
                       {s}
@@ -126,12 +121,12 @@ export default function Skills() {
 
           {/* kartu ringkasan angka */}
           <InteractiveCard className="surface flex flex-col justify-center p-6" accent="#9db2ff">
-            <p className="text-[11px] text-white/35">Total</p>
+            <p className="text-[11px] text-white/55">Total</p>
             <p className="mt-2 text-4xl font-bold text-white">
-              <CountUp to={total} duration={1.4} />
+              <CountUp to={total} duration={1.1} />
             </p>
-            <p className="mt-1 text-[13px] text-white/45">teknologi di 6 bidang</p>
-            <div className="mt-5 space-y-2 pt-1 text-[12px] text-white/45">
+            <p className="mt-1 text-[13px] text-white/55">teknologi di 6 bidang</p>
+            <div className="mt-5 space-y-2 pt-1 text-[12px] text-white/55">
               <p className="flex justify-between">
                 <span>Bahasa</span> <span className="text-white/70">JS · TS · Python · C#</span>
               </p>
@@ -152,7 +147,7 @@ export default function Skills() {
             {principles.map((pr) => (
               <InteractiveCard key={pr.title} className="surface p-5" accent="#5b7cfa">
                 <h4 className="text-[15px] font-semibold text-white">{pr.title}</h4>
-                <p className="mt-2 text-[13px] leading-relaxed text-white/45">{pr.desc}</p>
+                <p className="mt-2 text-[13px] leading-relaxed text-white/55">{pr.desc}</p>
               </InteractiveCard>
             ))}
           </div>

@@ -71,6 +71,16 @@ export default function CountUp({
     if (isInView && startWhen) {
       if (typeof onStart === 'function') onStart();
 
+      const reduce =
+        typeof window !== 'undefined' &&
+        window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+      if (reduce) {
+        motionValue.set(direction === 'down' ? from : to);
+        if (typeof onEnd === 'function') onEnd();
+        return;
+      }
+
       const timeoutId = setTimeout(() => {
         motionValue.set(direction === 'down' ? from : to);
       }, delay * 1000);

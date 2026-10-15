@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { List, X, GithubLogo } from "@phosphor-icons/react";
 import { owner } from "../data/projects";
-import ShinyText from "./rb/TextAnimations/ShinyText/ShinyText";
 
 const LINKS = [
   { href: "#proyek", label: "Proyek" },
@@ -41,13 +40,20 @@ export default function Nav() {
   return (
     <header className="fixed top-5 right-0 left-0 z-50 px-6">
       <nav
-        className={`mx-auto flex max-w-[1324px] items-center justify-between rounded-[14px] px-2 py-2 pl-5 transition-all duration-500 ${
+        className={`mx-auto flex max-w-[1324px] items-center justify-between rounded-[14px] px-2 py-2 pl-5 transition-colors duration-500 ${
           scrolled
-            ? "border border-white/[0.07] bg-[#0e1013]/45 shadow-[0_8px_32px_rgba(0,0,0,.28),inset_0_.5px_0_rgba(255,255,255,.08)] backdrop-blur-2xl backdrop-saturate-150"
+            ? "border border-white/[0.07] bg-ink/45 shadow-[0_8px_32px_rgba(0,0,0,.28),inset_0_.5px_0_rgba(255,255,255,.08)] backdrop-blur-2xl backdrop-saturate-150"
             : "border border-transparent"
         }`}
       >
-        <a href="#atas" className="flex items-center gap-3">
+        <a
+          href="#atas"
+          className="flex items-center gap-3"
+          onClick={() => {
+            // jalur penemuan kedua untuk terminal rahasia: klik avatar 5x
+            window.dispatchEvent(new CustomEvent("hermes:logoclick"));
+          }}
+        >
           <span className="h-8 w-8 overflow-hidden rounded-lg ring-1 ring-white/15">
             <img
               src="/assets/profile/ariel-avatar.webp"
@@ -56,7 +62,7 @@ export default function Nav() {
             />
           </span>
           <span className="hidden text-[15px] font-medium sm:block">
-            <ShinyText text={owner.name} speed={6} color="#a1a1aa" shineColor="#fff" />
+            {owner.name}
           </span>
         </a>
 
@@ -70,14 +76,14 @@ export default function Nav() {
               }`}
             >
               {l.label}
-              {active === l.href && <span className="absolute inset-x-3.5 bottom-1 h-px bg-[#5b7cfa]" />}
+              {active === l.href && <span className="absolute inset-x-3.5 bottom-1 h-px bg-accent" />}
             </a>
           ))}
           <a
             href={owner.github}
             target="_blank"
             rel="noreferrer noopener"
-            className="ml-2 inline-flex items-center gap-2 rounded-full bg-[#5b7cfa] px-4 py-2 text-[14px] font-semibold text-white shadow-[0_2px_14px_rgba(91,124,250,.28)] transition-transform hover:scale-[1.03]"
+            className="ml-2 inline-flex items-center gap-2 rounded-full bg-accent-deep px-4 py-2 text-[14px] font-semibold text-white transition-colors hover:bg-accent"
           >
             <GithubLogo size={15} /> GitHub
           </a>
@@ -109,7 +115,7 @@ export default function Nav() {
             target="_blank"
             rel="noreferrer noopener"
             onClick={() => setOpen(false)}
-            className="mt-1 flex items-center gap-2 rounded-xl bg-[#5b7cfa]/15 px-4 py-3 text-[14px] text-[#9db2ff]"
+            className="mt-1 flex items-center gap-2 rounded-xl bg-accent/15 px-4 py-3 text-[14px] text-accent-soft"
           >
             <GithubLogo size={15} /> github.com/ArielOsaze
           </a>

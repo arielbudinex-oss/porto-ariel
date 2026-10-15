@@ -21,12 +21,14 @@
   --color-accent-deep: #3a55c9;
   --color-ivory: #e9e6df;      /* krem netral */
   --color-crimson: #d9544f;
+  --color-rose: #e668a7;       /* aksen Instagram */
+  --color-sky: #38bdf8;        /* aksen NexShop */
+  --color-green: #4ade80;      /* aksen WhatsApp */
+  --color-console: #12151a;    /* permukaan terminal */
+  --color-console-2: #0b0d10;  /* permukaan terminal pekat */
 
-  /* alias — dipakai sebagian komponen agar tidak perlu diubah satu per satu */
+  /* alias */
   --color-neon: #9db2ff;
-  --color-violet: #5b7cfa;
-  --color-magenta: #5b7cfa;
-  --color-amber: #e9e6df;
   --color-lime: #7fb0a4;
 
   --font-sans: "Geist", "Segoe UI", system-ui, sans-serif;
@@ -58,6 +60,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--color-ink);
+  overflow-x: clip;
 }
 
 body {
@@ -65,23 +68,23 @@ body {
   color: var(--color-frost);
   font-family: var(--font-sans);
   font-weight: 400;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 ::selection {
   background: rgba(91, 124, 250, 0.35);
-  color: #fff;
+  color: var(--color-frost);
 }
 
 /* ── scrollbar ─────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--color-ink); }
 ::-webkit-scrollbar-thumb {
-  background: #343a42;
+  background: var(--color-line);
   border-radius: 99px;
   border: 2px solid var(--color-ink);
 }
-::-webkit-scrollbar-thumb:hover { background: #434a54; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-dim); }
 
 /* ── permukaan — radius besar, border tipis, tanpa glow ── */
 .surface {
@@ -99,8 +102,8 @@ body {
 
 /* tombol primer: putih bersih, teks gelap */
 .btn-primary {
-  background: #f2f4f7;
-  color: #14171b;
+  background: var(--color-frost);
+  color: var(--color-ink);
   font-weight: 600;
   border-radius: 999px;
   transition: opacity 0.15s var(--ease-out), transform 0.15s var(--ease-out);
@@ -112,19 +115,11 @@ body {
 .btn-ghost {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
+  color: var(--color-frost);
   border-radius: 999px;
   transition: background 0.15s var(--ease-out);
 }
 .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); }
-
-/* judul dengan gradient (dipakai hemat) */
-.text-grad {
-  background: linear-gradient(135deg, #9db2ff 0%, #5b7cfa 30%, #f2f4f7 55%, #5b7cfa 80%, #9db2ff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
 
 /* ── dot grid (statis, ringan, tanpa animasi) ───────────────── */
 .dot-grid {
@@ -165,54 +160,12 @@ body {
 .ambient-jalan  { --ambient: radial-gradient(840px 480px at 76% 18%, rgba(96, 138, 235, 0.10), transparent 60%), radial-gradient(600px 380px at 10% 86%, rgba(91, 124, 250, 0.08), transparent 58%); }
 .ambient-kontak { --ambient: radial-gradient(900px 540px at 24% 20%, rgba(91, 124, 250, 0.13), transparent 62%), radial-gradient(680px 440px at 86% 84%, rgba(233, 230, 223, 0.05), transparent 60%); }
 
-/* kartu proyek: ambient dari warna brand proyek itu sendiri */
-.ambient-project {
-  --ambient: radial-gradient(760px 460px at 12% 6%, color-mix(in srgb, var(--p-accent) 13%, transparent), transparent 62%),
-             radial-gradient(600px 400px at 92% 94%, color-mix(in srgb, var(--p-accent) 9%, transparent), transparent 58%);
-}
-
-/* aksen kartu: saat hover, warna brand proyek "menyala" pelan di tepi */
-.card-accent-glow {
-  position: relative;
-}
-.card-accent-glow::after {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.45s var(--ease-out);
-  background: radial-gradient(420px 220px at 50% 0%, color-mix(in srgb, var(--p-accent) 22%, transparent), transparent 70%);
-}
-.card-accent-glow:hover::after { opacity: 1; }
-
-
 /* ── animasi masuk — hanya transform + opacity (GPU, mulus) ───────────── */
 @keyframes riseIn {
   from { opacity: 0; transform: translate3d(0, 24px, 0); }
   to   { opacity: 1; transform: translate3d(0, 0, 0); }
 }
-.rise { animation: riseIn 0.7s var(--ease-out) both; }
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-.fade { animation: fadeIn 0.5s var(--ease-out) both; }
-
-/* ── marquee ringan ───────────────────────────────────────────────────── */
-@keyframes marquee {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
-}
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee var(--marquee-speed, 48s) linear infinite;
-  will-change: transform;
-}
-.marquee-track:hover { animation-play-state: paused; }
+.rise { animation: riseIn 0.6s var(--ease-out) both; }
 
 /* ── scrollbar horizontal disembunyikan ───────────────────────────────── */
 .no-bar::-webkit-scrollbar { display: none; }
@@ -222,26 +175,21 @@ body {
 @keyframes blinkCaret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 .caret { animation: blinkCaret 1.05s step-end infinite; }
 
-/* ── kilau lembut untuk judul aksen ───────────────────────────────────── */
-@keyframes sheen {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+/* ── aksesibilitas ────────────────────────────────────────────────────────
+   Fokus keyboard selalu terlihat (tanpa animasi), state aktif & nonaktif
+   punya gaya sendiri. Judul besar boleh pecah kata di lebar sempit. */
+:focus-visible {
+  outline: 2px solid var(--color-accent-soft);
+  outline-offset: 2px;
 }
-.text-sheen {
-  background: linear-gradient(
-    100deg,
-    #9db2ff 0%,
-    #5b7cfa 20%,
-    #f2f4f7 35%,
-    #e9e6df 50%,
-    #5b7cfa 70%,
-    #9db2ff 100%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: sheen 7s linear infinite;
+a:active, button:active { opacity: 0.88; }
+:disabled, [aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; }
+
+h1, h2, h3 { overflow-wrap: anywhere; min-width: 0; }
+
+/* petunjuk yang hanya masuk akal untuk pengguna kursor */
+@media (hover: none) {
+  .hint-cursor { display: none !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {

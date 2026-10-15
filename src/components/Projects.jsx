@@ -9,16 +9,25 @@ import {
   Pulse,
 } from "@phosphor-icons/react";
 import { projects } from "../data/projects";
-import { InteractiveHint, Tilt3D } from "./Interactive";
-import ScrollReveal from "./rb/TextAnimations/ScrollReveal/ScrollReveal";
+import { Tilt3D } from "./Interactive";
 import CountUp from "./rb/TextAnimations/CountUp/CountUp";
 import SpotlightCard from "./rb/Components/SpotlightCard/SpotlightCard";
 import {
-  GlowBorder,
   ComparisonSlider,
   PixelDissolve,
   ElasticSticker,
 } from "./pro/ProMirror";
+
+// Pilih warna teks yang kontras di atas warna brand proyek (WCAG >= 4.5:1).
+function readableOn(hex) {
+  const c = hex.replace("#", "");
+  const lin = (v) => (v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+  const L =
+    0.2126 * lin(parseInt(c.slice(0, 2), 16) / 255) +
+    0.7152 * lin(parseInt(c.slice(2, 4), 16) / 255) +
+    0.0722 * lin(parseInt(c.slice(4, 6), 16) / 255);
+  return L >= 0.19 ? "#0e1013" : "#f2f4f7";
+}
 
 const FILTERS = [
   { id: "all", label: "Semua" },
@@ -91,20 +100,16 @@ export default function Projects() {
             <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-neon">
               Portofolio
             </p>
-            <ScrollReveal
-              text="Semua yang kubangun, dengan angkanya."
-              baseOpacity={0.08}
-              enableBlur
-              baseRotation={2}
-              containerClassName="font-display text-4xl font-bold tracking-tight md:text-5xl"
-            />
+            <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
+              Semua yang kubangun, dengan angkanya.
+            </h2>
           </div>
           <div className="no-bar flex gap-2 overflow-x-auto pb-1">
             {FILTERS.map((f) => (
               <button
                 key={f.id}
                 onClick={() => setFilter(f.id)}
-                className={`shrink-0 rounded-full border px-4 py-2 text-xs transition-all ${
+                className={`shrink-0 rounded-full border px-4 py-2 text-xs transition-colors ${
                   filter === f.id
                     ? "border-neon/50 bg-neon/12 text-neon"
                     : "border-line bg-ink-2/50 text-mist hover:border-line hover:text-frost"
@@ -138,14 +143,14 @@ function ProjectCard({ project: p, open, onToggle }) {
 
   return (
     <SpotlightCard
-      className={`group overflow-hidden rounded-3xl ${open ? "" : ""}`}
+      className="group overflow-hidden rounded-3xl"
       glow={p.accent}
       tilt={2}
     >
       <div
-        className="glass relative overflow-hidden rounded-3xl transition-colors duration-500"
+        className="relative overflow-hidden rounded-3xl border transition-colors duration-500"
         style={{
-          borderColor: open ? `color-mix(in srgb, ${p.accent} 35%, #2b3037)` : undefined,
+          borderColor: open ? `color-mix(in srgb, ${p.accent} 35%, #2b3037)` : "#2b3037",
         }}
       >
 
@@ -201,11 +206,11 @@ function ProjectCard({ project: p, open, onToggle }) {
         {/* ── isi yang bisa dibuka ─────────────────────────────────── */}
         <div
           ref={contentRef}
-          className="grid transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)]"
+          className="grid transition-[grid-template-rows] duration-700 ease-[cubic-bezier(.22,1,.36,1)]"
           style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
         >
           <div className="overflow-hidden">
-            <div className="grid gap-8 px-5 pb-8 md:px-8 lg:grid-cols-[1fr_1.1fr]">
+            <div className="grid gap-8 px-5 pb-8 md:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
               {/* kiri: cerita + fitur */}
               <div className="space-y-7">
                 <div>
@@ -224,7 +229,7 @@ function ProjectCard({ project: p, open, onToggle }) {
                       <li key={f.title} className="flex gap-3">
                         <span
                           aria-hidden
-                          className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full"
+                          className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full"
                           style={{ background: `color-mix(in srgb, ${p.accent} 80%, transparent)` }}
                         />
                         <div>
@@ -275,8 +280,8 @@ function ProjectCard({ project: p, open, onToggle }) {
                       href={p.url}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-ink transition-transform hover:scale-105"
-                      style={{ background: `linear-gradient(90deg, ${p.accent}, ${p.accent2})` }}
+                      className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-opacity hover:opacity-90"
+                      style={{ background: p.accent, color: readableOn(p.accent) }}
                     >
                       <Globe size={14} /> Buka situs
                     </a>
@@ -295,21 +300,19 @@ function ProjectCard({ project: p, open, onToggle }) {
               {/* kanan: metrik + screenshot */}
               <div className="space-y-5">
                 {/* metrik besar dengan CountUp */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-x-5 gap-y-4">
                   {p.metrics.map((m) => (
-                    <GlowBorder key={m.label} className="group rounded-2xl" color={p.accent} radius="16px">
-                      <div className="rounded-2xl border border-line bg-ink-2/60 p-4">
-                        <p className="font-display text-2xl font-bold text-frost">{m.value}</p>
-                        <p className="mt-1 text-[11px] tracking-wide text-mist uppercase">{m.label}</p>
-                      </div>
-                    </GlowBorder>
+                    <div key={m.label} className="border-t border-line pt-3">
+                      <p className="font-display text-2xl font-bold text-frost">{m.value}</p>
+                      <p className="mt-1 text-[11px] tracking-wide text-mist uppercase">{m.label}</p>
+                    </div>
                   ))}
                 </div>
 
                 {/* galeri screenshot */}
                 {hasShots ? (
                   <div className="space-y-3">
-                    <Tilt3D max={5} scale={1.012} accent={p.accent}>
+                    <Tilt3D max={5} accent={p.accent}>
                       <PixelDissolve trigger={shot} className="overflow-hidden rounded-2xl border border-line">
                         <ShotImage src={p.screenshots[shot].src} alt={p.screenshots[shot].caption} />
                       </PixelDissolve>
@@ -321,7 +324,7 @@ function ProjectCard({ project: p, open, onToggle }) {
                           <button
                             key={s.src}
                             onClick={() => setShot(i)}
-                            className={`relative shrink-0 overflow-hidden rounded-xl border transition-all ${
+                            className={`relative shrink-0 overflow-hidden rounded-xl border transition-[border-color,opacity] ${
                               i === shot ? "border-neon/60 opacity-100" : "border-line opacity-50 hover:opacity-80"
                             }`}
                           >
@@ -332,12 +335,12 @@ function ProjectCard({ project: p, open, onToggle }) {
                     )}
                   </div>
                 ) : (
-                  <div className="grid h-44 place-items-center rounded-2xl border border-dashed border-line bg-ink-2/40">
+                  <div className="grid h-44 place-items-center">
                     <div className="text-center">
                       <p className="text-[12px] text-mist">
                         {p.id === "waapi" ? "Layanan internal, tanpa antarmuka publik" : "Alat CLI / pustaka"}
                       </p>
-                      <p className="mt-1 text-[11px] text-mist/60">
+                      <p className="mt-1 text-[11px] text-mist">
                         Detail lengkap ada di daftar fitur & bukti
                       </p>
                     </div>

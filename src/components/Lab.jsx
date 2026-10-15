@@ -1,11 +1,9 @@
 import { owner } from "../data/projects";
-import GradientText from "./rb/TextAnimations/GradientText/GradientText";
 import DecryptedText from "./rb/TextAnimations/DecryptedText/DecryptedText";
 import CountUp from "./rb/TextAnimations/CountUp/CountUp";
-import ShinyText from "./rb/TextAnimations/ShinyText/ShinyText";
-import StarBorder from "./rb/Animations/StarBorder/StarBorder";
 import SpotlightCard from "./rb/Components/SpotlightCard/SpotlightCard";
 import TiltedCard from "./rb/Components/TiltedCard/TiltedCard";
+import Magnet from "./rb/Animations/Magnet/Magnet";
 import Aurora from "./rb/Backgrounds/Aurora/Aurora";
 import Particles from "./rb/Backgrounds/Particles/Particles";
 import Orb from "./rb/Backgrounds/Orb/Orb";
@@ -23,7 +21,7 @@ import PixelBlast from "./rb/Backgrounds/PixelBlast/PixelBlast";
 import Radar from "./rb/Backgrounds/Radar/Radar";
 import RippleGrid from "./rb/Backgrounds/RippleGrid/RippleGrid";
 import { Broadcast, Sparkle, Cube, Stack } from "@phosphor-icons/react";
-import { InteractiveCard, InteractiveHint, LazyEffect } from "./Interactive";
+import { InteractiveCard, LazyEffect } from "./Interactive";
 
 // ── Palet warna Lab ─────────────────────────────────────────────────────────
 // Tiap efek punya identitas warnanya sendiri supaya section ini tidak monoton.
@@ -254,14 +252,11 @@ export default function Lab() {
       <div aria-hidden className="ambient ambient-lab" />
       <div className="mx-auto max-w-[1324px] px-6">
         <header className="mb-12 max-w-3xl">
-          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-[#9db2ff]">Lab Efek</p>
-          <h2 className="text-4xl font-bold tracking-[-0.02em] md:text-5xl">
-            <GradientText colors={["#fff", "#9aa3ad", "#9db2ff", "#fff"]} animationSpeed={8} className="text-4xl font-bold md:text-5xl">
-              Efek yang kupakai
-            </GradientText>{" "}
-            <span className="text-white">di halaman ini.</span>
+          <p className="mb-3 text-[13px] font-medium tracking-[0.01em] text-accent-soft">Lab Efek</p>
+          <h2 className="text-4xl font-bold tracking-[-0.02em] text-white md:text-5xl">
+            Efek yang kupakai di halaman ini.
           </h2>
-          <p className="mt-5 text-[15px] leading-relaxed text-white/50">
+          <p className="mt-5 max-w-[65ch] text-[15px] leading-relaxed text-white/50">
             Bukan galeri tempelan, semua efek di bawah benar-benar berjalan di halaman ini: canvas, WebGL, dan CSS.
             Tiap efek kutulis sebagai komponen lepas, jadi bisa dipindah ke proyek lain tanpa membawa ketergantungan berat.
           </p>
@@ -277,19 +272,18 @@ export default function Lab() {
                 key={c.title}
                 className={`surface group relative overflow-hidden ${c.span ?? ""}`}
                 accent={c.accent}
-                lift={6}
               >
                 <div className="flex items-start justify-between gap-3 p-5 pb-3">
                   <div>
                     <p className="text-[11px] font-medium tracking-[0.01em]" style={{ color: c.accent }}>{c.kicker}</p>
                     <h3 className="mt-1 text-[17px] font-semibold text-white">{c.title}</h3>
                   </div>
-                  <span className="rounded-lg border border-[#2b3037] bg-[#0e1013] p-1.5 text-white/40">
+                  <span className="rounded-lg border border-line bg-ink p-1.5 text-white/55">
                     {i % 4 === 0 ? <Broadcast size={13} /> : i % 4 === 1 ? <Cube size={13} /> : i % 4 === 2 ? <Stack size={13} /> : <Sparkle size={13} />}
                   </span>
                 </div>
 
-                <div className="group/effect relative mx-5 mb-3 h-52 overflow-hidden rounded-[10px] border border-[#2b3037] bg-[#12151a]">
+                <div className="group/effect relative mx-5 mb-3 h-52 overflow-hidden rounded-[10px] border border-line bg-console">
                   <LazyEffect className="absolute inset-0" rootMargin="150px">
                     <div className="absolute inset-0" style={c.filter ? { filter: c.filter } : undefined}>
                       <Comp {...(c.props ?? {})} />
@@ -298,15 +292,15 @@ export default function Lab() {
                   {c.kicker === "Interaktif" && (
                     <span
                       aria-hidden
-                      className="pointer-events-none absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 translate-y-1.5 items-center gap-1.5 rounded-full border bg-[#0e1013]/85 px-3 py-1.5 text-[11px] font-medium whitespace-nowrap opacity-0 backdrop-blur transition-all duration-300 group-hover/effect:translate-y-0 group-hover/effect:opacity-100"
+                      className="hint-cursor pointer-events-none absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 translate-y-1.5 items-center gap-1.5 rounded-full border bg-ink/85 px-3 py-1.5 text-[11px] font-medium whitespace-nowrap opacity-0 backdrop-blur transition-[opacity,transform] duration-300 group-hover/effect:translate-y-0 group-hover/effect:opacity-100"
                       style={{ borderColor: `color-mix(in srgb, ${c.accent} 45%, transparent)`, color: c.accent }}
                     >
-                      ✦ gerakkan kursor di sini
+                      gerakkan kursor di sini
                     </span>
                   )}
                 </div>
 
-                <p className="px-5 pb-5 text-[13px] leading-relaxed text-white/45">{c.desc}</p>
+                <p className="px-5 pb-5 text-[13px] leading-relaxed text-white/55">{c.desc}</p>
               </InteractiveCard>
             );
           })}
@@ -316,16 +310,16 @@ export default function Lab() {
         <div className="mt-14 grid gap-4 lg:grid-cols-3">
           <SpotlightCard className="surface rounded-[14px]" spotlightColor="rgba(56,189,248,0.26)" intensity={0.4}>
             <div className="p-6">
-              <p className="text-[11px] font-medium tracking-[0.01em] text-[#38bdf8]">Interaktif</p>
+              <p className="text-[11px] font-medium tracking-[0.01em] text-sky">Interaktif</p>
               <h3 className="mt-1 text-[17px] font-semibold text-white">Spotlight Card</h3>
-              <p className="mt-2 text-[13px] leading-relaxed text-white/45">
+              <p className="mt-2 text-[13px] leading-relaxed text-white/55">
                 Sorotan lembut mengikuti kursor di permukaan kartu, kupakai untuk kartu proyek supaya terasa hidup tanpa ramai.
               </p>
             </div>
           </SpotlightCard>
 
           <div className="surface p-6">
-            <p className="text-[11px] font-medium tracking-[0.01em] text-[#e9e6df]">Teks</p>
+            <p className="text-[11px] font-medium tracking-[0.01em] text-ivory">Teks</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Decrypted Text</h3>
             <p className="mt-3 font-mono text-[13px] text-white/70">
               <DecryptedText
@@ -338,42 +332,32 @@ export default function Lab() {
               />
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              <StarBorder as="span" color="#e668a7" speed="4s" thickness={1}>
-                <span className="px-3 py-1.5 font-mono text-[11px] text-[#e668a7]">Star Border</span>
-              </StarBorder>
-              <span className="rounded-lg border border-[#2b3037] bg-[#0e1013] px-3 py-1.5 font-mono text-[11px] text-white/45">
+              <span className="rounded-lg border border-line bg-ink px-3 py-1.5 font-mono text-[11px] text-white/55">
                 komponen lepas, tanpa pustaka animasi berat
               </span>
             </div>
           </div>
 
           <div className="surface p-6">
-            <p className="text-[11px] font-medium tracking-[0.01em] text-[#e668a7]">Teks</p>
-            <h3 className="mt-1 text-[17px] font-semibold text-white">Shiny Text</h3>
+            <p className="text-[11px] font-medium tracking-[0.01em] text-accent-soft">Interaktif</p>
+            <h3 className="mt-1 text-[17px] font-semibold text-white">Magnet</h3>
             <div className="mt-5 grid place-items-center py-3">
-              <ShinyText
-                text="Ariel Osaze Koinda Budi"
-                color="#e668a7"
-                shineColor="#f2f4f7"
-                speed={3.2}
-                shineWidth={110}
-                direction="left"
-                trigger="loop"
-                className="text-2xl font-bold tracking-[-0.01em]"
-              />
+              <Magnet padding={60} magnetStrength={4}>
+                <span className="btn-primary inline-flex items-center px-5 py-2.5 text-[14px]">dekatkan kursor</span>
+              </Magnet>
             </div>
-            <p className="mt-3 text-center text-[13px] leading-relaxed text-white/45">
-              Kilau cahaya yang menyapu teks secara berkala, kupakai untuk penegasan nama, tanpa getaran yang mengganggu.
+            <p className="mt-3 text-center text-[13px] leading-relaxed text-white/55">
+              Tombol yang tertarik pelan ke arah kursor, kupakai untuk tombol ajakan di bagian atas halaman.
             </p>
           </div>
         </div>
 
         {/* baris angka & kartu miring */}
-        <div className="mt-14 grid gap-4 lg:grid-cols-[1fr_1.2fr]">
+        <div className="mt-14 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
           <div className="surface flex flex-col justify-center p-7">
-            <p className="text-[11px] font-medium tracking-[0.01em] text-[#4ade80]">Hitungan</p>
+            <p className="text-[11px] font-medium tracking-[0.01em] text-green">Hitungan</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Angka yang naik</h3>
-            <p className="mt-2 text-[13px] leading-relaxed text-white/45">
+            <p className="mt-2 text-[13px] leading-relaxed text-white/55">
               Angka bergerak naik saat masuk layar, dipakai di ringkasan supaya capaian terasa, bukan sekadar terbaca.
             </p>
             <div className="mt-6 grid grid-cols-2 gap-5">
@@ -385,19 +369,19 @@ export default function Lab() {
               ].map((x) => (
                 <div key={x.l}>
                   <p className="text-3xl font-bold text-white">
-                    <CountUp to={x.v} duration={1.5} separator="." />
-                    <span className="text-[#4ade80]">{x.s ?? ""}</span>
+                    <CountUp to={x.v} duration={1.1} separator="." />
+                    <span className="text-green">{x.s ?? ""}</span>
                   </p>
-                  <p className="mt-1 text-[11px] tracking-[0.06em] text-white/40 uppercase">{x.l}</p>
+                  <p className="mt-1 text-[11px] tracking-[0.06em] text-white/55 uppercase">{x.l}</p>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="surface p-7">
-            <p className="text-[11px] font-medium tracking-[0.01em] text-[#38bdf8]">Miring</p>
+            <p className="text-[11px] font-medium tracking-[0.01em] text-sky">Miring</p>
             <h3 className="mt-1 text-[17px] font-semibold text-white">Kartu yang mengikuti kursor</h3>
-            <p className="mt-2 text-[13px] leading-relaxed text-white/45">
+            <p className="mt-2 text-[13px] leading-relaxed text-white/55">
               Kartu miring mengikuti arah kursor, seperti memegang foto, kupakai untuk pratinjau karya.
             </p>
             <div className="mt-5 grid place-items-center">
@@ -410,7 +394,7 @@ export default function Lab() {
                 imageHeight="240px"
                 imageWidth="380px"
                 rotateAmplitude={14}
-                scaleOnHover={1.06}
+                scaleOnHover={1}
                 showMobileWarning={false}
                 showTooltip
               />
